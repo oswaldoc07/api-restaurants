@@ -4,6 +4,8 @@ package com.ecomers.api.restaurants.web.security.filter;
 import com.ecomers.api.restaurants.domain.service.UserDetailService;
 import com.ecomers.api.restaurants.web.security.JWTUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -31,7 +33,7 @@ public class JwtFilterRequest  extends OncePerRequestFilter {
        // authorizationHeader = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJvc3dhbGRvIiwiaWF0IjoxNjAzMDgwNDc1LCJleHAiOjE2MDMxMTY0NzV9.27Yg3y1BQH7wiHx2vKyL2gK45mXiVi09yzDCbZ5q_NQ";
         HttpServletResponse response = (HttpServletResponse) res;
         System.out.println("WebConfig; "+request.getRequestURI());
-        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Origin", "https://store-e777c.web.app");
         response.setHeader("Access-Control-Allow-Methods", "POST, PUT, GET, OPTIONS, DELETE");
         response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With,observe");
         response.setHeader("Access-Control-Max-Age", "3600");
@@ -56,4 +58,13 @@ public class JwtFilterRequest  extends OncePerRequestFilter {
         }
         filterChain.doFilter(request,response);
     }
+
+   /* @Bean
+    public FilterRegistrationBean filterRegistrationBean(){
+        FilterRegistrationBean registrationBean = new FilterRegistrationBean(new CORSFilter());
+        registrationBean.setName("CORS FIlter");
+        registrationBean.addUrlPatterns("/*");
+        registrationBean.setOrder(1);
+        return registrationBean;
+    }*/
 }
