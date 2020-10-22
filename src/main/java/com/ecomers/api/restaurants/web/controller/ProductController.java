@@ -25,7 +25,7 @@ public class ProductController {
     @ApiOperation("Get all supermarket products")
     @ApiResponse(code = 200, message = "OK")
     public ResponseEntity<List<Product>> getAll() {
-        return new ResponseEntity<>(productService.getAll(), HttpStatus.OK);
+         return new ResponseEntity<>(productService.getAll(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
