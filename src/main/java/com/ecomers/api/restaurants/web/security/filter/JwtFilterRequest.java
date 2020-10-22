@@ -11,6 +11,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.FilterChain;
@@ -18,6 +21,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Arrays;
 
 @Component
 public class JwtFilterRequest  extends OncePerRequestFilter {
@@ -29,19 +33,31 @@ public class JwtFilterRequest  extends OncePerRequestFilter {
     private UserDetailService userDetailService;
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse res, FilterChain filterChain) throws ServletException, IOException {
-        String authorizationHeader = request.getHeader("Authorization");
        // authorizationHeader = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJvc3dhbGRvIiwiaWF0IjoxNjAzMDgwNDc1LCJleHAiOjE2MDMxMTY0NzV9.27Yg3y1BQH7wiHx2vKyL2gK45mXiVi09yzDCbZ5q_NQ";
         HttpServletResponse response = (HttpServletResponse) res;
-        System.out.println("WebConfig; "+request.getRequestURI());
-        response.setHeader("Access-Control-Allow-Origin", "https://store-e777c.web.app");
+        String url= request.getRequestURL().toString();
+        url ="http://localhost:4200";
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Headers", "Content-Type,Lang,append,delete,entries,foreach,get,has,keys,set,values,Authorization");
+        response.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+        /*response.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Credentials,Authorization,Access-Control-Allow-Origin,Access-Control-Allow-Headers, Origin,Accept," +
+                " X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
+
+        response.setHeader("Access-Control-Allow-Credentials", "true");
+        response.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");*/
+     //   response.addHeader("Access-Control-Expose-Headers", "Content-Length,Content-Language,Content-Type,Authorization");
+/*
         response.setHeader("Access-Control-Allow-Methods", "POST, PUT, GET, OPTIONS, DELETE");
-        response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With,observe");
-        response.setHeader("Access-Control-Max-Age", "3600");
+       // response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With,observe");
+       // response.setHeader("Access-Control-Max-Age", "3600");
        response.setHeader("Access-Control-Allow-Credentials", "true");
-        response.setHeader("Access-Control-Expose-Headers", "Authorization");
+       /*
         response.addHeader("Access-Control-Expose-Headers", "responseType");
         response.addHeader("Access-Control-Expose-Headers", "observe");
 
+        response.addHeader("Access-Control-Expose-Headers", "");
+        response.addHeader("Access-Control-Expose-Headers", "");*/
+        String authorizationHeader = request.getHeader("Authorization");
 
         if(authorizationHeader!=null && authorizationHeader.startsWith("Bearer")){
          String jwt = authorizationHeader.substring(7);
@@ -58,6 +74,7 @@ public class JwtFilterRequest  extends OncePerRequestFilter {
         }
         filterChain.doFilter(request,response);
     }
+
 
    /* @Bean
     public FilterRegistrationBean filterRegistrationBean(){
