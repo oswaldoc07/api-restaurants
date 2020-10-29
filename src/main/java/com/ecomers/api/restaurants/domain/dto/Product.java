@@ -9,6 +9,7 @@ public class Product {
     private boolean active;
     private Category category;
     private String image;
+    private String description;
 
 
     public int getId() {
@@ -73,5 +74,13 @@ public class Product {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

@@ -21,7 +21,7 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    @GetMapping("/all")
+    @GetMapping()
     @ApiOperation("Get all supermarket products")
     @ApiResponse(code = 200, message = "OK")
     public ResponseEntity<List<Product>> getAll() {
@@ -41,19 +41,24 @@ public class ProductController {
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @GetMapping("/category/{categoryId}")
+    @GetMapping("/category/{id}")
     public ResponseEntity<List<Product>> getByCategory(@PathVariable("categoryId") int categoryId) {
         return productService.getByCategory(categoryId)
                 .map(products -> new ResponseEntity<>(products, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @PostMapping("/save")
+    @PostMapping()
     public ResponseEntity<Product> save(@RequestBody Product product) {
         return new ResponseEntity<>(productService.save(product), HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @PutMapping()
+    public ResponseEntity<Product> update(@RequestBody Product product) {
+        return new ResponseEntity<>(productService.update(product), HttpStatus.CREATED);
+    }
+
+    @DeleteMapping()
     public ResponseEntity delete(@PathVariable("id") int productId) {
         if (productService.delete(productId)) {
             return new ResponseEntity(HttpStatus.OK);

@@ -50,6 +50,12 @@ public class ProductoRepository implements ProductRepository {
         return mapper.toProduct(productoCrudRepository.save(producto));
     }
 
+    public Product update(Product changes){
+         Product product=  productoCrudRepository.findById(changes.getId()).map(producto -> mapper.toProduct(producto)).get();
+         product.setDescription(changes.getDescription());
+         Producto producto = mapper.toProducto(product);
+        return mapper.toProduct(productoCrudRepository.save(producto));
+    }
     @Override
     public void delete(int productId) {
         productoCrudRepository.deleteById(productId);
