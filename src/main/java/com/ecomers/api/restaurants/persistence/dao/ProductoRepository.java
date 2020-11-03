@@ -52,7 +52,10 @@ public class ProductoRepository implements ProductRepository {
 
     public Product update(Product changes){
          Product product=  productoCrudRepository.findById(changes.getId()).map(producto -> mapper.toProduct(producto)).get();
+         product.setName(changes.getName());
+         product.setPrice(changes.getPrice());
          product.setDescription(changes.getDescription());
+         product.setImage(changes.getImage());
          Producto producto = mapper.toProducto(product);
         return mapper.toProduct(productoCrudRepository.save(producto));
     }
