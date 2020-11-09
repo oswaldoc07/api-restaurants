@@ -23,9 +23,14 @@ public class ProductService {
         return productRepository.getProduct(productId);
     }
 
-    public Optional<List<Product>> getByCategory(int categoryId) {
-        return productRepository.getByCategory(categoryId);
+    public Optional<List<Product>> getByCommerceAndCategory(int commerce,int categoryId) {
+        return productRepository.getByCommerceAndCategory(commerce,categoryId);
     }
+
+    public Optional<List<Product>> getByCommercePromotions(int commerce) {
+        return productRepository.getByCommercePromotions(commerce);
+    }
+
 
     public Product save(Product product) {
         return productRepository.save(product);

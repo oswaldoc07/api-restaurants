@@ -31,6 +31,11 @@ public class Producto {
 
     private String descripcion;
 
+    private Integer idComercio;
+
+    @Column(name = "ind_promocion")
+    private Boolean promocion;
+
     @ManyToOne
     @JoinColumn(name = "id_categoria", insertable = false, updatable = false)
     private Categoria categoria;
@@ -113,5 +118,21 @@ public class Producto {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public Integer getIdComercio() {
+        return idComercio;
+    }
+
+    public void setIdComercio(Integer idComercio) {
+        this.idComercio = idComercio;
+    }
+
+    public Boolean getPromocion() {
+        return promocion;
+    }
+
+    public void setPromocion(Boolean promocion) {
+        this.promocion = promocion;
     }
 }

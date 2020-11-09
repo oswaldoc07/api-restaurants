@@ -10,8 +10,8 @@ public class Product {
     private Category category;
     private String image;
     private String description;
-
-
+    private boolean promotion;
+    private int commerceId;
     public int getId() {
         return id;
     }
@@ -82,5 +82,21 @@ public class Product {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public boolean isPromotion() {
+        return promotion;
+    }
+
+    public void setPromotion(boolean promotion) {
+        this.promotion = promotion;
+    }
+
+    public int getCommerceId() {
+        return commerceId;
+    }
+
+    public void setCommerceId(int commerceId) {
+        this.commerceId = commerceId;
     }
 }

@@ -41,13 +41,19 @@ public class ProductController {
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @GetMapping("/category/{id}")
-    public ResponseEntity<List<Product>> getByCategory(@PathVariable("categoryId") int categoryId) {
-        return productService.getByCategory(categoryId)
+    @GetMapping("/commerce-category/{commerceId}/{categoryId}")
+    public ResponseEntity<List<Product>> getByCommerceAndCategory(@PathVariable("commerceId") int commerceId,@PathVariable("categoryId") int categoryId ) {
+        return productService.getByCommerceAndCategory(commerceId,categoryId)
                 .map(products -> new ResponseEntity<>(products, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
+    @GetMapping("/commerce-promotions/{id}")
+    public ResponseEntity<List<Product>> getByCommercePromotions(@PathVariable("id") int commerceId ) {
+        return productService.getByCommercePromotions(commerceId)
+                .map(products -> new ResponseEntity<>(products, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
     @PostMapping()
     public ResponseEntity<Product> save(@RequestBody Product product) {
         return new ResponseEntity<>(productService.save(product), HttpStatus.CREATED);

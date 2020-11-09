@@ -36,7 +36,7 @@ public class JwtFilterRequest  extends OncePerRequestFilter {
        // authorizationHeader = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJvc3dhbGRvIiwiaWF0IjoxNjAzMDgwNDc1LCJleHAiOjE2MDMxMTY0NzV9.27Yg3y1BQH7wiHx2vKyL2gK45mXiVi09yzDCbZ5q_NQ";
         HttpServletResponse response = (HttpServletResponse) res;
         String url= request.getRequestURL().toString();
-        url ="http://localhost:4200";
+
         response.setHeader("Access-Control-Allow-Origin", "*");
         response.setHeader("Access-Control-Allow-Headers", "Content-Type,Lang,append,delete,entries,foreach,get,has,keys,set,values,Authorization");
         response.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
