@@ -60,7 +60,7 @@ public class ProductController {
         return new ResponseEntity<>(productService.save(product), HttpStatus.CREATED);
     }
 
-    @PutMapping()
+    @PatchMapping()
     public ResponseEntity<Product> update(@RequestBody Product product) {
         return new ResponseEntity<>(productService.update(product), HttpStatus.CREATED);
     }
