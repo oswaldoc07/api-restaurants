@@ -60,7 +60,10 @@ public class ProductoRepository implements ProductRepository {
          product.setName(changes.getName());
          product.setPrice(changes.getPrice());
          product.setDescription(changes.getDescription());
-         //product.setImage(changes.getImage())
+         if(changes.getImage()!=null){
+             product.setImage(changes.getImage());
+         }
+
          product.setPromotion(changes.isPromotion());
          product.setCategoryId(changes.getCategoryId());
          Producto producto = mapper.toProducto(product);
