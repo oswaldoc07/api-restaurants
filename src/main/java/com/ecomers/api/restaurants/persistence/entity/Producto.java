@@ -29,6 +29,10 @@ public class Producto {
 
     private String imagen;
 
+    private String imagen2;
+
+    private String imagen3;
+
     private String descripcion;
 
     private Integer idComercio;
@@ -118,6 +122,22 @@ public class Producto {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public String getImagen2() {
+        return imagen2;
+    }
+
+    public void setImagen2(String imagen2) {
+        this.imagen2 = imagen2;
+    }
+
+    public String getImagen3() {
+        return imagen3;
+    }
+
+    public void setImagen3(String imagen3) {
+        this.imagen3 = imagen3;
     }
 
     public Integer getIdComercio() {

@@ -21,6 +21,8 @@ public interface ProductMapper {
             @Mapping(source = "estado", target = "active"),
             @Mapping(source = "categoria", target = "category"),
             @Mapping(source = "imagen", target = "image"),
+            @Mapping(source = "imagen2", target = "image2"),
+            @Mapping(source = "imagen3", target = "image3"),
             @Mapping(source = "descripcion", target = "description"),
             @Mapping(source= "promocion", target="promotion"),
             @Mapping(source= "idComercio", target="commerceId")

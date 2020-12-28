@@ -63,6 +63,12 @@ public class ProductoRepository implements ProductRepository {
          if(changes.getImage()!=null){
              product.setImage(changes.getImage());
          }
+        if(changes.getImage2()!=null){
+            product.setImage2(changes.getImage2());
+        }
+        if(changes.getImage3()!=null){
+            product.setImage3(changes.getImage3());
+        }
 
          product.setPromotion(changes.isPromotion());
          product.setCategoryId(changes.getCategoryId());
