@@ -10,6 +10,7 @@ import com.ecomers.api.restaurants.persistence.mapper.ProductMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,7 +47,13 @@ public class ProductoRepository implements ProductRepository {
 
     @Override
     public Optional<Product> getProduct(int productId) {
-        return productoCrudRepository.findById(productId).map(producto -> mapper.toProduct(producto));
+        Product product= productoCrudRepository.findById(productId).map(producto -> mapper.toProduct(producto)).get();
+        List<String> list = new ArrayList<>(0);
+      /*  list.add(product.getImage());
+        list.add(product.getImage2());
+        list.add(product.getImage3());
+        product.setImages(list);*/
+        return Optional. of(product);
     }
 
     @Override

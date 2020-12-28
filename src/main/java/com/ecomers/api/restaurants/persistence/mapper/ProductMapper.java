@@ -23,6 +23,7 @@ public interface ProductMapper {
             @Mapping(source = "imagen", target = "image"),
             @Mapping(source = "imagen2", target = "image2"),
             @Mapping(source = "imagen3", target = "image3"),
+            @Mapping(source= "imagenes", target="images"),
             @Mapping(source = "descripcion", target = "description"),
             @Mapping(source= "promocion", target="promotion"),
             @Mapping(source= "idComercio", target="commerceId")
