@@ -45,9 +45,6 @@ public class Producto {
     @JoinColumn(name = "id_categoria", insertable = false, updatable = false)
     private Categoria categoria;
 
-    @Transient
-    private List<String> imagenes;
-
     public Integer getIdProducto() {
         return idProducto;
     }
@@ -128,18 +125,7 @@ public class Producto {
         this.descripcion = descripcion;
     }
 
-    public List<String> getImagenes() {
-        if(this.imagenes==null || imagenes.isEmpty() ){
-            this.imagenes.add(this.imagen);
-            this.imagenes.add(this.imagen2);
-            this.imagenes.add(this.imagen3);
-        }
-        return this.imagenes;
-    }
 
-    public void setImagenes(List<String> imagenes) {
-        this.imagenes = imagenes;
-    }
 
     public String getImagen2() {
         return imagen2;

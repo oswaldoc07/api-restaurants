@@ -16,7 +16,7 @@ public class Product {
     private String description;
     private boolean promotion;
     private int commerceId;
-    private List<String> images;
+
     public int getId() {
         return id;
     }
@@ -89,13 +89,7 @@ public class Product {
         this.description = description;
     }
 
-    public List<String> getImages() {
-        return images;
-    }
 
-    public void setImages(List<String> images) {
-        this.images = images;
-    }
 
     public String getImage2() {
         return image2;
