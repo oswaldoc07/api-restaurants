@@ -2,28 +2,28 @@ package com.ecomers.api.restaurants.persistence.mapper;
 
 
 
-import com.ecomers.api.restaurants.domain.dto.PurchaseItem;
-import com.ecomers.api.restaurants.persistence.entity.CompraProducto;
+import com.ecomers.api.restaurants.domain.dto.OrderProduct;
+import com.ecomers.api.restaurants.persistence.entity.OrdenProducto;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 
 @Mapper(componentModel = "spring", uses = {ProductMapper.class})
-public interface PurchaseItemMapper {
+public interface OrderProductMapper {
 
     @Mappings({
             @Mapping(source = "id.idProducto", target = "productId"),
             @Mapping(source = "cantidad", target = "quantity"),
-            @Mapping(source = "estado", target = "active")
+            @Mapping(source = "subtotal", target = "subtotal"),
     })
-    PurchaseItem toPurchaseItem(CompraProducto producto);
+    OrderProduct toOrderProduct(OrdenProducto ordenProducto);
 
     @InheritInverseConfiguration
     @Mappings({
-            @Mapping(target = "compra", ignore = true),
+            @Mapping(target = "orden", ignore = true),
             @Mapping(target = "producto", ignore = true),
-            @Mapping(target = "id.idCompra", ignore = true)
+            @Mapping(target = "id.idOrden", ignore = true)
     })
-    CompraProducto toComprasProducto(PurchaseItem item);
+    OrdenProducto toOrdenProducto(OrderProduct orderProduct);
 }

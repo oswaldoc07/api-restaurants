@@ -1,7 +1,7 @@
 package com.ecomers.api.restaurants.domain.service;
 
 
-import com.ecomers.api.restaurants.domain.dto.Purchase;
+import com.ecomers.api.restaurants.domain.dto.Order;
 import com.ecomers.api.restaurants.domain.repository.PurchaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,13 +14,13 @@ public class PurchaseService {
     @Autowired
     private PurchaseRepository purchaseRepository;
 
-    public List<Purchase> getAll() {
+    public List<Order> getAll() {
         return purchaseRepository.getAll();
     }
-    public Optional<List<Purchase>> getByClient(String clientId) {
+    public Optional<List<Order>> getByClient(String clientId) {
         return purchaseRepository.getByClient(clientId);
     }
-    public Purchase save(Purchase purchase) {
+    public Order save(Order purchase) {
         return purchaseRepository.save(purchase);
     }
 }

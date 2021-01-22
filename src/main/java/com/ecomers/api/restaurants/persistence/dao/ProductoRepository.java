@@ -24,8 +24,8 @@ public class ProductoRepository implements ProductRepository {
 
     @Override
     public List<Product> getAll() {
-        List<Producto> productos = (List<Producto>) productoCrudRepository.findAll();
-        return mapper.toProducts(productos);
+        List<Producto> entities = (List<Producto>) productoCrudRepository.findAll();
+        return mapper.toProducts(entities);
     }
 
     @Override
@@ -41,19 +41,19 @@ public class ProductoRepository implements ProductRepository {
 
     @Override
     public Optional<List<Product>> getScarseProducts(int quantity) {
-        Optional<List<Producto>> productos = productoCrudRepository.findByCantidadStockLessThanAndEstado(quantity, true);
-        return productos.map(prods -> mapper.toProducts(prods));
+        Optional<List<Producto>> entities = productoCrudRepository.findByCantidadStockLessThanAndEstado(quantity, true);
+        return entities.map(prods -> mapper.toProducts(prods));
     }
 
     @Override
-    public Optional<Product> getProduct(int productId) {
-        Product product= productoCrudRepository.findById(productId).map(producto -> mapper.toProduct(producto)).get();
-        List<String> list = new ArrayList<>(0);
+    public Optional<Product> getProduct(int id) {
+       return productoCrudRepository.findById(id).map(producto -> mapper.toProduct(producto));
+        ///List<String> list = new ArrayList<>(0);
       /*  list.add(product.getImage());
         list.add(product.getImage2());
         list.add(product.getImage3());
         product.setImages(list);*/
-        return Optional. of(product);
+       // return Optional. of(product);
     }
 
     @Override

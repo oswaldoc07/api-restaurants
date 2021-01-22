@@ -3,29 +3,30 @@ package com.ecomers.api.restaurants.persistence.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "compra_producto")
-public class CompraProducto {
+@Table(name = "orden_producto")
+public class OrdenProducto {
     @EmbeddedId
-    private CompraProductoPK id;
+    private OrdenProductoPK id;
 
     private Integer cantidad;
-    private Double total;
-    private Boolean estado;
+    private Double subtotal;
+
 
     @ManyToOne
-    @MapsId("idCompra")
+    @MapsId("idOrden")
     @JoinColumn(name = "id_compra", insertable = false, updatable = false)
-    private Compra compra;
+    private Orden orden;
 
     @ManyToOne
+    @MapsId("idProducto")
     @JoinColumn(name = "id_producto", insertable = false, updatable = false)
     private Producto producto;
 
-    public CompraProductoPK getId() {
+    public OrdenProductoPK getId() {
         return id;
     }
 
-    public void setId(CompraProductoPK id) {
+    public void setId(OrdenProductoPK id) {
         this.id = id;
     }
 
@@ -37,28 +38,20 @@ public class CompraProducto {
         this.cantidad = cantidad;
     }
 
-    public Double getTotal() {
-        return total;
+    public Double getSubtotal() {
+        return subtotal;
     }
 
-    public void setTotal(Double total) {
-        this.total = total;
+    public void setSubtotal(Double subtotal) {
+        this.subtotal = subtotal;
     }
 
-    public Boolean getEstado() {
-        return estado;
+    public Orden getOrden() {
+        return orden;
     }
 
-    public void setEstado(Boolean estado) {
-        this.estado = estado;
-    }
-
-    public Compra getCompra() {
-        return compra;
-    }
-
-    public void setCompra(Compra compra) {
-        this.compra = compra;
+    public void setOrden(Orden orden) {
+        this.orden = orden;
     }
 
     public Producto getProducto() {

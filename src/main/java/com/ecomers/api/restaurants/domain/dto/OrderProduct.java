@@ -1,10 +1,10 @@
 package com.ecomers.api.restaurants.domain.dto;
 
-public class PurchaseItem {
+public class OrderProduct {
     private int productId;
     private int quantity;
-    private double total;
-    private boolean active;
+    private double subtotal;
+
 
     public int getProductId() {
         return productId;
@@ -22,19 +22,11 @@ public class PurchaseItem {
         this.quantity = quantity;
     }
 
-    public double getTotal() {
-        return total;
+    public double getSubtotal() {
+        return subtotal;
     }
 
-    public void setTotal(double total) {
-        this.total = total;
-    }
-
-    public boolean isActive() {
-        return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
+    public void setSubtotal(double subtotal) {
+        this.subtotal = subtotal;
     }
 }

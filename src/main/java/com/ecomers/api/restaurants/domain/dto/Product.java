@@ -9,7 +9,7 @@ public class Product {
     private double price;
     private int stock;
     private boolean active;
-    private Category category;
+    private ProductCategory category;
     private String image;
     private String image2;
     private String image3;
@@ -65,11 +65,11 @@ public class Product {
         this.active = active;
     }
 
-    public Category getCategory() {
+    public ProductCategory getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(ProductCategory category) {
         this.category = category;
     }
 

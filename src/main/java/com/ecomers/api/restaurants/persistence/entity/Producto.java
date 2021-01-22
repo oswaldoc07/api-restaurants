@@ -1,7 +1,6 @@
 package com.ecomers.api.restaurants.persistence.entity;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "producto")
@@ -43,7 +42,7 @@ public class Producto {
 
     @ManyToOne
     @JoinColumn(name = "id_categoria", insertable = false, updatable = false)
-    private Categoria categoria;
+    private CategoriaProducto categoria;
 
     public Integer getIdProducto() {
         return idProducto;
@@ -101,14 +100,6 @@ public class Producto {
         this.estado = estado;
     }
 
-    public Categoria getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
-    }
-
     public String getImagen() {
         return imagen;
     }
@@ -116,16 +107,6 @@ public class Producto {
     public void setImagen(String imagen) {
         this.imagen = imagen;
     }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-
 
     public String getImagen2() {
         return imagen2;
@@ -143,6 +124,14 @@ public class Producto {
         this.imagen3 = imagen3;
     }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
     public Integer getIdComercio() {
         return idComercio;
     }
@@ -157,5 +146,13 @@ public class Producto {
 
     public void setPromocion(Boolean promocion) {
         this.promocion = promocion;
+    }
+
+    public CategoriaProducto getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(CategoriaProducto categoria) {
+        this.categoria = categoria;
     }
 }
