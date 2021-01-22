@@ -25,10 +25,10 @@ public class UserService {
         Optional<User> user = repository.getUserByEmail(email);
         if(user.isPresent()){
             return  user;
-        }else if(null!=phone){
+        }else {
          return repository.getUserByPhone(phone);
         }
-        return null;
+
 
     }
 
