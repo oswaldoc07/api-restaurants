@@ -56,7 +56,6 @@ public class ProductController {
     }
     @PostMapping()
     public ResponseEntity<Product> save(@RequestBody Product product) {
-        product.setCommerceId(1);
         return new ResponseEntity<>(productService.save(product), HttpStatus.CREATED);
     }
 

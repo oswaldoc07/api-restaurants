@@ -10,7 +10,8 @@ import java.util.Optional;
 
 public interface ProductoCrudRepository extends CrudRepository<Producto, Integer> {
                    //AndPromotionFalseOrderByNombreAsc
-    List<Producto> findByIdComercioAndIdCategoriaAndPromocionFalseOrderByNombreAsc(int commerce,int idCategoria);
-    List<Producto> findByIdComercioAndPromocionTrueOrderByNombreAsc(int commerce);
+
+    Optional<List<Producto>> findByIdComercioAndIdCategoriaAndPromocionFalseOrderByNombreAsc(int commerce,int idCategoria);
+    Optional<List<Producto>> findByIdComercioAndPromocionTrueOrderByNombreAsc(int commerce);
     Optional<List<Producto>> findByCantidadStockLessThanAndEstado(int cantidadStock, boolean estado);
 }

@@ -4,35 +4,26 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "comercio")
-public class Comercio {
+@PrimaryKeyJoinColumn(name="id_usuario")
+public class Comercio extends Usuario{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_orden")
-    private Integer id;
+   /* @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)*/
+    @Column(name = "id_comercio")
+    private Integer idComercio;
 
-    private String nombre;
     private String tipo_comercio;
     private String geolocalizacion;
     private String url ;
-    private Boolean estado;
     private String descripcion;
     private String imagen;
 
-    public Integer getId() {
-        return id;
+    public Integer getIdComercio() {
+        return idComercio;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setIdComercio(Integer idComercio) {
+        this.idComercio = idComercio;
     }
 
     public String getTipo_comercio() {
@@ -51,13 +42,6 @@ public class Comercio {
         this.geolocalizacion = geolocalizacion;
     }
 
-    public Boolean getEstado() {
-        return estado;
-    }
-
-    public void setEstado(Boolean estado) {
-        this.estado = estado;
-    }
 
     public String getUrl() {
         return url;
@@ -82,4 +66,6 @@ public class Comercio {
     public void setImagen(String imagen) {
         this.imagen = imagen;
     }
+
+
 }

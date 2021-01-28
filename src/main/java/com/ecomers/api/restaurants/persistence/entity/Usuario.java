@@ -5,31 +5,30 @@ import java.util.List;
 
 @Entity
 @Table(name="usuario")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_usuario")
-    private Integer id;
+    private Integer idUsuario;
     private String nombre;
     @Column(name="correo_electronico")
-    private String correoElectronico;
+    private String correo;
     private String celular;
-    private String direccion;
-    @Column(name="id_comercio")
-    private Integer comercioId;
-
+    private Boolean activo;
+    @Column(name="rol")
+    private String idRol;
+    private String imagen;
 
     @OneToMany(mappedBy = "usuario")
     private List<Orden> ordenes;
 
-    public Integer getId() {
-        return id;
-    }
+    @ManyToOne
+    @JoinColumn(name = "id_rol", insertable = false, updatable = false)
+    private Rol rol;
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+
 
     public String getNombre() {
         return nombre;
@@ -39,12 +38,12 @@ public class Usuario {
         this.nombre = nombre;
     }
 
-    public String getCorreoElectronico() {
-        return correoElectronico;
+    public String getCorreo() {
+        return correo;
     }
 
-    public void setCorreoElectronico(String correoElectronico) {
-        this.correoElectronico = correoElectronico;
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
     public String getCelular() {
@@ -55,27 +54,51 @@ public class Usuario {
         this.celular = celular;
     }
 
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
-    public Integer getComercioId() {
-        return comercioId;
-    }
-
-    public void setComercioId(Integer comercioId) {
-        this.comercioId = comercioId;
-    }
-
     public List<Orden> getOrdenes() {
         return ordenes;
     }
 
     public void setOrdenes(List<Orden> ordenes) {
         this.ordenes = ordenes;
+    }
+
+    public Boolean getActivo() {
+        return activo;
+    }
+
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
+    }
+
+    public String getIdRol() {
+        return idRol;
+    }
+
+    public void setIdRol(String idRol) {
+        this.idRol = idRol;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
+    public Integer getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(Integer idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public Rol getRol() {
+        return rol;
+    }
+
+    public void setRol(Rol rol) {
+        this.rol = rol;
     }
 }

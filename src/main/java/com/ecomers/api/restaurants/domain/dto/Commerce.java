@@ -1,15 +1,12 @@
 package com.ecomers.api.restaurants.domain.dto;
 
-public class Commerce {
+public class Commerce extends User {
 
     private Integer id;
-    private String name;
-    private String type;
     private String geolocalization;
-    private Boolean active;
     private String url;
     private String description;
-    private String image;
+
 
     public Integer getId() {
         return id;
@@ -19,21 +16,6 @@ public class Commerce {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
 
     public String getGeolocalization() {
         return geolocalization;
@@ -43,13 +25,6 @@ public class Commerce {
         this.geolocalization = geolocalization;
     }
 
-    public Boolean getActive() {
-        return active;
-    }
-
-    public void setActive(Boolean active) {
-        this.active = active;
-    }
 
     public String getUrl() {
         return url;
@@ -67,11 +42,4 @@ public class Commerce {
         this.description = description;
     }
 
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
 }

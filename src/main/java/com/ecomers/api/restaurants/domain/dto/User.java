@@ -1,20 +1,20 @@
 package com.ecomers.api.restaurants.domain.dto;
 
 public class User {
-    private Integer id;
+    private Integer userId;
     private String email;
     private String displayName;
-    //private String photoURL;
+    private String photoURL;
     private String phoneNumber;
-    private String direction;
-    private Integer commerceId;
+    private String role;
 
-    public Integer getId() {
-        return id;
+
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public String getEmail() {
@@ -33,14 +33,6 @@ public class User {
         this.displayName = displayName;
     }
 
-   /* public String getPhotoURL() {
-        return photoURL;
-    }
-
-    public void setPhotoURL(String photoURL) {
-        this.photoURL = photoURL;
-    }*/
-
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -49,19 +41,19 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public Integer getCommerceId() {
-        return commerceId;
+    public String getPhotoURL() {
+        return photoURL;
     }
 
-    public void setCommerceId(Integer commerceId) {
-        this.commerceId = commerceId;
+    public void setPhotoURL(String photoURL) {
+        this.photoURL = photoURL;
     }
 
-    public String getDirection() {
-        return direction;
+    public String getRole() {
+        return role;
     }
 
-    public void setDirection(String direction) {
-        this.direction = direction;
+    public void setRole(String role) {
+        this.role = role;
     }
 }

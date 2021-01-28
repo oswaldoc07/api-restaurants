@@ -14,7 +14,7 @@ public class Orden {
     private Integer id;
 
     @Column(name = "id_usuario")
-    private String idUsuario;
+    private Integer idUsuario;
 
     @Column(name = "fecha_ingreso")
     private LocalDateTime fechaIngreso;
@@ -52,11 +52,11 @@ public class Orden {
         this.id = id;
     }
 
-    public String getIdUsuario() {
+    public Integer getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(String idUsuario) {
+    public void setIdUsuario(Integer idUsuario) {
         this.idUsuario = idUsuario;
     }
 

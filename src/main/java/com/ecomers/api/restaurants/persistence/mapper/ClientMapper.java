@@ -1,8 +1,8 @@
 package com.ecomers.api.restaurants.persistence.mapper;
 
-import com.ecomers.api.restaurants.domain.dto.Product;
+import com.ecomers.api.restaurants.domain.dto.Client;
 import com.ecomers.api.restaurants.domain.dto.User;
-import com.ecomers.api.restaurants.persistence.entity.Producto;
+import com.ecomers.api.restaurants.persistence.entity.Cliente;
 import com.ecomers.api.restaurants.persistence.entity.Usuario;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
@@ -11,23 +11,24 @@ import org.mapstruct.Mappings;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = {ProductMapper.class, ClientMapper.class})
-public interface UserMapper {
+@Mapper(componentModel = "spring", uses = {UserMapper.class})
+public interface ClientMapper {
     @Mappings({
+            @Mapping(source = "idCliente", target = "id"),
             @Mapping(source = "idUsuario", target = "userId"),
             @Mapping(source = "nombre", target = "displayName"),
             @Mapping(source = "correo", target = "email"),
             @Mapping(source = "celular", target = "phoneNumber"),
             @Mapping(source = "imagen", target = "photoURL"),
+            @Mapping(source = "prueba", target = "test"),
             @Mapping(source = "idRol", target = "role")
-
     })
-    User toUser(Usuario entity);
-    List<User> toUsers(List<Usuario> entities);
+    Client toClient(Cliente entity);
+    List<Client> toClients(List<Cliente> entities);
 
     @InheritInverseConfiguration
     @Mapping(target = "ordenes", ignore = true)
     @Mapping(target = "activo", ignore = true)
     @Mapping(target = "rol", ignore = true)
-    Usuario toUsuario(User dto);
+    Cliente toCliente(Client dto);
 }

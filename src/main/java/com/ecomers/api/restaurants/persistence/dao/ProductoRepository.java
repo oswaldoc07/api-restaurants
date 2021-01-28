@@ -30,13 +30,15 @@ public class ProductoRepository implements ProductRepository {
 
     @Override
     public Optional<List<Product>> getByCommerceAndCategory(int commerce,int categoryId) {
-        List<Producto> productos = productoCrudRepository.findByIdComercioAndIdCategoriaAndPromocionFalseOrderByNombreAsc(commerce,categoryId);
-        return Optional.of(mapper.toProducts(productos));
+        Optional<List<Producto>> entities = productoCrudRepository.findByIdComercioAndIdCategoriaAndPromocionFalseOrderByNombreAsc(commerce,categoryId);
+        return entities.map(prods -> mapper.toProducts(prods));
+        //return Optional.of(mapper.toProducts(productos));
     }
 
     public Optional<List<Product>> getByCommercePromotions(int commerce) {
-        List<Producto> productos = productoCrudRepository.findByIdComercioAndPromocionTrueOrderByNombreAsc(commerce);
-        return Optional.of(mapper.toProducts(productos));
+        Optional<List<Producto>> entities = productoCrudRepository.findByIdComercioAndPromocionTrueOrderByNombreAsc(commerce);
+        return entities.map(prods -> mapper.toProducts(prods));
+       // return Optional.of(mapper.toProducts(productos));
     }
 
     @Override
@@ -63,24 +65,25 @@ public class ProductoRepository implements ProductRepository {
     }
 
     public Product update(Product changes){
-         Product product=  productoCrudRepository.findById(changes.getId()).map(producto -> mapper.toProduct(producto)).get();
-         product.setName(changes.getName());
-         product.setPrice(changes.getPrice());
-         product.setDescription(changes.getDescription());
+         Producto entity=  productoCrudRepository.findById(changes.getId()).get();
+         //.map(producto -> mapper.toProduct(producto)).get();
+        entity.setNombre(changes.getName());
+        entity.setPrecioVenta(changes.getPrice());
+        entity.setDescripcion(changes.getDescription());
          if(changes.getImage()!=null){
-             product.setImage(changes.getImage());
+             entity.setImagen(changes.getImage());
          }
         if(changes.getImage2()!=null){
-            product.setImage2(changes.getImage2());
+            entity.setImagen2(changes.getImage2());
         }
         if(changes.getImage3()!=null){
-            product.setImage3(changes.getImage3());
+            entity.setImagen3(changes.getImage3());
         }
 
-         product.setPromotion(changes.isPromotion());
-         product.setCategoryId(changes.getCategoryId());
-         Producto producto = mapper.toProducto(product);
-        return mapper.toProduct(productoCrudRepository.save(producto));
+        entity.setPromocion(changes.isPromotion());
+        entity.setIdCategoria(changes.getCategoryId());
+         //Producto producto = mapper.toProducto(product);
+        return mapper.toProduct(productoCrudRepository.save(entity));
     }
     @Override
     public void delete(int productId) {
