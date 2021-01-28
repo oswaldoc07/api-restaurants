@@ -20,7 +20,6 @@ public interface ClientMapper {
             @Mapping(source = "correo", target = "email"),
             @Mapping(source = "celular", target = "phoneNumber"),
             @Mapping(source = "imagen", target = "photoURL"),
-            @Mapping(source = "prueba", target = "test"),
             @Mapping(source = "idRol", target = "role")
     })
     Client toClient(Cliente entity);
