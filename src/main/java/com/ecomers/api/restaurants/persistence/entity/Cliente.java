@@ -13,9 +13,6 @@ public class Cliente extends Usuario{
     @Column(name = "id_cliente")
     private Integer idCliente;
 
-    private String prueba;
-
-
     public Integer getIdCliente() {
         return idCliente;
     }
@@ -24,13 +21,6 @@ public class Cliente extends Usuario{
         this.idCliente = idCliente;
     }
 
-    public String getPrueba() {
-        return prueba;
-    }
-
-    public void setPrueba(String prueba) {
-        this.prueba = prueba;
-    }
 }
 
 
