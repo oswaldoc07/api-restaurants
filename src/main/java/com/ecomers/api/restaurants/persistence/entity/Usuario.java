@@ -24,9 +24,9 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario")
     private List<Orden> ordenes;
 
-    @ManyToOne
+   /* @ManyToOne
     @JoinColumn(name = "id_rol", insertable = false, updatable = false)
-    private Rol rol;
+    private Rol rol;*/
 
 
 
@@ -94,11 +94,11 @@ public class Usuario {
         this.idUsuario = idUsuario;
     }
 
-    public Rol getRol() {
+    /*public Rol getRol() {
         return rol;
     }
 
     public void setRol(Rol rol) {
         this.rol = rol;
-    }
+    }*/
 }

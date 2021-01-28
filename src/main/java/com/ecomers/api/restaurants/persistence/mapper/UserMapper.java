@@ -28,6 +28,6 @@ public interface UserMapper {
     @InheritInverseConfiguration
     @Mapping(target = "ordenes", ignore = true)
     @Mapping(target = "activo", ignore = true)
-    @Mapping(target = "rol", ignore = true)
+   // @Mapping(target = "rol", ignore = true)
     Usuario toUsuario(User dto);
 }

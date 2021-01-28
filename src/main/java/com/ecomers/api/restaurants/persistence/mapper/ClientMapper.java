@@ -29,6 +29,6 @@ public interface ClientMapper {
     @InheritInverseConfiguration
     @Mapping(target = "ordenes", ignore = true)
     @Mapping(target = "activo", ignore = true)
-    @Mapping(target = "rol", ignore = true)
+   // @Mapping(target = "rol", ignore = true)
     Cliente toCliente(Client dto);
 }

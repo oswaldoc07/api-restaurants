@@ -13,8 +13,8 @@ public class Rol {
 
     private String nombre;
 
-    @OneToMany(mappedBy = "rol")
-    private List<Usuario> usuarios;
+   /* @OneToMany(mappedBy = "id_rol")
+    private List<Usuario> usuarios;*/
 
     public String getId() {
         return id;
@@ -24,13 +24,13 @@ public class Rol {
         this.id = id;
     }
 
-    public List<Usuario> getUsuarios() {
+    /*public List<Usuario> getUsuarios() {
         return usuarios;
     }
 
     public void setUsuarios(List<Usuario> usuarios) {
         this.usuarios = usuarios;
-    }
+    }*/
 
     public String getNombre() {
         return nombre;

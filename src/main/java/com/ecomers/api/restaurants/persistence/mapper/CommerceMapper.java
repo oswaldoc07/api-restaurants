@@ -31,7 +31,7 @@ public interface CommerceMapper {
     @Mapping(target = "ordenes", ignore = true)
     @Mapping(target = "activo", ignore = true)
     @Mapping(target = "tipo_comercio", ignore = true)
-    @Mapping(target = "rol", ignore = true)
+    //@Mapping(target = "rol", ignore = true)
     Comercio toComercio(Commerce commerce);
 }
 

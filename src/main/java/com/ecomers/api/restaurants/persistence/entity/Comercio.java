@@ -18,6 +18,17 @@ public class Comercio extends Usuario{
     private String descripcion;
     private String imagen;
 
+
+    /*@Override
+    public Rol getRol() {
+         return null;
+    }
+
+    @Override
+    public void setRol(Rol rol) {
+        super.setRol(rol);
+    }*/
+
     public Integer getIdComercio() {
         return idComercio;
     }
