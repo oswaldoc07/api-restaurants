@@ -1,6 +1,7 @@
 package com.ecomers.api.restaurants.persistence.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "comercio")
@@ -18,6 +19,10 @@ public class Comercio extends Usuario{
     private String imagen;
 
 
+    @OneToMany(mappedBy = "comercio")
+    private List<Orden> ordenes;
+
+
     /*@Override
     public Rol getRol() {
          return null;
@@ -27,6 +32,14 @@ public class Comercio extends Usuario{
     public void setRol(Rol rol) {
         super.setRol(rol);
     }*/
+
+    public List<Orden> getOrdenes() {
+        return ordenes;
+    }
+
+    public void setOrdenes(List<Orden> ordenes) {
+        this.ordenes = ordenes;
+    }
 
     public Integer getIdComercio() {
         return idComercio;

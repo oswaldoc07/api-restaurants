@@ -21,8 +21,6 @@ public class Usuario {
     private String idRol;
     private String imagen;
 
-    @OneToMany(mappedBy = "usuario")
-    private List<Orden> ordenes;
 
    /* @ManyToOne
     @JoinColumn(name = "id_rol", insertable = false, updatable = false)
@@ -52,14 +50,6 @@ public class Usuario {
 
     public void setCelular(String celular) {
         this.celular = celular;
-    }
-
-    public List<Orden> getOrdenes() {
-        return ordenes;
-    }
-
-    public void setOrdenes(List<Orden> ordenes) {
-        this.ordenes = ordenes;
     }
 
     public Boolean getActivo() {
