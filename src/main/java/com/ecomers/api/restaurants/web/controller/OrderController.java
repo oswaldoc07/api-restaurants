@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/ordenes")
+@RequestMapping("/orders")
 public class OrderController {
     @Autowired
     private OrderService service;
@@ -23,7 +23,7 @@ public class OrderController {
     }
 
     @GetMapping("/user/{userId}")
-    public ResponseEntity<List<Order>> getByUser(@PathVariable("userId") Integer userId) {
+    public ResponseEntity<List<Order>> allGetByUser(@PathVariable("userId") Integer userId) {
         return service.getAllByUser(userId).map(
                 orders -> new ResponseEntity<>(orders, HttpStatus.OK)
         ).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
@@ -32,7 +32,7 @@ public class OrderController {
     @GetMapping("/commerce/{commerceId}/state/{state}")
     public ResponseEntity<List<Order>> getByCommerceAndState(
             @PathVariable("commerceId") Integer commerceId,
-            @PathVariable("userId") String state) {
+            @PathVariable("state") String state) {
         return service.getAllByCommerceAndState(commerceId,state).map(
                 orders -> new ResponseEntity<>(orders, HttpStatus.OK)
         ).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));

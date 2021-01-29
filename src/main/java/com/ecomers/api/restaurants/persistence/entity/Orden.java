@@ -13,8 +13,11 @@ public class Orden {
     @Column(name = "id_orden")
     private Integer id;
 
-    @Column(name = "id_usuario")
-    private Integer idUsuario;
+    @Column(name = "id_cliente")
+    private Integer idCliente;
+
+    @Column(name = "id_comercio")
+    private Integer idComercio;
 
     @Column(name = "fecha_ingreso")
     private LocalDateTime fechaIngreso;
@@ -38,8 +41,12 @@ public class Orden {
     private Integer costoEnvio;
 
     @ManyToOne
-    @JoinColumn(name = "id_usuario", insertable = false, updatable = false)
-    private Usuario usuario;
+    @JoinColumn(name = "id_cliente", insertable = false, updatable = false)
+    private Cliente cliente;
+
+    @ManyToOne
+    @JoinColumn(name = "id_comercio", insertable = false, updatable = false)
+    private Comercio comercio;
 
     @OneToMany(mappedBy = "orden", cascade = {CascadeType.ALL})
     private List<OrdenProducto> productos;
@@ -52,12 +59,36 @@ public class Orden {
         this.id = id;
     }
 
-    public Integer getIdUsuario() {
-        return idUsuario;
+    public Integer getIdCliente() {
+        return idCliente;
     }
 
-    public void setIdUsuario(Integer idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setIdCliente(Integer idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public Integer getIdComercio() {
+        return idComercio;
+    }
+
+    public void setIdComercio(Integer idComercio) {
+        this.idComercio = idComercio;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public Comercio getComercio() {
+        return comercio;
+    }
+
+    public void setComercio(Comercio comercio) {
+        this.comercio = comercio;
     }
 
     public LocalDateTime getFechaIngreso() {
@@ -124,13 +155,6 @@ public class Orden {
         this.costoEnvio = costoEnvio;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
 
     public List<OrdenProducto> getProductos() {
         return productos;

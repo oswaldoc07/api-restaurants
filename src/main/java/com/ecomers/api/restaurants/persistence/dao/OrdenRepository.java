@@ -9,6 +9,7 @@ import com.ecomers.api.restaurants.persistence.mapper.OrderMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,7 +30,13 @@ public class OrdenRepository implements OrderRepository {
     }
     @Override
     public Optional<List<Order>> getAllByCommerceAndState(int commerceId,String state) {
-        Optional<List<Orden>> entities = crudRepository.findByEstado(state);
+        Optional<List<Orden>> entities = crudRepository.findByIdComercioAndEstado(commerceId,state);
+        return entities.map(orders -> mapper.toOrders(orders));
+    }
+
+    public Optional<List<Order>> getAllTodayByCommerceAndState(int commerceId, String state) {
+        Date date = new Date();
+        Optional<List<Orden>> entities = crudRepository.findByIdComercioAndEstado(commerceId,state);
         return entities.map(orders -> mapper.toOrders(orders));
     }
 
@@ -37,7 +44,7 @@ public class OrdenRepository implements OrderRepository {
 
     @Override
     public Optional<List<Order>> getAllByUser(Integer userId) {
-        Optional<List<Orden>> entities = crudRepository.findByIdUsuario(userId);
+        Optional<List<Orden>> entities = crudRepository.findByIdCliente(userId);
         return entities.map(orders -> mapper.toOrders(orders));
     }
 

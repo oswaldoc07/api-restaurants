@@ -16,8 +16,9 @@ public interface OrderMapper {
 
     @Mappings({
             @Mapping(source = "id", target = "id"),
-            @Mapping(source = "idUsuario", target = "userId"),
-            @Mapping(source = "fechaIngreso", target = "includeDdate"),
+            @Mapping(source = "idCliente", target = "clientId"),
+            @Mapping(source = "idComercio", target = "commerceId"),
+            @Mapping(source = "fechaIngreso", target = "includeDate"),
             @Mapping(source = "fechaEstimada", target = "estimatedDate"),
             @Mapping(source = "fechaEntrega", target = "deliveredDate"),
             @Mapping(source = "medioPago", target = "paymentMethod"),
@@ -31,6 +32,7 @@ public interface OrderMapper {
     List<Order> toOrders(List<Orden> ordenes);
 
     @InheritInverseConfiguration
-    @Mapping(target = "usuario", ignore = true)
+    @Mapping(target = "cliente", ignore = true)
+    @Mapping(target = "comercio", ignore = true)
     Orden toOrden(Order order);
 }

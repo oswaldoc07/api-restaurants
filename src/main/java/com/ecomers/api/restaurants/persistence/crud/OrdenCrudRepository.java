@@ -5,10 +5,12 @@ package com.ecomers.api.restaurants.persistence.crud;
 import com.ecomers.api.restaurants.persistence.entity.Orden;
 import org.springframework.data.repository.CrudRepository;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 
 public interface OrdenCrudRepository extends CrudRepository<Orden, Integer> {
-    Optional<List<Orden>> findByIdUsuario(Integer idUsuario);
-    Optional<List<Orden>> findByEstado(String estado);
+    Optional<List<Orden>> findByIdCliente(Integer idUsuario);
+    Optional<List<Orden>> findByIdComercioAndEstado(Integer comercio,String estado);
+    Optional<List<Orden>> findByIdComercioAndEstadoAndFechaIngreso(Integer comercio,String estado, Date today);
 }

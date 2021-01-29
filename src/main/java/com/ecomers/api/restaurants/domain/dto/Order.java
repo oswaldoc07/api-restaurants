@@ -5,8 +5,9 @@ import java.util.List;
 
 public class Order {
     private int id;
-    private Integer userId;
-    private LocalDateTime includeDdate;
+    private Integer clientId;
+    private Integer commerceId;
+    private LocalDateTime includeDate;
     private LocalDateTime estimatedDate;
     private LocalDateTime deliveredDate ;
     private String paymentMethod;
@@ -24,20 +25,28 @@ public class Order {
         this.id = id;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public Integer getClientId() {
+        return clientId;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setClientId(Integer clientId) {
+        this.clientId = clientId;
     }
 
-    public LocalDateTime getIncludeDdate() {
-        return includeDdate;
+    public Integer getCommerceId() {
+        return commerceId;
     }
 
-    public void setIncludeDdate(LocalDateTime includeDdate) {
-        this.includeDdate = includeDdate;
+    public void setCommerceId(Integer commerceId) {
+        this.commerceId = commerceId;
+    }
+
+    public LocalDateTime getIncludeDate() {
+        return includeDate;
+    }
+
+    public void setIncludeDate(LocalDateTime includeDate) {
+        this.includeDate = includeDate;
     }
 
     public LocalDateTime getEstimatedDate() {
