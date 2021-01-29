@@ -8,9 +8,7 @@ import javax.persistence.*;
 public class Cliente extends Usuario{
 
 
-    /* @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)*/
-    @Column(name = "id_cliente")
+   @Column(name = "id_cliente", insertable = false,updatable = false)
     private Integer idCliente;
 
     public Integer getIdCliente() {

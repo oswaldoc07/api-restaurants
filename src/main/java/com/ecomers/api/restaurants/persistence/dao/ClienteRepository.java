@@ -48,12 +48,13 @@ public class ClienteRepository implements ClientRepository {
     @Override
     public  Optional<Client> save(Client dto) {
         Cliente entity = mapper.toCliente(dto);
+        entity.setActivo(true);
         return Optional.of(mapper.toClient(crudRepository.save(entity)));
     }
 
     @Override
     public Optional<Client>  update(Client changes) {
-        Cliente entity=  crudRepository.findById(changes.getId()).get();
+        Cliente entity=  crudRepository.findByIdCliente(changes.getId()).get();
         entity.setCorreo(changes.getEmail());
         entity.setCelular(changes.getPhoneNumber());
         return Optional.of(mapper.toClient(crudRepository.save(entity)));

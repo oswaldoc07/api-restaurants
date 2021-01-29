@@ -7,9 +7,8 @@ import javax.persistence.*;
 @PrimaryKeyJoinColumn(name="id_usuario")
 public class Comercio extends Usuario{
 
-   /* @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)*/
-    @Column(name = "id_comercio")
+
+    @Column(name = "id_comercio", insertable = false,updatable = false)
     private Integer idComercio;
 
     private String tipo_comercio;
