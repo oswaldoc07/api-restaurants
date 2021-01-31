@@ -6,6 +6,8 @@ public class Client extends User{
     private Integer id;
 
 
+
+
     public Integer getId() {
         return id;
     }

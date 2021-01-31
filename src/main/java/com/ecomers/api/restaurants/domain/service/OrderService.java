@@ -1,5 +1,6 @@
 package com.ecomers.api.restaurants.domain.service;
 
+import com.ecomers.api.restaurants.domain.dto.Client;
 import com.ecomers.api.restaurants.domain.dto.Order;
 import com.ecomers.api.restaurants.domain.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +20,13 @@ public class OrderService {
         return repository.getAll();
     }
 
+    public Optional<Order> getOrderById(int id) {
+        return repository.getOrderById(id);
+    }
+
     public Optional<List<Order>> getAllByCommerceAndState(Integer commerceId, String state) {
 
-        return null;//repository.getAllByState(commerceId,state);
+        return repository.getAllByCommerceAndState(commerceId,state);
     }
 
     public Optional<List<Order>> getAllByUser(int userId) {

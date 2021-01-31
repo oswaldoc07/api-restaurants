@@ -49,7 +49,7 @@ public class Orden {
     private Comercio comercio;
 
     @OneToMany(mappedBy = "orden", cascade = {CascadeType.ALL})
-    private List<OrdenProducto> productos;
+    private List<OrdenProducto> ordenProductos;
 
     public Integer getId() {
         return id;
@@ -155,12 +155,13 @@ public class Orden {
         this.costoEnvio = costoEnvio;
     }
 
-
-    public List<OrdenProducto> getProductos() {
-        return productos;
+    public List<OrdenProducto> getOrdenProductos() {
+        return ordenProductos;
     }
 
-    public void setProductos(List<OrdenProducto> productos) {
-        this.productos = productos;
+    public void setOrdenProductos(List<OrdenProducto> ordenProductos) {
+        this.ordenProductos = ordenProductos;
     }
+
+
 }

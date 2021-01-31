@@ -5,33 +5,26 @@ import java.util.List;
 
 @Entity
 @Table(name = "comercio")
-@PrimaryKeyJoinColumn(name="id_usuario")
-public class Comercio extends Usuario{
+public class Comercio{
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_comercio")
+    private Integer id;
 
-    @Column(name = "id_comercio", insertable = false,updatable = false)
-    private Integer idComercio;
-
+    @Column(name = "id_usuario")
+    private Integer idUsuario;
     private String tipo_comercio;
     private String geolocalizacion;
     private String url ;
     private String descripcion;
-    private String imagen;
-
 
     @OneToMany(mappedBy = "comercio")
     private List<Orden> ordenes;
 
-
-    /*@Override
-    public Rol getRol() {
-         return null;
-    }
-
-    @Override
-    public void setRol(Rol rol) {
-        super.setRol(rol);
-    }*/
+    @ManyToOne
+    @JoinColumn(name = "id_usuario", insertable = false, updatable = false)
+    private Usuario usuario;
 
     public List<Orden> getOrdenes() {
         return ordenes;
@@ -41,12 +34,12 @@ public class Comercio extends Usuario{
         this.ordenes = ordenes;
     }
 
-    public Integer getIdComercio() {
-        return idComercio;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdComercio(Integer idComercio) {
-        this.idComercio = idComercio;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getTipo_comercio() {
@@ -82,13 +75,20 @@ public class Comercio extends Usuario{
         this.descripcion = descripcion;
     }
 
-    public String getImagen() {
-        return imagen;
+
+    public Integer getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setImagen(String imagen) {
-        this.imagen = imagen;
+    public void setIdUsuario(Integer idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
+    public Usuario getUsuario() {
+        return usuario;
+    }
 
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 }

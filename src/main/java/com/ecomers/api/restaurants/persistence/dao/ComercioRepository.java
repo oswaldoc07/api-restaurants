@@ -34,7 +34,7 @@ public class ComercioRepository implements CommerceRepository {
 
     @Override
     public Optional<Commerce> getById(int id) {
-        return crudRepository.findByIdComercio(id).map(commerce -> mapper.toCommerce(commerce));
+        return crudRepository.findById(id).map(commerce -> mapper.toCommerce(commerce));
         /*Commerce dto= crudRepository.findById(id).map(commerce -> mapper.toCommerce(commerce)).get();
         return Optional.of(dto);*/
     }
@@ -49,7 +49,7 @@ public class ComercioRepository implements CommerceRepository {
 
     @Override
     public Optional<Commerce> getByEmail(String email) {
-        return crudRepository.findByCorreo(email).map(commerce -> mapper.toCommerce(commerce));
+        return crudRepository.findByUsuarioCorreo(email).map(commerce -> mapper.toCommerce(commerce));
         /*Commerce dto= crudRepository.findByCorreo(email).map(commerce -> mapper.toCommerce(commerce)).get();
         return Optional. of(dto);*/
     }

@@ -5,7 +5,6 @@ import java.util.List;
 
 @Entity
 @Table(name="usuario")
-@Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario {
 
     @Id
@@ -20,11 +19,6 @@ public class Usuario {
     @Column(name="rol")
     private String idRol;
     private String imagen;
-
-
-   /* @ManyToOne
-    @JoinColumn(name = "id_rol", insertable = false, updatable = false)
-    private Rol rol;*/
 
 
 
@@ -84,11 +78,6 @@ public class Usuario {
         this.idUsuario = idUsuario;
     }
 
-    /*public Rol getRol() {
-        return rol;
-    }
 
-    public void setRol(Rol rol) {
-        this.rol = rol;
-    }*/
+
 }

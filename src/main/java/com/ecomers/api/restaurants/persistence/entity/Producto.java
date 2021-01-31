@@ -35,6 +35,7 @@ public class Producto {
 
     private String descripcion;
 
+    @Column(name = "id_comercio")
     private Integer idComercio;
 
     @Column(name = "ind_promocion")

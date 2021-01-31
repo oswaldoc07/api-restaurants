@@ -5,25 +5,29 @@ import java.util.List;
 
 @Entity
 @Table(name = "cliente")
-@PrimaryKeyJoinColumn(name="id_usuario")
-public class Cliente extends Usuario{
+public class Cliente{
 
 
-   @Column(name = "id_cliente", insertable = false,updatable = false)
-    private Integer idCliente;
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_cliente")
+    private Integer id;
 
     @OneToMany(mappedBy = "cliente")
     private List<Orden> ordenes;
 
+    @ManyToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "id_usuario")
+    private Usuario usuario;
 
-    public Integer getIdCliente() {
-        return idCliente;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdCliente(Integer idCliente) {
-        this.idCliente = idCliente;
+    public void setId(Integer id) {
+        this.id = id;
     }
+
 
     public List<Orden> getOrdenes() {
         return ordenes;
@@ -31,6 +35,14 @@ public class Cliente extends Usuario{
 
     public void setOrdenes(List<Orden> ordenes) {
         this.ordenes = ordenes;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }
 

@@ -13,25 +13,27 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface CommerceMapper {
     @Mappings({
-            @Mapping(source = "idComercio", target = "id"),
+            @Mapping(source = "id", target = "id"),
             @Mapping(source = "idUsuario", target = "userId"),
-            @Mapping(source = "nombre", target = "displayName"),
+            @Mapping(source = "usuario.nombre", target = "displayName"),
+            @Mapping(source = "usuario.correo", target = "email"),
+            @Mapping(source = "usuario.celular", target = "phoneNumber"),
+            @Mapping(source = "usuario.imagen", target = "photoURL"),
+            @Mapping(source = "usuario.idRol", target = "role"),
             @Mapping(source = "geolocalizacion", target = "geolocalization"),
             @Mapping(source = "url", target = "url"),
-            @Mapping(source = "descripcion", target = "description"),
-            @Mapping(source = "correo", target = "email"),
-            @Mapping(source = "celular", target = "phoneNumber"),
-            @Mapping(source = "imagen", target = "photoURL"),
-            @Mapping(source = "idRol", target = "role")
+            @Mapping(source = "descripcion", target = "description")
+
+
     })
     Commerce toCommerce(Comercio entity);
     List<Commerce> toCommerces(List<Comercio> entities);
 
     @InheritInverseConfiguration
     @Mapping(target = "ordenes", ignore = true)
-    @Mapping(target = "activo", ignore = true)
     @Mapping(target = "tipo_comercio", ignore = true)
-    //@Mapping(target = "rol", ignore = true)
+    @Mapping(target = "usuario", ignore = true)
+
     Comercio toComercio(Commerce commerce);
 }
 

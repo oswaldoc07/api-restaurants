@@ -14,11 +14,10 @@ public class OrdenProducto {
 
     @ManyToOne
     @MapsId("idOrden")
-    @JoinColumn(name = "id_compra", insertable = false, updatable = false)
+    @JoinColumn(name = "id_orden", insertable = false, updatable = false)
     private Orden orden;
 
-    @ManyToOne
-    @MapsId("idProducto")
+    @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name = "id_producto", insertable = false, updatable = false)
     private Producto producto;
 

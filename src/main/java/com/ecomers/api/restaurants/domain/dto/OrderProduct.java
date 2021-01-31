@@ -1,17 +1,17 @@
 package com.ecomers.api.restaurants.domain.dto;
 
 public class OrderProduct {
-    private int productId;
+    private Product product;
     private int quantity;
     private double subtotal;
 
 
-    public int getProductId() {
-        return productId;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setProductId(int productId) {
-        this.productId = productId;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public int getQuantity() {

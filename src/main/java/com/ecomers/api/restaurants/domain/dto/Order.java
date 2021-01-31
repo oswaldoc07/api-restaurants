@@ -7,7 +7,7 @@ public class Order {
     private int id;
     private Integer clientId;
     private Integer commerceId;
-    private LocalDateTime includeDate;
+    private LocalDateTime includedDate;
     private LocalDateTime estimatedDate;
     private LocalDateTime deliveredDate ;
     private String paymentMethod;
@@ -15,7 +15,7 @@ public class Order {
     private String state;
     private Integer price;
     private Integer shippingCost;
-    private List<OrderProduct> items;
+    private List<OrderProduct> cartItem;
 
     public int getId() {
         return id;
@@ -41,12 +41,12 @@ public class Order {
         this.commerceId = commerceId;
     }
 
-    public LocalDateTime getIncludeDate() {
-        return includeDate;
+    public LocalDateTime getIncludedDate() {
+        return includedDate;
     }
 
-    public void setIncludeDate(LocalDateTime includeDate) {
-        this.includeDate = includeDate;
+    public void setIncludedDate(LocalDateTime includedDate) {
+        this.includedDate = includedDate;
     }
 
     public LocalDateTime getEstimatedDate() {
@@ -105,11 +105,11 @@ public class Order {
         this.shippingCost = shippingCost;
     }
 
-    public List<OrderProduct> getItems() {
-        return items;
+    public List<OrderProduct> getCartItem() {
+        return cartItem;
     }
 
-    public void setItems(List<OrderProduct> items) {
-        this.items = items;
+    public void setCartItem(List<OrderProduct> cartItem) {
+        this.cartItem = cartItem;
     }
 }

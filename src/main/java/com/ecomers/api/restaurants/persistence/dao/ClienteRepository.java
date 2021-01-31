@@ -2,6 +2,7 @@ package com.ecomers.api.restaurants.persistence.dao;
 
 
 import com.ecomers.api.restaurants.domain.dto.Client;
+import com.ecomers.api.restaurants.domain.dto.User;
 import com.ecomers.api.restaurants.domain.repository.ClientRepository;
 import com.ecomers.api.restaurants.persistence.crud.ClienteCrudRepository;
 import com.ecomers.api.restaurants.persistence.entity.Cliente;
@@ -31,32 +32,36 @@ public class ClienteRepository implements ClientRepository {
 
     @Override
     public Optional<Client> getClientById(int id) {
-        return crudRepository.findByIdCliente(id).map(cliente -> mapper.toClient(cliente));
+        return crudRepository.findById(id).map(cliente -> mapper.toClient(cliente));
 
     }
 
     @Override
     public Optional<Client> getClientByEmail(String email) {
-       return crudRepository.findByCorreo(email).map(cliente -> mapper.toClient(cliente));
+       return crudRepository.findByUsuarioCorreo(email).map(cliente -> mapper.toClient(cliente));
     }
 
     @Override
     public Optional<Client> getClientByPhone(String phone) {
-        return crudRepository.findByCelular(phone).map(cliente -> mapper.toClient(cliente));
+        return crudRepository.findByUsuarioCelular(phone).map(cliente -> mapper.toClient(cliente));
     }
 
     @Override
     public  Optional<Client> save(Client dto) {
         Cliente entity = mapper.toCliente(dto);
-        entity.setActivo(true);
+        entity.getUsuario().setActivo(true);
         return Optional.of(mapper.toClient(crudRepository.save(entity)));
     }
 
     @Override
     public Optional<Client>  update(Client changes) {
-        Cliente entity=  crudRepository.findByIdCliente(changes.getId()).get();
-        entity.setCorreo(changes.getEmail());
-        entity.setCelular(changes.getPhoneNumber());
+        Cliente entity=  crudRepository.findById(changes.getId()).map(cliente->{
+            cliente.getUsuario().setCorreo(changes.getEmail());
+            cliente.getUsuario().setCelular(changes.getPhoneNumber());
+            return cliente;
+        }).get();
+
+
         return Optional.of(mapper.toClient(crudRepository.save(entity)));
     }
 

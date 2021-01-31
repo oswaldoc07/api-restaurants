@@ -1,8 +1,10 @@
 package com.ecomers.api.restaurants.persistence.dao;
 
+import com.ecomers.api.restaurants.domain.dto.Client;
 import com.ecomers.api.restaurants.domain.dto.Order;
 import com.ecomers.api.restaurants.domain.repository.OrderRepository;
 import com.ecomers.api.restaurants.persistence.crud.OrdenCrudRepository;
+import com.ecomers.api.restaurants.persistence.entity.Cliente;
 import com.ecomers.api.restaurants.persistence.entity.Orden;
 import com.ecomers.api.restaurants.persistence.entity.Producto;
 import com.ecomers.api.restaurants.persistence.mapper.OrderMapper;
@@ -28,6 +30,12 @@ public class OrdenRepository implements OrderRepository {
         return mapper.toOrders(entities);
 
     }
+
+    @Override
+    public Optional<Order> getOrderById(int id) {
+        return crudRepository.findById(id).map(orden -> mapper.toOrder(orden));
+
+    }
     @Override
     public Optional<List<Order>> getAllByCommerceAndState(int commerceId,String state) {
         Optional<List<Orden>> entities = crudRepository.findByIdComercioAndEstado(commerceId,state);
@@ -51,13 +59,19 @@ public class OrdenRepository implements OrderRepository {
     @Override
     public Optional<Order> save(Order order) {
         Orden entity = mapper.toOrden(order);
-        entity.getProductos().forEach(producto -> producto.setOrden(entity));
+        entity.getOrdenProductos().forEach(ordenProducto -> ordenProducto.setOrden(entity));
         return Optional.of(mapper.toOrder(crudRepository.save(entity)));
     }
 
     @Override
-    public Optional<Order> update(Order dto) {
-        return Optional.empty();
+    public Optional<Order> update(Order changes) {
+        Orden entity=  crudRepository.findById(changes.getId()).map(orden->{
+            orden.setEstado(changes.getState());
+            return orden;
+        }).get();
+
+        return Optional.of(mapper.toOrder(crudRepository.save(entity)));
+
     }
 
     @Override

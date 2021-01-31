@@ -11,7 +11,7 @@ import org.mapstruct.Mappings;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = {ProductMapper.class, ClientMapper.class})
+@Mapper(componentModel = "spring")
 public interface UserMapper {
     @Mappings({
             @Mapping(source = "idUsuario", target = "userId"),

@@ -18,7 +18,7 @@ public interface OrderMapper {
             @Mapping(source = "id", target = "id"),
             @Mapping(source = "idCliente", target = "clientId"),
             @Mapping(source = "idComercio", target = "commerceId"),
-            @Mapping(source = "fechaIngreso", target = "includeDate"),
+            @Mapping(source = "fechaIngreso", target = "includedDate"),
             @Mapping(source = "fechaEstimada", target = "estimatedDate"),
             @Mapping(source = "fechaEntrega", target = "deliveredDate"),
             @Mapping(source = "medioPago", target = "paymentMethod"),
@@ -26,7 +26,7 @@ public interface OrderMapper {
             @Mapping(source = "estado", target = "state"),
             @Mapping(source = "precio", target = "price"),
             @Mapping(source = "costoEnvio", target = "shippingCost"),
-            @Mapping(source = "productos", target = "items")
+            @Mapping(source = "ordenProductos", target = "cartItem")
     })
     Order toOrder(Orden orden);
     List<Order> toOrders(List<Orden> ordenes);
