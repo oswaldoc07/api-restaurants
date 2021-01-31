@@ -67,6 +67,9 @@ public class OrdenRepository implements OrderRepository {
     public Optional<Order> update(Order changes) {
         Orden entity=  crudRepository.findById(changes.getId()).map(orden->{
             orden.setEstado(changes.getState());
+            orden.setComentario(changes.getComment());
+            orden.setFechaEstimada(changes.getEstimatedDate());
+            orden.setFechaEntrega(changes.getDeliveredDate());
             return orden;
         }).get();
 
