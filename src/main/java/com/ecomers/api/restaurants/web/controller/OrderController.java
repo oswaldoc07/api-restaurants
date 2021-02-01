@@ -31,15 +31,15 @@ public class OrderController {
 
     //......................................................................................
     @ApiOperation("Search a order by ID and user")
-    @GetMapping("/{id}/user/{userId}")
+    @GetMapping("/{id}/client/{clientId}")
     @ApiResponses({
             @ApiResponse(code = 200, message = "OK"),
             @ApiResponse(code = 404, message = "Order not found"),
     })
-    public ResponseEntity<Order> getOrderByIdAndUser(@ApiParam(value = "The id of the order and user", required = true, example = "7,1")
+    public ResponseEntity<Order> getOrderByIdAndClient(@ApiParam(value = "The id of the order and client", required = true, example = "7,1")
                                                          @PathVariable("id") Integer id,
-                                                     @PathVariable("userId") String userId) {
-        return service.getOrderById(id)
+                                                     @PathVariable("clientId") Integer clientId) {
+        return service.getOrderByIdAndClient(id,clientId)
                 .map(product ->  new ResponseEntity<>(product, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }

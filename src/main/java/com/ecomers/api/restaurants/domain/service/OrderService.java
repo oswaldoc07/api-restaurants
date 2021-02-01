@@ -24,6 +24,9 @@ public class OrderService {
         return repository.getOrderById(id);
     }
 
+    public Optional<Order> getOrderByIdAndClient(int id,int clientId) {
+        return repository.getOrderByIdAndClient(id, clientId);
+    }
     public Optional<List<Order>> getAllByCommerceAndState(Integer commerceId, String state) {
 
         return repository.getAllByCommerceAndState(commerceId,state);

@@ -12,6 +12,7 @@ public interface OrderRepository {
 
     List<Order> getAll();
     Optional<Order> getOrderById(int id);
+    Optional<Order> getOrderByIdAndClient(int id,int clientId);
     Optional<List<Order>>getAllByCommerceAndState(int commerceId,String state);
     Optional<List<Order>> getAllByUser(Integer userId);
     Optional<Order> save(Order dto);

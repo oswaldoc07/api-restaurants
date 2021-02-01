@@ -1,12 +1,10 @@
 package com.ecomers.api.restaurants.persistence.dao;
 
-import com.ecomers.api.restaurants.domain.dto.Client;
+
 import com.ecomers.api.restaurants.domain.dto.Order;
 import com.ecomers.api.restaurants.domain.repository.OrderRepository;
 import com.ecomers.api.restaurants.persistence.crud.OrdenCrudRepository;
-import com.ecomers.api.restaurants.persistence.entity.Cliente;
 import com.ecomers.api.restaurants.persistence.entity.Orden;
-import com.ecomers.api.restaurants.persistence.entity.Producto;
 import com.ecomers.api.restaurants.persistence.mapper.OrderMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -36,6 +34,14 @@ public class OrdenRepository implements OrderRepository {
         return crudRepository.findById(id).map(orden -> mapper.toOrder(orden));
 
     }
+
+    @Override
+    public Optional<Order> getOrderByIdAndClient(int id,int clientId) {
+        return crudRepository.findByIdAndIdCliente(id,clientId).map(orden -> mapper.toOrder(orden));
+
+    }
+
+
     @Override
     public Optional<List<Order>> getAllByCommerceAndState(int commerceId,String state) {
         Optional<List<Orden>> entities = crudRepository.findByIdComercioAndEstado(commerceId,state);
