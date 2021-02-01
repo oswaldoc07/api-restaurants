@@ -1,11 +1,9 @@
 package com.ecomers.api.restaurants.persistence.dao;
 
-import com.ecomers.api.restaurants.domain.dto.Client;
+
 import com.ecomers.api.restaurants.domain.dto.User;
-import com.ecomers.api.restaurants.domain.repository.ClientRepository;
 import com.ecomers.api.restaurants.domain.repository.UserRepository;
 import com.ecomers.api.restaurants.persistence.crud.UsuarioCrudRepository;
-import com.ecomers.api.restaurants.persistence.mapper.ClientMapper;
 import com.ecomers.api.restaurants.persistence.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
