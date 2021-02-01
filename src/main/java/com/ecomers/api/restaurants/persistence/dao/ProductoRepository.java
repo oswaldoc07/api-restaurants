@@ -50,12 +50,7 @@ public class ProductoRepository implements ProductRepository {
     @Override
     public Optional<Product> getProduct(int id) {
        return productoCrudRepository.findById(id).map(producto -> mapper.toProduct(producto));
-        ///List<String> list = new ArrayList<>(0);
-      /*  list.add(product.getImage());
-        list.add(product.getImage2());
-        list.add(product.getImage3());
-        product.setImages(list);*/
-       // return Optional. of(product);
+
     }
 
     @Override
