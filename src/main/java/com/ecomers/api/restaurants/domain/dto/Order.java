@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Order {
     private int id;
-    private Integer clientId;
+    private Client Client;
     private Integer commerceId;
     private LocalDateTime includedDate;
     private LocalDateTime estimatedDate;
@@ -16,6 +16,9 @@ public class Order {
     private Integer price;
     private Integer shippingCost;
     private List<OrderProduct> cartItem;
+    private String desRejected;
+    private String ubicationGPS;
+    private Integer idCourier;
 
     public int getId() {
         return id;
@@ -25,13 +28,7 @@ public class Order {
         this.id = id;
     }
 
-    public Integer getClientId() {
-        return clientId;
-    }
 
-    public void setClientId(Integer clientId) {
-        this.clientId = clientId;
-    }
 
     public Integer getCommerceId() {
         return commerceId;
@@ -112,4 +109,39 @@ public class Order {
     public void setCartItem(List<OrderProduct> cartItem) {
         this.cartItem = cartItem;
     }
+
+    public String getDesRejected() {
+        return desRejected;
+    }
+
+    public void setDesRejected(String desRejected) {
+        this.desRejected = desRejected;
+    }
+
+    public Client getClient() {
+        return Client;
+    }
+
+    public void setClient(Client client) {
+        Client = client;
+    }
+
+    public String getUbicationGPS() {
+        return ubicationGPS;
+    }
+
+    public void setUbicationGPS(String ubicationGPS) {
+        this.ubicationGPS = ubicationGPS;
+    }
+
+    public Integer getIdCourier() {
+        return idCourier;
+    }
+
+    public void setIdCourier(Integer idCourier) {
+        this.idCourier = idCourier;
+    }
+
+
+
 }

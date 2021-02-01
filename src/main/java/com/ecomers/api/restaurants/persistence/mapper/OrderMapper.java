@@ -11,12 +11,15 @@ import org.mapstruct.Mappings;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = {OrderProductMapper.class})
+@Mapper(componentModel = "spring", uses = {OrderProductMapper.class,ClientMapper.class})
 public interface OrderMapper {
 
     @Mappings({
             @Mapping(source = "id", target = "id"),
-            @Mapping(source = "idCliente", target = "clientId"),
+            @Mapping(source = "idCliente", target = "client.id"),
+            @Mapping(source = "cliente.usuario.nombre", target = "client.displayName"),
+            @Mapping(source = "cliente.usuario.correo", target = "client.email"),
+            @Mapping(source = "cliente.usuario.celular", target = "client.phoneNumber"),
             @Mapping(source = "idComercio", target = "commerceId"),
             @Mapping(source = "fechaIngreso", target = "includedDate"),
             @Mapping(source = "fechaEstimada", target = "estimatedDate"),
@@ -26,13 +29,17 @@ public interface OrderMapper {
             @Mapping(source = "estado", target = "state"),
             @Mapping(source = "precio", target = "price"),
             @Mapping(source = "costoEnvio", target = "shippingCost"),
-            @Mapping(source = "ordenProductos", target = "cartItem")
+            @Mapping(source = "ordenProductos", target = "cartItem"),
+            @Mapping(source = "motivoRechazo", target = "desRejected"),
+            @Mapping(source = "ubicacionGPS", target = "ubicationGPS"),
+            @Mapping(source = "idMensajero", target = "idCourier")
+
     })
     Order toOrder(Orden orden);
     List<Order> toOrders(List<Orden> ordenes);
 
     @InheritInverseConfiguration
-    @Mapping(target = "cliente", ignore = true)
     @Mapping(target = "comercio", ignore = true)
+    @Mapping(target = "cliente", ignore = true)
     Orden toOrden(Order order);
 }

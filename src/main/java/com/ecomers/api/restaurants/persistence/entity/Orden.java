@@ -40,6 +40,15 @@ public class Orden {
     @Column(name = "costo_envio")
     private Integer costoEnvio;
 
+    @Column(name = "motivo_rechazo")
+    private String motivoRechazo;
+
+    @Column(name = "ubicacion_GPS")
+    private String ubicacionGPS;
+
+    @Column(name = "id_mensajero")
+    private Integer idMensajero;
+
     @ManyToOne
     @JoinColumn(name = "id_cliente", insertable = false, updatable = false)
     private Cliente cliente;
@@ -163,5 +172,27 @@ public class Orden {
         this.ordenProductos = ordenProductos;
     }
 
+    public String getMotivoRechazo() {
+        return motivoRechazo;
+    }
 
+    public void setMotivoRechazo(String motivoRechazo) {
+        this.motivoRechazo = motivoRechazo;
+    }
+
+    public String getUbicacionGPS() {
+        return ubicacionGPS;
+    }
+
+    public void setUbicacionGPS(String ubicacionGPS) {
+        this.ubicacionGPS = ubicacionGPS;
+    }
+
+    public Integer getIdMensajero() {
+        return idMensajero;
+    }
+
+    public void setIdMensajero(Integer idMensajero) {
+        this.idMensajero = idMensajero;
+    }
 }
