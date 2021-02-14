@@ -26,6 +26,17 @@ public class Comercio{
     @JoinColumn(name = "id_usuario", insertable = false, updatable = false)
     private Usuario usuario;
 
+    @OneToMany(mappedBy = "comercio", cascade = {CascadeType.ALL})
+    private List<ComercioTipoPago> tiposPago;
+
+    public List<ComercioTipoPago> getTiposPago() {
+        return tiposPago;
+    }
+
+    public void setTiposPago(List<ComercioTipoPago> tiposPago) {
+        this.tiposPago = tiposPago;
+    }
+
     public List<Orden> getOrdenes() {
         return ordenes;
     }
@@ -91,4 +102,6 @@ public class Comercio{
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
+
+
 }

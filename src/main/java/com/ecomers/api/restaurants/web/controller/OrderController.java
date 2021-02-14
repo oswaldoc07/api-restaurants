@@ -14,6 +14,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -67,6 +69,7 @@ public class OrderController {
 
     @PostMapping()
     public ResponseEntity<Order> save(@RequestBody Order dto) {
+        dto.setIncludedDate(LocalDateTime.now());
         return service.save(dto)
                 .map(client ->  new ResponseEntity<>(client, HttpStatus.CREATED))
                 .orElse(new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR));

@@ -1,11 +1,14 @@
 package com.ecomers.api.restaurants.domain.dto;
 
+import java.util.List;
+
 public class Commerce extends User {
 
     private Integer id;
     private String geolocalization;
     private String url;
     private String description;
+    private List<PaymentType> paymentTypes;
 
 
     public Integer getId() {
@@ -42,4 +45,11 @@ public class Commerce extends User {
         this.description = description;
     }
 
+    public List<PaymentType> getPaymentTypes() {
+        return paymentTypes;
+    }
+
+    public void setPaymentTypes(List<PaymentType> paymentTypes) {
+        this.paymentTypes = paymentTypes;
+    }
 }
