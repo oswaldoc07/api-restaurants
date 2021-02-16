@@ -19,5 +19,7 @@ public interface PaymentTypeMapper {
             @Mapping(source = "nombre", target = "name")
     })
     PaymentType toPaymentType(TipoPago tipoPago);
+
+    @InheritInverseConfiguration
     TipoPago toTipoPago(PaymentType paymentType);
 }

@@ -1,9 +1,9 @@
 package com.ecomers.api.restaurants.web.controller;
 
-import com.ecomers.api.restaurants.domain.dto.Client;;
-import com.ecomers.api.restaurants.domain.dto.Product;
+import com.ecomers.api.restaurants.domain.dto.Client;
+import com.ecomers.api.restaurants.domain.dto.Courier;
 import com.ecomers.api.restaurants.domain.service.ClientService;
-import com.ecomers.api.restaurants.domain.service.UserService;
+import com.ecomers.api.restaurants.domain.service.CourierService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
@@ -16,57 +16,61 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/clients")
-public class ClientController {
+@RequestMapping("/couriers")
+public class CourierController {
 
 
     @Autowired
-    private ClientService service;
+    private CourierService service;
 
     //......................................................................................
-    @ApiOperation("Get all clients")
+    @ApiOperation("Get all couriers")
     @GetMapping()
-    public ResponseEntity<List<Client>> getAll() {
+    public ResponseEntity<List<Courier>> getAll() {
         return service.getAll()
-                .map(clients -> new ResponseEntity<>(clients, HttpStatus.OK))
+                .map(couriers -> new ResponseEntity<>(couriers, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
+
+    //......................................................................................
+    @ApiOperation("Get all couriers by commerce")
+    @GetMapping("/commerce/{commerceId}")
+    public ResponseEntity<List<Courier>> getAllByCommerce(@ApiParam(value = "The id commerce",
+            required = true, example = "7") @PathVariable("commerceId") int commerceId) {
+        return service.getAllByCommerce(commerceId)
+                .map(couriers -> new ResponseEntity<>(couriers, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+
     //......................................................................................
     @ApiOperation("Search a user with an ID")
     @GetMapping("/{id}")
     @ApiResponses({
             @ApiResponse(code = 200, message = "OK"),
-            @ApiResponse(code = 404, message = "client not found"),
+            @ApiResponse(code = 404, message = "Courier not found"),
     })
-    public ResponseEntity<Client> getById(@ApiParam(value = "The id of the client", required = true, example = "7")
-                                              @PathVariable("id") int userId) {
-        return service.getClientById(userId)
-                .map(client ->  new ResponseEntity<>(client, HttpStatus.OK))
+    public ResponseEntity<Courier> getById(@ApiParam(value = "The id of the courier", required = true, example = "7")
+                                              @PathVariable("id") int id) {
+        return service.getCourierById(id)
+                .map(courier ->  new ResponseEntity<>(courier, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @GetMapping("/{email}/{phone}")
-    public ResponseEntity<Client> getClientByEmailOrPhone(@PathVariable("email") String email, @PathVariable("phone") String phone ) {
-        return service.getClientByEmailOrPhone(email,phone)
-                .map(client -> new ResponseEntity<>(client, HttpStatus.OK))
-                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
-
-
-    }
 
     //......................................................................................
     @PostMapping()
-    public ResponseEntity<Client> save(@RequestBody Client dto) {
+    public ResponseEntity<Courier> save(@RequestBody Courier dto) {
         return service.save(dto)
-                .map(client ->  new ResponseEntity<>(client, HttpStatus.CREATED))
+                .map(courier ->  new ResponseEntity<>(dto, HttpStatus.CREATED))
                 .orElse(new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR));
     }
 
     //......................................................................................
     @PatchMapping()
-    public ResponseEntity<Client> update(@RequestBody Client changes) {
+    public ResponseEntity<Courier> update(@RequestBody Courier changes) {
         return service.update(changes)
-                .map(client ->  new ResponseEntity<>(client, HttpStatus.CREATED))
+                .map(courier ->  new ResponseEntity<>(courier, HttpStatus.CREATED))
                 .orElse(new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR));
     }
 

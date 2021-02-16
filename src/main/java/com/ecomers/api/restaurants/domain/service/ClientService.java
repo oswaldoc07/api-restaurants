@@ -10,6 +10,7 @@ import java.util.Optional;
 
 @Service
 public class ClientService {
+
     @Autowired
     private ClientRepository repository;
 
@@ -39,9 +40,9 @@ public class ClientService {
     public Optional<Client>  update(Client dto) {
         return repository.update(dto);
     }
-    public boolean delete(int productId) {
-        return getClientById(productId).map(product -> {
-            repository.delete(productId);
+    public boolean delete(int id) {
+        return getClientById(id).map(product -> {
+            repository.delete(id);
             return true;
         }).orElse(false);
     }
