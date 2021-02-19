@@ -25,14 +25,10 @@ public class CommerceController {
     @Autowired
     private CommerceService service;
 
-    @Autowired
-    private MessageService messageService;
-
     //......................................................................................
     @ApiOperation("Get all commerces")
     @GetMapping()
     public ResponseEntity<List<Commerce>> getAll() {
-        messageService.sentMessage(null);
         return service.getAll()
                 .map(commerces -> new ResponseEntity<>(commerces, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
