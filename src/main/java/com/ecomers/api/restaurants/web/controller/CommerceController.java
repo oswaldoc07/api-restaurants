@@ -5,6 +5,7 @@ import com.ecomers.api.restaurants.domain.dto.Commerce;
 import com.ecomers.api.restaurants.domain.dto.User;
 import com.ecomers.api.restaurants.domain.service.ClientService;
 import com.ecomers.api.restaurants.domain.service.CommerceService;
+import com.ecomers.api.restaurants.domain.service.MessageService;
 import com.ecomers.api.restaurants.domain.service.UserService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -24,10 +25,14 @@ public class CommerceController {
     @Autowired
     private CommerceService service;
 
+    @Autowired
+    private MessageService messageService;
+
     //......................................................................................
     @ApiOperation("Get all commerces")
     @GetMapping()
     public ResponseEntity<List<Commerce>> getAll() {
+        messageService.sentMessage(null);
         return service.getAll()
                 .map(commerces -> new ResponseEntity<>(commerces, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));

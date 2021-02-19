@@ -76,6 +76,7 @@ public class OrdenRepository implements OrderRepository {
             orden.setComentario(changes.getComment());
             orden.setFechaEstimada(changes.getEstimatedDate());
             orden.setFechaEntrega(changes.getDeliveredDate());
+            orden.setIdMensajero(changes.getIdCourier());
             return orden;
         }).get();
 
