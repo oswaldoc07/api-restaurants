@@ -17,8 +17,8 @@ public class MessageService {
     private ParameterRepository parameterRepository;
 
     public boolean sentMessage(Message message){
-        String key = parameterRepository.findByCode("MESSAGE.KEY").get().getValor();
-        String uri = parameterRepository.findByCode("MESSAGE.URL").get().getValor();
+        String key = parameterRepository.findByCode("API.MESSAGE.KEY").get().getValor();
+        String uri = parameterRepository.findByCode("API.MESSAGE.URL").get().getValor();
         String url= uri +key+"/t="+message.getNumber()+"&m="+message.getMessage();
         String result = clienteRest.getForObject(url, String.class);
       return  true;

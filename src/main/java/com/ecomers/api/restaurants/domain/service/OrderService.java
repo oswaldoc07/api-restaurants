@@ -25,6 +25,9 @@ public class OrderService {
     @Autowired
     private MessageService messageService;
 
+    @Autowired
+    private ClientService clientService;
+
     public List<Order> getAll() {
 
         return repository.getAll();
@@ -47,11 +50,12 @@ public class OrderService {
     }
 
     public Optional<Order>  save(Order dto) {
-        Order order=  repository.save(dto).map(orderSaved->{
+        Order order=  this.repository.save(dto).map(orderSaved->{
             Message message = new Message();
-            message.setMessage("Su orden fue ingresada con éxito, para más detalles ingrese a la siguiente direccion"
-            +" " +parameterRepository.findByCode("API.URL")+orderSaved.getId());
-            message.setNumber(orderSaved.getClient().getPhoneNumber());
+            String text = this.parameterRepository.findByCode("API.MESSAGE.TEXT.CLIENT").get().getValor();
+            message.setMessage(text+orderSaved.getId());
+            String number = this.clientService.getClientById(orderSaved.getClient().getId()).get().getPhoneNumber();
+            message.setNumber(number);
             this.messageService.sentMessage(message);
             return orderSaved;
         }).get();

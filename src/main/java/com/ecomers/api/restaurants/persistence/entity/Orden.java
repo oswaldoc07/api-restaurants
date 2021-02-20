@@ -49,7 +49,7 @@ public class Orden {
     @Column(name = "id_mensajero")
     private Integer idMensajero;
 
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name = "id_cliente", insertable = false, updatable = false)
     private Cliente cliente;
 
