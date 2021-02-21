@@ -54,9 +54,9 @@ public class CommerceService {
         }).orElse(false);
     }
 
-    public Optional<Double> getRate(int commerceId, double distance){
+    public Optional<Integer> getRate(int commerceId, double distance){
    List<CommerceRate> rates=   commerceRateRepository.getAllByCommerce(commerceId).get();
-   double rate =0;
+   int rate =0;
    int size = rates.size();
    boolean found =false;
    for(int count=0; count <size; count++){
