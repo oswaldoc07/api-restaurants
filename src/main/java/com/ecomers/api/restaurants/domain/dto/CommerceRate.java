@@ -4,7 +4,7 @@ public class CommerceRate {
     private int id;
     private int commerceId;
     private double distance;
-    private double rate;
+    private Integer rate;
 
 
     public int getId() {
@@ -31,11 +31,11 @@ public class CommerceRate {
         this.distance = distance;
     }
 
-    public double getRate() {
+    public Integer getRate() {
         return rate;
     }
 
-    public void setRate(double rate) {
+    public void setRate(Integer rate) {
         this.rate = rate;
     }
 }

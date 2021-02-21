@@ -8,7 +8,7 @@ public class TarifaComercio {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ind_tarifa")
+    @Column(name = "id_tarifa")
     private Integer idTarifa;
 
     @Column(name = "id_comercio")
@@ -17,7 +17,7 @@ public class TarifaComercio {
     private Double distancia;
 
     @Column(name = "precio")
-    private Double tarifa;
+    private Integer tarifa;
 
     public Integer getIdTarifa() {
         return idTarifa;
@@ -43,11 +43,11 @@ public class TarifaComercio {
         this.distancia = distancia;
     }
 
-    public Double getTarifa() {
+    public Integer getTarifa() {
         return tarifa;
     }
 
-    public void setTarifa(Double tarifa) {
+    public void setTarifa(Integer tarifa) {
         this.tarifa = tarifa;
     }
 }
