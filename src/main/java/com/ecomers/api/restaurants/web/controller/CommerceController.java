@@ -36,7 +36,7 @@ public class CommerceController {
 
     //......................................................................................
     @GetMapping("/{id}")
-    @ApiOperation("Search a user with an ID")
+    @ApiOperation("Search a commerce with an ID")
     @ApiResponses({
             @ApiResponse(code = 200, message = "OK"),
             @ApiResponse(code = 404, message = "Product not found"),
