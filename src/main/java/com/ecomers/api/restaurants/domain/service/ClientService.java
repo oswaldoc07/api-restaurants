@@ -34,7 +34,13 @@ public class ClientService {
     }
 
     public Optional<Client>  save(Client dto) {
-        return repository.save(dto);
+        Optional<Client> client = this.getClientByEmailOrPhone(dto.getPhoneNumber(),dto.getEmail());
+        if(client.isPresent()){
+            return client;
+        }else{
+            return repository.save(dto);
+        }
+
     }
 
     public Optional<Client>  update(Client dto) {
