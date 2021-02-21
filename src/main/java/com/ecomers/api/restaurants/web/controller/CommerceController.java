@@ -69,7 +69,7 @@ public class CommerceController {
     @GetMapping("/{id}/rate/{distance}")
     public ResponseEntity<Double> getRate(@PathVariable("id") int id,
                                           @PathVariable("distance") double distance  ) {
-        return service.getRate(id, distance)
+        return service.getRate(id, distance*1000)
                 .map(rate -> new ResponseEntity<>(rate, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
