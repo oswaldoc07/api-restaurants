@@ -19,6 +19,7 @@ public class Order {
     private String desRejected;
     private String ubicationGPS;
     private Integer idCourier;
+    private String address;
 
     public int getId() {
         return id;
@@ -142,6 +143,11 @@ public class Order {
         this.idCourier = idCourier;
     }
 
+    public String getAddress() {
+        return address;
+    }
 
-
+    public void setAddress(String address) {
+        this.address = address;
+    }
 }

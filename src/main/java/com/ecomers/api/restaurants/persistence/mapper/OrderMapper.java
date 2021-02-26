@@ -32,7 +32,8 @@ public interface OrderMapper {
             @Mapping(source = "ordenProductos", target = "cartItem"),
             @Mapping(source = "motivoRechazo", target = "desRejected"),
             @Mapping(source = "ubicacionGPS", target = "ubicationGPS"),
-            @Mapping(source = "idMensajero", target = "idCourier")
+            @Mapping(source = "idMensajero", target = "idCourier"),
+            @Mapping(source = "direccion", target = "address")
 
     })
     Order toOrder(Orden orden);

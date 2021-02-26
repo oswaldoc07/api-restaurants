@@ -60,6 +60,9 @@ public class Orden {
     @OneToMany(mappedBy = "orden", cascade = {CascadeType.ALL})
     private List<OrdenProducto> ordenProductos;
 
+    @Column(name="direccion_entrega")
+    private String direccion;
+
     public Integer getId() {
         return id;
     }
@@ -194,5 +197,13 @@ public class Orden {
 
     public void setIdMensajero(Integer idMensajero) {
         this.idMensajero = idMensajero;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 }
