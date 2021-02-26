@@ -34,7 +34,7 @@ public class ClientService {
     }
 
     public Optional<Client>  save(Client dto) {
-        Optional<Client> client = this.getClientByEmailOrPhone(dto.getPhoneNumber(),dto.getEmail());
+        Optional<Client> client = this.getClientByEmailOrPhone(dto.getEmail(),dto.getPhoneNumber());
         if(client.isPresent()){
             return client;
         }else{
