@@ -17,6 +17,7 @@ public class EmbeddedTomcatConfiguration {
 
             @Override
             protected void postProcessContext(Context context) {
+
                 context.setResources(new ExtractingRoot());
             }
         };
