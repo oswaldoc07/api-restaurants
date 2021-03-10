@@ -21,11 +21,13 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    @GetMapping()
+    @GetMapping("/commerce/{commerceId}")
     @ApiOperation("Get all supermarket products")
     @ApiResponse(code = 200, message = "OK")
-    public ResponseEntity<List<Product>> getAll() {
-         return new ResponseEntity<>(productService.getAll(), HttpStatus.OK);
+    public ResponseEntity<List<Product>> getAllByCommerce(@PathVariable("commerceId") int commerceId) {
+        return productService.getAllByCommerce(commerceId)
+                .map(products -> new ResponseEntity<>(products, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @GetMapping("/{id}")

@@ -10,7 +10,7 @@ import java.util.Optional;
 public interface ProductRepository {
     Optional<List<Product>> getByCommercePromotions(int commerce);
     Optional<List<Product>> getByCommerceAndCategory(int commerce,int categoryId);
-    List<Product> getAll();
+    Optional<List<Product>>  getAllByCommerce(int commerceId);
     Optional<List<Product>> getScarseProducts(int quantity);
     Optional<Product> getProduct(int id);
     Product save(Product dto);

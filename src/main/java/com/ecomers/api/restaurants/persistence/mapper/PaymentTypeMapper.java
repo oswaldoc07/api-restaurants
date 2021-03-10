@@ -3,7 +3,7 @@ package com.ecomers.api.restaurants.persistence.mapper;
 
 
 import com.ecomers.api.restaurants.domain.dto.OrderProduct;
-import com.ecomers.api.restaurants.domain.dto.PaymentType;
+import com.ecomers.api.restaurants.domain.dto.PaymentMethod;
 import com.ecomers.api.restaurants.persistence.entity.OrdenProducto;
 import com.ecomers.api.restaurants.persistence.entity.TipoPago;
 import org.mapstruct.InheritInverseConfiguration;
@@ -18,8 +18,9 @@ public interface PaymentTypeMapper {
             @Mapping(source = "id", target = "id"),
             @Mapping(source = "nombre", target = "name")
     })
-    PaymentType toPaymentType(TipoPago tipoPago);
+    PaymentMethod toPaymentMethod(TipoPago tipoPago);
 
     @InheritInverseConfiguration
-    TipoPago toTipoPago(PaymentType paymentType);
+    @Mapping(target = "ordenes", ignore = true)
+    TipoPago toTipoPago(PaymentMethod paymentMethod);
 }

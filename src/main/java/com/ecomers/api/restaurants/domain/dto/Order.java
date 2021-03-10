@@ -10,7 +10,6 @@ public class Order {
     private LocalDateTime includedDate;
     private LocalDateTime estimatedDate;
     private LocalDateTime deliveredDate ;
-    private String paymentMethod;
     private String comment;
     private String state;
     private Integer price;
@@ -20,6 +19,7 @@ public class Order {
     private String ubicationGPS;
     private Integer idCourier;
     private String address;
+    private PaymentMethod paymentMethod;
 
     public int getId() {
         return id;
@@ -63,13 +63,6 @@ public class Order {
         this.deliveredDate = deliveredDate;
     }
 
-    public String getPaymentMethod() {
-        return paymentMethod;
-    }
-
-    public void setPaymentMethod(String paymentMethod) {
-        this.paymentMethod = paymentMethod;
-    }
 
     public String getComment() {
         return comment;
@@ -141,6 +134,14 @@ public class Order {
 
     public void setIdCourier(Integer idCourier) {
         this.idCourier = idCourier;
+    }
+
+    public PaymentMethod getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(PaymentMethod paymentMethod) {
+        this.paymentMethod = paymentMethod;
     }
 
     public String getAddress() {

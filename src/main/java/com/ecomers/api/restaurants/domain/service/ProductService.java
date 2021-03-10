@@ -15,9 +15,7 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepository;
 
-    public List<Product> getAll() {
-        return productRepository.getAll();
-    }
+
 
     public Optional<Product> getProduct(int productId) {
         return productRepository.getProduct(productId);
@@ -29,6 +27,10 @@ public class ProductService {
 
     public Optional<List<Product>> getByCommercePromotions(int commerce) {
         return productRepository.getByCommercePromotions(commerce);
+    }
+
+    public  Optional<List<Product>> getAllByCommerce(int commerceId) {
+        return productRepository.getAllByCommerce(commerceId);
     }
 
 

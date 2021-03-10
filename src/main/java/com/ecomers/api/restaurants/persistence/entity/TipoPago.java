@@ -13,6 +13,10 @@ public class TipoPago {
 
     private String nombre;
 
+    @OneToMany(mappedBy = "tipoPago")
+    private List<Orden> ordenes;
+
+
     public String getId() {
         return id;
     }
@@ -27,5 +31,14 @@ public class TipoPago {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+
+    public List<Orden> getOrdenes() {
+        return ordenes;
+    }
+
+    public void setOrdenes(List<Orden> ordenes) {
+        this.ordenes = ordenes;
     }
 }

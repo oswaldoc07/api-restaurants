@@ -23,9 +23,9 @@ public class ProductoRepository implements ProductRepository {
     private ProductMapper mapper;
 
     @Override
-    public List<Product> getAll() {
-        List<Producto> entities = (List<Producto>) crudRepository.findAll();
-        return mapper.toProducts(entities);
+    public Optional<List<Product>> getAllByCommerce(int commerceId) {
+        Optional<List<Producto>> entities = crudRepository.findByIdComercioOrderByNombreAsc(commerceId);
+        return entities.map(prods -> mapper.toProducts(prods));
     }
 
     @Override

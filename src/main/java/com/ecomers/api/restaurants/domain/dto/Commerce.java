@@ -8,7 +8,7 @@ public class Commerce extends User {
     private String geolocalization;
     private String url;
     private String description;
-    private List<PaymentType> paymentTypes;
+    private List<PaymentMethod> paymentMethods;
 
 
     public Integer getId() {
@@ -45,11 +45,11 @@ public class Commerce extends User {
         this.description = description;
     }
 
-    public List<PaymentType> getPaymentTypes() {
-        return paymentTypes;
+    public List<PaymentMethod> getPaymentMethods() {
+        return paymentMethods;
     }
 
-    public void setPaymentTypes(List<PaymentType> paymentTypes) {
-        this.paymentTypes = paymentTypes;
+    public void setPaymentMethods(List<PaymentMethod> paymentMethods) {
+        this.paymentMethods = paymentMethods;
     }
 }

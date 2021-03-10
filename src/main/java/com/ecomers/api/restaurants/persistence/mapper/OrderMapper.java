@@ -11,7 +11,7 @@ import org.mapstruct.Mappings;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = {OrderProductMapper.class,ClientMapper.class})
+@Mapper(componentModel = "spring", uses = {OrderProductMapper.class,ClientMapper.class, PaymentTypeMapper.class})
 public interface OrderMapper {
 
     @Mappings({
@@ -24,7 +24,8 @@ public interface OrderMapper {
             @Mapping(source = "fechaIngreso", target = "includedDate"),
             @Mapping(source = "fechaEstimada", target = "estimatedDate"),
             @Mapping(source = "fechaEntrega", target = "deliveredDate"),
-            @Mapping(source = "medioPago", target = "paymentMethod"),
+            @Mapping(source = "tipoPago.id", target = "paymentMethod.id"),
+            @Mapping(source = "tipoPago.nombre", target = "paymentMethod.name"),
             @Mapping(source = "comentario", target = "comment"),
             @Mapping(source = "estado", target = "state"),
             @Mapping(source = "precio", target = "price"),
@@ -42,5 +43,6 @@ public interface OrderMapper {
     @InheritInverseConfiguration
     @Mapping(target = "comercio", ignore = true)
     @Mapping(target = "cliente", ignore = true)
+    @Mapping(target = "tipoPago.ordenes", ignore = true)
     Orden toOrden(Order order);
 }

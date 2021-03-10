@@ -23,7 +23,7 @@ public interface CommerceMapper {
             @Mapping(source = "geolocalizacion", target = "geolocalization"),
             @Mapping(source = "url", target = "url"),
             @Mapping(source = "descripcion", target = "description"),
-            @Mapping(source = "tiposPago", target = "paymentTypes")
+            @Mapping(source = "tiposPago", target = "paymentMethods")
 
 
 

@@ -1,6 +1,6 @@
 package com.ecomers.api.restaurants.domain.dto;
 
-public class PaymentType {
+public class PaymentMethod {
     private String id;
     private String name;
 

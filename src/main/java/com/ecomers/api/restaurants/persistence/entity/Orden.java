@@ -1,5 +1,7 @@
 package com.ecomers.api.restaurants.persistence.entity;
 
+
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -28,9 +30,6 @@ public class Orden {
     @Column(name = "fecha_entrega")
     private LocalDateTime fechaEntrega;
 
-    @Column(name = "medio_pago")
-    private String medioPago;
-
     private String comentario;
 
     private String estado;
@@ -53,7 +52,7 @@ public class Orden {
     @JoinColumn(name = "id_cliente", insertable = false, updatable = false)
     private Cliente cliente;
 
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name = "id_comercio", insertable = false, updatable = false)
     private Comercio comercio;
 
@@ -62,6 +61,12 @@ public class Orden {
 
     @Column(name="direccion_entrega")
     private String direccion;
+
+    @ManyToOne(fetch=FetchType.EAGER)
+    @JoinColumn(name = "medio_pago", insertable = true, updatable = false)
+    private TipoPago tipoPago;
+
+
 
     public Integer getId() {
         return id;
@@ -127,13 +132,6 @@ public class Orden {
         this.fechaEntrega = fechaEntrega;
     }
 
-    public String getMedioPago() {
-        return medioPago;
-    }
-
-    public void setMedioPago(String medioPago) {
-        this.medioPago = medioPago;
-    }
 
     public String getComentario() {
         return comentario;
@@ -205,5 +203,13 @@ public class Orden {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+
+    public TipoPago getTipoPago() {
+        return tipoPago;
+    }
+
+    public void setTipoPago(TipoPago tipoPago) {
+        this.tipoPago = tipoPago;
     }
 }
