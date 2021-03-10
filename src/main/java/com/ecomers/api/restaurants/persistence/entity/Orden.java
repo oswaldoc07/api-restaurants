@@ -66,6 +66,11 @@ public class Orden {
     @JoinColumn(name = "medio_pago", insertable = true, updatable = false)
     private TipoPago tipoPago;
 
+    @Column(name = "pago_efectivo")
+    private Double montoEfectivo;
+
+    @Column(name = "tiempo_envio")
+    private Double tiempoEnvio;
 
 
     public Integer getId() {
@@ -211,5 +216,21 @@ public class Orden {
 
     public void setTipoPago(TipoPago tipoPago) {
         this.tipoPago = tipoPago;
+    }
+
+    public Double getMontoEfectivo() {
+        return montoEfectivo;
+    }
+
+    public void setMontoEfectivo(Double montoEfectivo) {
+        this.montoEfectivo = montoEfectivo;
+    }
+
+    public Double getTiempoEnvio() {
+        return tiempoEnvio;
+    }
+
+    public void setTiempoEnvio(Double tiempoEnvio) {
+        this.tiempoEnvio = tiempoEnvio;
     }
 }

@@ -20,6 +20,8 @@ public class Order {
     private Integer idCourier;
     private String address;
     private PaymentMethod paymentMethod;
+    private Double cashAmount;
+    private Double deliveryTime;
 
     public int getId() {
         return id;
@@ -150,5 +152,21 @@ public class Order {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public Double getCashAmount() {
+        return cashAmount;
+    }
+
+    public void setCashAmount(Double cashAmount) {
+        this.cashAmount = cashAmount;
+    }
+
+    public Double getDeliveryTime() {
+        return deliveryTime;
+    }
+
+    public void setDeliveryTime(Double deliveryTime) {
+        this.deliveryTime = deliveryTime;
     }
 }
