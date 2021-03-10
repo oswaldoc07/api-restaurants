@@ -26,7 +26,9 @@ public interface OrderMapper {
             @Mapping(source = "fechaEntrega", target = "deliveredDate"),
             @Mapping(source = "tipoPago.id", target = "paymentMethod.id"),
             @Mapping(source = "tipoPago.nombre", target = "paymentMethod.name"),
-            @Mapping(source = "comentario", target = "comment"),
+            @Mapping(source = "comentarioCliente", target = "customerComment"),
+            @Mapping(source = "comentarioComercio", target = "commerceComment"),
+            @Mapping(source = "comentarioMensajero", target = "courierComment"),
             @Mapping(source = "estado", target = "state"),
             @Mapping(source = "precio", target = "price"),
             @Mapping(source = "costoEnvio", target = "shippingCost"),
@@ -37,6 +39,7 @@ public interface OrderMapper {
             @Mapping(source = "direccion", target = "address"),
             @Mapping(source = "montoEfectivo", target = "cashAmount"),
             @Mapping(source = "tiempoEnvio", target = "deliveryTime")
+
 
     })
     Order toOrder(Orden orden);

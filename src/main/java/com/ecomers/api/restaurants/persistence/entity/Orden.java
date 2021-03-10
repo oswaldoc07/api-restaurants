@@ -30,7 +30,14 @@ public class Orden {
     @Column(name = "fecha_entrega")
     private LocalDateTime fechaEntrega;
 
-    private String comentario;
+    @Column(name = "comentario_cliente")
+    private String comentarioCliente;
+
+    @Column(name = "comentario_comercio")
+    private String comentarioComercio;
+
+    @Column(name = "comentario_mensajero")
+    private String comentarioMensajero;
 
     private String estado;
 
@@ -71,6 +78,7 @@ public class Orden {
 
     @Column(name = "tiempo_envio")
     private Double tiempoEnvio;
+
 
 
     public Integer getId() {
@@ -138,13 +146,6 @@ public class Orden {
     }
 
 
-    public String getComentario() {
-        return comentario;
-    }
-
-    public void setComentario(String comentario) {
-        this.comentario = comentario;
-    }
 
     public String getEstado() {
         return estado;
@@ -169,6 +170,8 @@ public class Orden {
     public void setCostoEnvio(Integer costoEnvio) {
         this.costoEnvio = costoEnvio;
     }
+
+
 
     public List<OrdenProducto> getOrdenProductos() {
         return ordenProductos;
@@ -232,5 +235,29 @@ public class Orden {
 
     public void setTiempoEnvio(Double tiempoEnvio) {
         this.tiempoEnvio = tiempoEnvio;
+    }
+
+    public String getComentarioCliente() {
+        return comentarioCliente;
+    }
+
+    public void setComentarioCliente(String comentarioCliente) {
+        this.comentarioCliente = comentarioCliente;
+    }
+
+    public String getComentarioComercio() {
+        return comentarioComercio;
+    }
+
+    public void setComentarioComercio(String comentarioComercio) {
+        this.comentarioComercio = comentarioComercio;
+    }
+
+    public String getComentarioMensajero() {
+        return comentarioMensajero;
+    }
+
+    public void setComentarioMensajero(String comentarioMensajero) {
+        this.comentarioMensajero = comentarioMensajero;
     }
 }

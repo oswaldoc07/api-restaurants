@@ -10,7 +10,9 @@ public class Order {
     private LocalDateTime includedDate;
     private LocalDateTime estimatedDate;
     private LocalDateTime deliveredDate ;
-    private String comment;
+    private String customerComment;
+    private String commerceComment;
+    private String courierComment;
     private String state;
     private Integer price;
     private Integer shippingCost;
@@ -65,13 +67,28 @@ public class Order {
         this.deliveredDate = deliveredDate;
     }
 
-
-    public String getComment() {
-        return comment;
+    public String getCustomerComment() {
+        return customerComment;
     }
 
-    public void setComment(String comment) {
-        this.comment = comment;
+    public void setCustomerComment(String customerComment) {
+        this.customerComment = customerComment;
+    }
+
+    public String getCommerceComment() {
+        return commerceComment;
+    }
+
+    public void setCommerceComment(String commerceComment) {
+        this.commerceComment = commerceComment;
+    }
+
+    public String getCourierComment() {
+        return courierComment;
+    }
+
+    public void setCourierComment(String courierComment) {
+        this.courierComment = courierComment;
     }
 
     public String getState() {
