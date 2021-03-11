@@ -40,6 +40,10 @@ public class OrderService {
     public Optional<Order> getOrderByIdAndClient(int id,int clientId) {
         return repository.getOrderByIdAndClient(id, clientId);
     }
+
+    public Optional<Order> getOrderByIdAndCourier(int id,int courierId) {
+        return repository.getOrderByIdAndCourier(id, courierId);
+    }
     public Optional<List<Order>> getAllByCommerceAndState(Integer commerceId, String state) {
 
         return repository.getAllByCommerceAndState(commerceId,state);

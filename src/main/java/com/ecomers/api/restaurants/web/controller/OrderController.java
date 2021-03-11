@@ -63,6 +63,23 @@ public class OrderController {
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
+
+    //......................................................................................
+    @ApiOperation("Search a order by ID and courier")
+    @GetMapping("/courier/{id}/{courierId}")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "OK"),
+            @ApiResponse(code = 404, message = "Order not found"),
+    })
+    public ResponseEntity<Order> getOrderByIdAndCourier(@ApiParam(value = "The id of the order and courier", required = true, example = "7,1")
+                                                       @PathVariable("id") Integer id,
+                                                       @PathVariable("courierId") Integer courierId) {
+        return service.getOrderByIdAndCourier(id,courierId)
+                .map(product ->  new ResponseEntity<>(product, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+
     @GetMapping("/user/state/{userId}/{state}")
     @ApiOperation("Get all orders by user")
     @ApiResponse(code = 200, message = "OK")

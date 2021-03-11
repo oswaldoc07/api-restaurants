@@ -13,6 +13,7 @@ public interface OrderRepository {
     List<Order> getAll();
     Optional<Order> getOrderById(int id);
     Optional<Order> getOrderByIdAndClient(int id,int clientId);
+    Optional<Order> getOrderByIdAndCourier(int id,int courierId);
     Optional<List<Order>>getAllByCommerceAndState(int commerceId,String state);
     Optional<List<Order>>getAllByCourierAndState(int courierId,String state);
     Optional<List<Order>> getAllByUser(Integer userId);

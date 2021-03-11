@@ -41,6 +41,12 @@ public class OrdenRepository implements OrderRepository {
 
     }
 
+    @Override
+    public Optional<Order> getOrderByIdAndCourier(int id,int courierId) {
+        return crudRepository.findByIdAndMensajeroId(id,courierId).map(orden -> mapper.toOrder(orden));
+
+    }
+
 
     @Override
     public Optional<List<Order>> getAllByCommerceAndState(int commerceId,String state) {
