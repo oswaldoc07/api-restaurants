@@ -6,10 +6,10 @@ import java.io.Serializable;
 
 @Embeddable
 public class OrdenProductoPK implements Serializable {
-    @Column(name = "id_orden")
+    @Column(name = "id_orden",updatable = false)
     private Integer idOrden;
 
-    @Column(name = "id_producto")
+    @Column(name = "id_producto",updatable = false)
     private Integer idProducto;
 
     public Integer getIdOrden() {

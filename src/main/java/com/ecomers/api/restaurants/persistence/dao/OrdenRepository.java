@@ -5,6 +5,7 @@ import com.ecomers.api.restaurants.domain.dto.Order;
 import com.ecomers.api.restaurants.domain.repository.OrderRepository;
 import com.ecomers.api.restaurants.persistence.crud.OrdenCrudRepository;
 import com.ecomers.api.restaurants.persistence.entity.Orden;
+import com.ecomers.api.restaurants.persistence.entity.OrdenProducto;
 import com.ecomers.api.restaurants.persistence.mapper.OrderMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -82,18 +83,15 @@ public class OrdenRepository implements OrderRepository {
 
     @Override
     public Optional<Order> update(Order changes) {
-       /* Orden entity=  crudRepository.findById(changes.getId()).map(orden->{
-            orden.setEstado(changes.getState());
-            orden.setComentarioCliente(changes.getCustomerComment());
-            orden.setComentarioComercio(changes.getCommerceComment());
-            orden.setComentarioMensajero(changes.getCourierComment());
-            orden.setFechaEstimada(changes.getEstimatedDate());
-            orden.setFechaEntrega(changes.getDeliveredDate());
-            orden.setIdMensajero(changes.getIdCourier());
-            return orden;
-        }).get();*/
+      Orden entity=  crudRepository.findById(changes.getId()).map(orden->{
+          List<OrdenProducto> ordenProductos=  orden.getOrdenProductos();
+          Orden ordenToSave = mapper.toOrden(changes);
+          ordenToSave.setOrdenProductos(ordenProductos);
+          return ordenToSave;
+        }).get();
+        return Optional.of(mapper.toOrder(crudRepository.save(entity)));
 
-        return Optional.of(mapper.toOrder(crudRepository.save(mapper.toOrden(changes))));
+        //return Optional.of(mapper.toOrder(crudRepository.save(mapper.toOrden(changes))));
 
     }
 

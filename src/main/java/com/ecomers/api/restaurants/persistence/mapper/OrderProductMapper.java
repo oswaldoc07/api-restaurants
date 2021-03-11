@@ -21,8 +21,6 @@ public interface OrderProductMapper {
             @Mapping(source = "cantidad", target = "quantity"),
             @Mapping(source = "subtotal", target = "subtotal")
 
-
-
     })
     OrderProduct toOrderProduct(OrdenProducto ordenProducto);
 
