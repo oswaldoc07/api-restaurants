@@ -49,7 +49,7 @@ public class ComercioRepository implements CommerceRepository {
 
     @Override
     public Optional<Commerce> getByEmail(String email) {
-        return crudRepository.findByUsuarioCorreo(email).map(commerce -> mapper.toCommerce(commerce));
+        return crudRepository.findByUsuarioCorreo(email).map(comercio -> mapper.toCommerce(comercio));
         /*Commerce dto= crudRepository.findByCorreo(email).map(commerce -> mapper.toCommerce(commerce)).get();
         return Optional. of(dto);*/
     }

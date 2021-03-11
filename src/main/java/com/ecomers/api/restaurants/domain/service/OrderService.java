@@ -45,6 +45,11 @@ public class OrderService {
         return repository.getAllByCommerceAndState(commerceId,state);
     }
 
+    public Optional<List<Order>> getAllByCourierAndState(Integer courierId, String state) {
+
+        return repository.getAllByCourierAndState(courierId,state);
+    }
+
     public Optional<List<Order>> getAllByUser(int userId) {
         return repository.getAllByUser(userId);
     }

@@ -52,16 +52,18 @@ public class Orden {
     @Column(name = "ubicacion_GPS")
     private String ubicacionGPS;
 
-    @Column(name = "id_mensajero")
-    private Integer idMensajero;
-
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name = "id_cliente", insertable = false, updatable = false)
     private Cliente cliente;
 
+
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name = "id_comercio", insertable = false, updatable = false)
     private Comercio comercio;
+
+    @ManyToOne(fetch=FetchType.EAGER)
+    @JoinColumn(name = "id_mensajero", insertable = false, updatable = true)
+    private Mensajero mensajero;
 
     @OneToMany(mappedBy = "orden", cascade = {CascadeType.ALL})
     private List<OrdenProducto> ordenProductos;
@@ -197,12 +199,13 @@ public class Orden {
         this.ubicacionGPS = ubicacionGPS;
     }
 
-    public Integer getIdMensajero() {
-        return idMensajero;
+
+    public Mensajero getMensajero() {
+        return mensajero;
     }
 
-    public void setIdMensajero(Integer idMensajero) {
-        this.idMensajero = idMensajero;
+    public void setMensajero(Mensajero mensajero) {
+        this.mensajero = mensajero;
     }
 
     public String getDireccion() {

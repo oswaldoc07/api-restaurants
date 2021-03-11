@@ -11,18 +11,25 @@ import org.mapstruct.Mappings;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {UserMapper.class})
 public interface CourierMapper {
     @Mappings({
             @Mapping(source = "id", target = "id"),
-            @Mapping(source = "identificacion", target = "identification"),
-            @Mapping(source = "nombre", target = "name"),
-            @Mapping(source = "telefono", target = "phoneNumber")
+            @Mapping(source = "usuario.idUsuario", target = "userId"),
+            @Mapping(source = "usuario.nombre", target = "displayName"),
+            @Mapping(source = "usuario.correo", target = "email"),
+            @Mapping(source = "usuario.celular", target = "phoneNumber"),
+            @Mapping(source = "usuario.imagen", target = "photoURL"),
+            @Mapping(source = "usuario.idRol", target = "role"),
+            @Mapping(source = "tipoVehiculo", target = "vehicleType"),
+
+
     })
     Courier toCourier(Mensajero entity);
     List<Courier> toCouriers(List<Mensajero> entities);
 
     @InheritInverseConfiguration
-    @Mapping(target = "idComercio", ignore = true)
+    @Mapping(target = "ordenes", ignore = true)
+        //@Mapping(target = "usuario", ignore = true)
     Mensajero toMensajero(Courier dto);
 }

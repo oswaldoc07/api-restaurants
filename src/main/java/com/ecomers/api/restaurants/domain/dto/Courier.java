@@ -1,10 +1,10 @@
 package com.ecomers.api.restaurants.domain.dto;
 
-public class Courier {
+import java.util.List;
+
+public class Courier extends User{
     private Integer id;
-    private String identification;
-    private String name;
-    private String phoneNumber;
+    private String vehicleType;
 
     public Integer getId() {
         return id;
@@ -14,27 +14,12 @@ public class Courier {
         this.id = id;
     }
 
-    public String getIdentification() {
-        return identification;
+    public String getVehicleType() {
+        return vehicleType;
     }
 
-    public void setIdentification(String identification) {
-        this.identification = identification;
+    public void setVehicleType(String vehicleType) {
+        this.vehicleType = vehicleType;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
 }

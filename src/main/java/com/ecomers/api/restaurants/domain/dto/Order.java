@@ -19,7 +19,7 @@ public class Order {
     private List<OrderProduct> cartItem;
     private String desRejected;
     private String ubicationGPS;
-    private Integer idCourier;
+    private Courier courier;
     private String address;
     private PaymentMethod paymentMethod;
     private Double cashAmount;
@@ -147,13 +147,6 @@ public class Order {
         this.ubicationGPS = ubicationGPS;
     }
 
-    public Integer getIdCourier() {
-        return idCourier;
-    }
-
-    public void setIdCourier(Integer idCourier) {
-        this.idCourier = idCourier;
-    }
 
     public PaymentMethod getPaymentMethod() {
         return paymentMethod;
@@ -185,5 +178,13 @@ public class Order {
 
     public void setDeliveryTime(Double deliveryTime) {
         this.deliveryTime = deliveryTime;
+    }
+
+    public Courier getCourier() {
+        return courier;
+    }
+
+    public void setCourier(Courier courier) {
+        this.courier = courier;
     }
 }

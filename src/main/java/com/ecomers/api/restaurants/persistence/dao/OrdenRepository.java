@@ -48,6 +48,11 @@ public class OrdenRepository implements OrderRepository {
         return entities.map(orders -> mapper.toOrders(orders));
     }
 
+    @Override
+    public Optional<List<Order>> getAllByCourierAndState(int courierId,String state) {
+        Optional<List<Orden>> entities = crudRepository.findByMensajeroIdAndEstado(courierId,state);
+        return entities.map(orders -> mapper.toOrders(orders));
+    }
     public Optional<List<Order>> getAllTodayByCommerceAndState(int commerceId, String state) {
         Date date = new Date();
         Optional<List<Orden>> entities = crudRepository.findByIdComercioAndEstado(commerceId,state);
@@ -71,7 +76,7 @@ public class OrdenRepository implements OrderRepository {
 
     @Override
     public Optional<Order> update(Order changes) {
-        Orden entity=  crudRepository.findById(changes.getId()).map(orden->{
+       /* Orden entity=  crudRepository.findById(changes.getId()).map(orden->{
             orden.setEstado(changes.getState());
             orden.setComentarioCliente(changes.getCustomerComment());
             orden.setComentarioComercio(changes.getCommerceComment());
@@ -80,9 +85,9 @@ public class OrdenRepository implements OrderRepository {
             orden.setFechaEntrega(changes.getDeliveredDate());
             orden.setIdMensajero(changes.getIdCourier());
             return orden;
-        }).get();
+        }).get();*/
 
-        return Optional.of(mapper.toOrder(crudRepository.save(entity)));
+        return Optional.of(mapper.toOrder(crudRepository.save(mapper.toOrden(changes))));
 
     }
 

@@ -31,9 +31,26 @@ public class OrderController {
         return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
     }
 
+
+
     //......................................................................................
-    @ApiOperation("Search a order by ID and user")
-    @GetMapping("/{id}/client/{clientId}")
+    @ApiOperation("Search a order by ID")
+    @GetMapping("/{id}")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "OK"),
+            @ApiResponse(code = 404, message = "Order not found"),
+    })
+    public ResponseEntity<Order> getOrderById(@ApiParam(value = "The id of the id", required = true, example = "7")
+                                                       @PathVariable("id") Integer id) {
+        return service.getOrderById(id)
+                .map(product ->  new ResponseEntity<>(product, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+
+    //......................................................................................
+    @ApiOperation("Search a order by ID and client")
+    @GetMapping("/client/{id}/{clientId}")
     @ApiResponses({
             @ApiResponse(code = 200, message = "OK"),
             @ApiResponse(code = 404, message = "Order not found"),
@@ -46,7 +63,7 @@ public class OrderController {
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @GetMapping("/user/{userId}/state/{state}")
+    @GetMapping("/user/state/{userId}/{state}")
     @ApiOperation("Get all orders by user")
     @ApiResponse(code = 200, message = "OK")
     public ResponseEntity<List<Order>> getAllByUserAndState(@PathVariable("userId") Integer userId,
@@ -56,8 +73,8 @@ public class OrderController {
         ).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @GetMapping("/commerce/{commerceId}/state/{state}")
-    @ApiOperation("Get all orders by user")
+    @GetMapping("/commerce/state/{commerceId}/{state}")
+    @ApiOperation("Get all orders by commerce and state")
     @ApiResponse(code = 200, message = "OK")
     public ResponseEntity<List<Order>> getAllByCommerceAndState(
             @PathVariable("commerceId") Integer commerceId,
@@ -66,6 +83,18 @@ public class OrderController {
                 orders -> new ResponseEntity<>(orders, HttpStatus.OK)
         ).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
+
+    @GetMapping("/courier/state/{courierId}/{state}")
+    @ApiOperation("Get all orders by courier and state")
+    @ApiResponse(code = 200, message = "OK")
+    public ResponseEntity<List<Order>> getAllByCourierAndState(
+            @PathVariable("courierId") Integer commerceId,
+            @PathVariable("state") String state) {
+        return service.getAllByCourierAndState(commerceId,state).map(
+                orders -> new ResponseEntity<>(orders, HttpStatus.OK)
+        ).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
 
     @PostMapping()
     public ResponseEntity<Order> save(@RequestBody Order dto) {

@@ -11,7 +11,8 @@ import org.mapstruct.Mappings;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = {OrderProductMapper.class,ClientMapper.class, PaymentTypeMapper.class})
+@Mapper(componentModel = "spring", uses = {OrderProductMapper.class,ClientMapper.class, PaymentTypeMapper.class,
+        CourierMapper.class,})
 public interface OrderMapper {
 
     @Mappings({
@@ -35,7 +36,7 @@ public interface OrderMapper {
             @Mapping(source = "ordenProductos", target = "cartItem"),
             @Mapping(source = "motivoRechazo", target = "desRejected"),
             @Mapping(source = "ubicacionGPS", target = "ubicationGPS"),
-            @Mapping(source = "idMensajero", target = "idCourier"),
+            @Mapping(source = "mensajero", target = "courier"),
             @Mapping(source = "direccion", target = "address"),
             @Mapping(source = "montoEfectivo", target = "cashAmount"),
             @Mapping(source = "tiempoEnvio", target = "deliveryTime")

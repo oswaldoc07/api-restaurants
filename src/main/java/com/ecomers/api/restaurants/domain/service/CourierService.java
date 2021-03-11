@@ -1,6 +1,7 @@
 package com.ecomers.api.restaurants.domain.service;
 
 import com.ecomers.api.restaurants.domain.dto.Client;
+import com.ecomers.api.restaurants.domain.dto.Commerce;
 import com.ecomers.api.restaurants.domain.dto.Courier;
 import com.ecomers.api.restaurants.domain.repository.CourierRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +28,8 @@ public class CourierService {
         return repository.getCourierById(id);
     }
 
-    public Optional<Courier> getClientByEmailOrPhone(String email,String phone) {
-       return null;
+    public Optional<Courier> getByEmail(String email) {
+        return repository.getByEmail(email);
     }
 
     public Optional<Courier>  save(Courier dto) {

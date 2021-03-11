@@ -1,6 +1,7 @@
 package com.ecomers.api.restaurants.web.controller;
 
 import com.ecomers.api.restaurants.domain.dto.Client;
+import com.ecomers.api.restaurants.domain.dto.Commerce;
 import com.ecomers.api.restaurants.domain.dto.Courier;
 import com.ecomers.api.restaurants.domain.service.ClientService;
 import com.ecomers.api.restaurants.domain.service.CourierService;
@@ -39,6 +40,14 @@ public class CourierController {
             required = true, example = "7") @PathVariable("commerceId") int commerceId) {
         return service.getAllByCommerce(commerceId)
                 .map(couriers -> new ResponseEntity<>(couriers, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    //......................................................................................
+    @GetMapping("/email/{email}")
+    public ResponseEntity<Courier> getByEmail(@PathVariable("email") String email) {
+        return service.getByEmail(email)
+                .map(commerce -> new ResponseEntity<>(commerce, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 

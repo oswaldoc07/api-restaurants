@@ -1,25 +1,30 @@
 package com.ecomers.api.restaurants.persistence.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "mensajero")
 public class Mensajero {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_mensajero")
     private Integer id;
 
-    private String identificacion;
+    @OneToMany(mappedBy = "mensajero")
+    private List<Orden> ordenes;
 
-    private String nombre;
+    @ManyToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "id_usuario")
+    private Usuario usuario;
 
-    private String telefono;
+    @Column(name = "tipo_vehiculo")
+    private String tipoVehiculo;
 
     @Column(name = "id_comercio")
     private Integer idComercio;
-
 
     public Integer getId() {
         return id;
@@ -29,35 +34,28 @@ public class Mensajero {
         this.id = id;
     }
 
-    public String getIdentificacion() {
-        return identificacion;
+
+    public List<Orden> getOrdenes() {
+        return ordenes;
     }
 
-    public void setIdentificacion(String identificacion) {
-        this.identificacion = identificacion;
+    public void setOrdenes(List<Orden> ordenes) {
+        this.ordenes = ordenes;
     }
 
-    public String getNombre() {
-        return nombre;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
-    public String getTelefono() {
-        return telefono;
+    public String getTipoVehiculo() {
+        return tipoVehiculo;
     }
 
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
-    public Integer getIdComercio() {
-        return idComercio;
-    }
-
-    public void setIdComercio(Integer idComercio) {
-        this.idComercio = idComercio;
+    public void setTipoVehiculo(String tipoVehiculo) {
+        this.tipoVehiculo = tipoVehiculo;
     }
 }

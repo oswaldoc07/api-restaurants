@@ -1,6 +1,7 @@
 package com.ecomers.api.restaurants.persistence.dao;
 
 import com.ecomers.api.restaurants.domain.dto.Client;
+import com.ecomers.api.restaurants.domain.dto.Commerce;
 import com.ecomers.api.restaurants.domain.dto.Courier;
 import com.ecomers.api.restaurants.domain.repository.CourierRepository;
 import com.ecomers.api.restaurants.persistence.crud.ClienteCrudRepository;
@@ -37,6 +38,13 @@ public class MensajeroRepositoy  implements CourierRepository {
     public Optional<Courier> getCourierById(int id) {
         return crudRepository.findById(id).map(entity -> mapper.toCourier(entity));
 
+    }
+
+    @Override
+    public Optional<Courier> getByEmail(String email) {
+        return crudRepository.findByUsuarioCorreo(email).map(mensajero -> mapper.toCourier(mensajero));
+        /*Commerce dto= crudRepository.findByCorreo(email).map(commerce -> mapper.toCommerce(commerce)).get();
+        return Optional. of(dto);*/
     }
 
     @Override
