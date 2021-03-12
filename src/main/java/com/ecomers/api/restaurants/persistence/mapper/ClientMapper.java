@@ -20,7 +20,8 @@ public interface ClientMapper {
             @Mapping(source = "usuario.correo", target = "email"),
             @Mapping(source = "usuario.celular", target = "phoneNumber"),
             @Mapping(source = "usuario.imagen", target = "photoURL"),
-            @Mapping(source = "usuario.idRol", target = "role")
+            @Mapping(source = "usuario.idRol", target = "role"),
+            @Mapping(source = "usuario.activo", target = "active")
     })
     Client toClient(Cliente entity);
     List<Client> toClients(List<Cliente> entities);

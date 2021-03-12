@@ -23,10 +23,7 @@ public interface CourierMapper {
             @Mapping(source = "usuario.idRol", target = "role"),
             @Mapping(source = "tipoVehiculo", target = "vehicleType"),
             @Mapping(source = "placa", target = "licensePlate"),
-            @Mapping(source = "usuario.activo", target = "active"),
-
-
-
+            @Mapping(source = "usuario.activo", target = "active")
     })
     Courier toCourier(Mensajero entity);
     List<Courier> toCouriers(List<Mensajero> entities);
