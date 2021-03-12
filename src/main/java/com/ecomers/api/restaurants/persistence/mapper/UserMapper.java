@@ -19,7 +19,8 @@ public interface UserMapper {
             @Mapping(source = "correo", target = "email"),
             @Mapping(source = "celular", target = "phoneNumber"),
             @Mapping(source = "imagen", target = "photoURL"),
-            @Mapping(source = "idRol", target = "role")
+            @Mapping(source = "idRol", target = "role"),
+            @Mapping(source = "activo", target = "active")
 
     })
     User toUser(Usuario entity);
