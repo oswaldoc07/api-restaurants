@@ -22,6 +22,8 @@ public interface CourierMapper {
             @Mapping(source = "usuario.imagen", target = "photoURL"),
             @Mapping(source = "usuario.idRol", target = "role"),
             @Mapping(source = "tipoVehiculo", target = "vehicleType"),
+            @Mapping(source = "placa", target = "licensePlate")
+
 
 
     })
@@ -30,6 +32,7 @@ public interface CourierMapper {
 
     @InheritInverseConfiguration
     @Mapping(target = "ordenes", ignore = true)
+    @Mapping(target = "idComercio", ignore = true)
         //@Mapping(target = "usuario", ignore = true)
     Mensajero toMensajero(Courier dto);
 }

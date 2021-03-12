@@ -20,6 +20,8 @@ public class Mensajero {
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
 
+    private String placa;
+
     @Column(name = "tipo_vehiculo")
     private String tipoVehiculo;
 
@@ -57,5 +59,22 @@ public class Mensajero {
 
     public void setTipoVehiculo(String tipoVehiculo) {
         this.tipoVehiculo = tipoVehiculo;
+    }
+
+
+    public String getPlaca() {
+        return placa;
+    }
+
+    public void setPlaca(String placa) {
+        this.placa = placa;
+    }
+
+    public Integer getIdComercio() {
+        return idComercio;
+    }
+
+    public void setIdComercio(Integer idComercio) {
+        this.idComercio = idComercio;
     }
 }
