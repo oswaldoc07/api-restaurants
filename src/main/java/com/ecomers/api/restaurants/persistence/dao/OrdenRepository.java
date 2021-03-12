@@ -51,18 +51,13 @@ public class OrdenRepository implements OrderRepository {
 
     @Override
     public Optional<List<Order>> getAllByCommerceAndState(int commerceId,String state) {
-        Optional<List<Orden>> entities = crudRepository.findByIdComercioAndEstado(commerceId,state);
+        Optional<List<Orden>> entities = crudRepository.findByIdComercioAndEstadoOrderByFechaIngresoDesc(commerceId,state);
         return entities.map(orders -> mapper.toOrders(orders));
     }
 
     @Override
     public Optional<List<Order>> getAllByCourierAndState(int courierId,String state) {
         Optional<List<Orden>> entities = crudRepository.findByMensajeroIdAndEstado(courierId,state);
-        return entities.map(orders -> mapper.toOrders(orders));
-    }
-    public Optional<List<Order>> getAllTodayByCommerceAndState(int commerceId, String state) {
-        Date date = new Date();
-        Optional<List<Orden>> entities = crudRepository.findByIdComercioAndEstado(commerceId,state);
         return entities.map(orders -> mapper.toOrders(orders));
     }
 
