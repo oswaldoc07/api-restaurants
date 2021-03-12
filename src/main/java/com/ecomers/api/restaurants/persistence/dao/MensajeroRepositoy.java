@@ -3,12 +3,11 @@ package com.ecomers.api.restaurants.persistence.dao;
 import com.ecomers.api.restaurants.domain.dto.Client;
 import com.ecomers.api.restaurants.domain.dto.Commerce;
 import com.ecomers.api.restaurants.domain.dto.Courier;
+import com.ecomers.api.restaurants.domain.dto.User;
 import com.ecomers.api.restaurants.domain.repository.CourierRepository;
 import com.ecomers.api.restaurants.persistence.crud.ClienteCrudRepository;
 import com.ecomers.api.restaurants.persistence.crud.MensajeroCrudRepository;
-import com.ecomers.api.restaurants.persistence.entity.Cliente;
-import com.ecomers.api.restaurants.persistence.entity.Mensajero;
-import com.ecomers.api.restaurants.persistence.entity.Producto;
+import com.ecomers.api.restaurants.persistence.entity.*;
 import com.ecomers.api.restaurants.persistence.mapper.ClientMapper;
 import com.ecomers.api.restaurants.persistence.mapper.CourierMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,7 +61,20 @@ public class MensajeroRepositoy  implements CourierRepository {
 
     @Override
     public Optional<Courier>  update(Courier changes) {
-        return Optional.empty();
+        /*Mensajero entity=  crudRepository.findById(changes.getId()).map(mensajero->{
+
+           mensajero.setPlaca(changes.getLicensePlate());
+           mensajero.setTipoVehiculo(changes.getVehicleType());
+           mensajero.getUsuario().setNombre(changes.getDisplayName());
+           mensajero.getUsuario().setIdRol(changes.getRole());
+           mensajero.getUsuario().setActivo(changes.getActive());
+           mensajero.getUsuario().setCelular(changes.getPhoneNumber());
+           mensajero.getUsuario().setImagen(changes.getPhotoURL());
+          return  mensajero
+        }).get();*/
+
+        return Optional.of(mapper.toCourier(crudRepository.save(mapper.toMensajero(changes))));
+
     }
 
     @Override

@@ -22,7 +22,8 @@ public interface CourierMapper {
             @Mapping(source = "usuario.imagen", target = "photoURL"),
             @Mapping(source = "usuario.idRol", target = "role"),
             @Mapping(source = "tipoVehiculo", target = "vehicleType"),
-            @Mapping(source = "placa", target = "licensePlate")
+            @Mapping(source = "placa", target = "licensePlate"),
+            @Mapping(source = "usuario.activo", target = "active"),
 
 
 

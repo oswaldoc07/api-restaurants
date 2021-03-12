@@ -7,6 +7,7 @@ public class User {
     private String photoURL;
     private String phoneNumber;
     private String role;
+    private Boolean active;
 
 
 
@@ -56,5 +57,13 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 }

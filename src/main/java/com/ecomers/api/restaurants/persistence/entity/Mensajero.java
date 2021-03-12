@@ -5,7 +5,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "mensajero")
-public class Mensajero {
+public class Mensajero extends  Usuario{
 
 
     @Id
