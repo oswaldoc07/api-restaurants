@@ -21,9 +21,10 @@ public interface CourierMapper {
             @Mapping(source = "usuario.celular", target = "phoneNumber"),
             @Mapping(source = "usuario.imagen", target = "photoURL"),
             @Mapping(source = "usuario.idRol", target = "role"),
+            @Mapping(source = "usuario.activo", target = "active"),
             @Mapping(source = "tipoVehiculo", target = "vehicleType"),
-            @Mapping(source = "placa", target = "licensePlate"),
-            @Mapping(source = "usuario.activo", target = "active")
+            @Mapping(source = "placa", target = "licensePlate")
+
     })
     Courier toCourier(Mensajero entity);
     List<Courier> toCouriers(List<Mensajero> entities);
