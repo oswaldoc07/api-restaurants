@@ -5,6 +5,7 @@ public class Courier extends User{
     private Integer id;
     private String vehicleType;
     private String licensePlate;
+    private Integer commerceId;
 
 
     public Integer getId() {
@@ -29,5 +30,13 @@ public class Courier extends User{
 
     public void setLicensePlate(String licensePlate) {
         this.licensePlate = licensePlate;
+    }
+
+    public Integer getCommerceId() {
+        return commerceId;
+    }
+
+    public void setCommerceId(Integer commerceId) {
+        this.commerceId = commerceId;
     }
 }
