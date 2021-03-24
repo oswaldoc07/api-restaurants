@@ -42,8 +42,6 @@ public class MensajeroRepositoy  implements CourierRepository {
     @Override
     public Optional<Courier> getByEmail(String email) {
         return crudRepository.findByUsuarioCorreo(email).map(mensajero -> mapper.toCourier(mensajero));
-        /*Commerce dto= crudRepository.findByCorreo(email).map(commerce -> mapper.toCommerce(commerce)).get();
-        return Optional. of(dto);*/
     }
 
     @Override
