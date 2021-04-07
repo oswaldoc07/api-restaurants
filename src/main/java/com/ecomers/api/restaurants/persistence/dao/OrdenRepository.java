@@ -10,6 +10,7 @@ import com.ecomers.api.restaurants.persistence.mapper.OrderMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -45,19 +46,20 @@ public class OrdenRepository implements OrderRepository {
     @Override
     public Optional<Order> getOrderByIdAndCourier(int id,int courierId) {
         return crudRepository.findByIdAndMensajeroId(id,courierId).map(orden -> mapper.toOrder(orden));
-
     }
 
 
     @Override
-    public Optional<List<Order>> getAllByCommerceAndState(int commerceId,String state) {
-        Optional<List<Orden>> entities = crudRepository.findByIdComercioAndEstadoOrderByFechaIngresoDesc(commerceId,state);
+    public Optional<List<Order>> getAllByCommerceAndState(int commerceId, String state, LocalDateTime startDate,
+                                                          LocalDateTime endDate) {
+        Optional<List<Orden>> entities = crudRepository.getAllByCommerceAndState( commerceId,  state,  startDate,endDate);
         return entities.map(orders -> mapper.toOrders(orders));
     }
 
     @Override
-    public Optional<List<Order>> getAllByCourierAndState(int courierId,String state) {
-        Optional<List<Orden>> entities = crudRepository.findByMensajeroIdAndEstadoOrderByFechaIngresoDesc(courierId,state);
+    public Optional<List<Order>> getAllByCourierAndState(int courierId,String state,LocalDateTime startDate,
+                                                         LocalDateTime endDate) {
+        Optional<List<Orden>> entities = crudRepository.getAllByCourierAndState(courierId,state, startDate,endDate);
         return entities.map(orders -> mapper.toOrders(orders));
     }
 

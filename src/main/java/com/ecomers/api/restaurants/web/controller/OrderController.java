@@ -10,10 +10,12 @@ import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
@@ -28,6 +30,7 @@ public class OrderController {
     @ApiOperation("Get all orders")
     @ApiResponse(code = 200, message = "OK")
     public ResponseEntity<List<Order>> getAll() {
+
         return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
     }
 
@@ -90,24 +93,28 @@ public class OrderController {
         ).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @GetMapping("/commerce/state/{commerceId}/{state}")
+    @GetMapping("/commerce/state/{commerceId}/{state}/{startDate}/{endDate}")
     @ApiOperation("Get all orders by commerce and state")
     @ApiResponse(code = 200, message = "OK")
     public ResponseEntity<List<Order>> getAllByCommerceAndState(
-            @PathVariable("commerceId") Integer commerceId,
-            @PathVariable("state") String state) {
-        return service.getAllByCommerceAndState(commerceId,state).map(
+            @PathVariable("commerceId") Integer commerceId, @PathVariable("state") String state
+    , @PathVariable("startDate") @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss") LocalDateTime startDate
+            ,@PathVariable("endDate") @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss") LocalDateTime endDate
+    ) {
+        return service.getAllByCommerceAndState(commerceId, state, startDate,endDate).map(
                 orders -> new ResponseEntity<>(orders, HttpStatus.OK)
         ).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @GetMapping("/courier/state/{courierId}/{state}")
+    @GetMapping("/courier/state/{courierId}/{state}/{startDate}/{endDate}")
     @ApiOperation("Get all orders by courier and state")
     @ApiResponse(code = 200, message = "OK")
     public ResponseEntity<List<Order>> getAllByCourierAndState(
             @PathVariable("courierId") Integer commerceId,
-            @PathVariable("state") String state) {
-        return service.getAllByCourierAndState(commerceId,state).map(
+            @PathVariable("state") String state,
+            @PathVariable("startDate") @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss") LocalDateTime startDate,
+            @PathVariable("endDate") @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss") LocalDateTime endDate) {
+        return service.getAllByCourierAndState(commerceId,state,startDate,endDate).map(
                 orders -> new ResponseEntity<>(orders, HttpStatus.OK)
         ).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }

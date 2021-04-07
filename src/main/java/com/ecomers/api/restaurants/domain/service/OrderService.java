@@ -9,6 +9,7 @@ import com.ecomers.api.restaurants.persistence.entity.Orden;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,14 +45,16 @@ public class OrderService {
     public Optional<Order> getOrderByIdAndCourier(int id,int courierId) {
         return repository.getOrderByIdAndCourier(id, courierId);
     }
-    public Optional<List<Order>> getAllByCommerceAndState(Integer commerceId, String state) {
+    public Optional<List<Order>> getAllByCommerceAndState(int commerceId, String state, LocalDateTime startDate,
+                                                          LocalDateTime endDate) {
 
-        return repository.getAllByCommerceAndState(commerceId,state);
+        return repository.getAllByCommerceAndState(commerceId,state,startDate,endDate);
     }
 
-    public Optional<List<Order>> getAllByCourierAndState(Integer courierId, String state) {
+    public Optional<List<Order>> getAllByCourierAndState(Integer courierId, String state, LocalDateTime startDate,
+                                                         LocalDateTime endDate) {
 
-        return repository.getAllByCourierAndState(courierId,state);
+        return repository.getAllByCourierAndState(courierId,state,startDate,endDate);
     }
 
     public Optional<List<Order>> getAllByUser(int userId) {
