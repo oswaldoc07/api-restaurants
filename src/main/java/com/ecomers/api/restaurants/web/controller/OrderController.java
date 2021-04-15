@@ -122,7 +122,6 @@ public class OrderController {
 
     @PostMapping()
     public ResponseEntity<Order> save(@RequestBody Order dto) {
-        dto.setIncludedDate(LocalDateTime.now());
         return service.save(dto)
                 .map(client ->  new ResponseEntity<>(client, HttpStatus.CREATED))
                 .orElse(new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR));
