@@ -4,6 +4,7 @@ public class ProductCategory {
     private Integer id;
     private String description;
     private Boolean active;
+    private String iconName;
 
     public Integer getId() {
         return id;
@@ -27,5 +28,13 @@ public class ProductCategory {
 
     public void setActive(Boolean active) {
         this.active = active;
+    }
+
+    public String getIconName() {
+        return iconName;
+    }
+
+    public void setIconName(String iconName) {
+        this.iconName = iconName;
     }
 }

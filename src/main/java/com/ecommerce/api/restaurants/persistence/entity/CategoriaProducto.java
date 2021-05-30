@@ -21,6 +21,8 @@ public class CategoriaProducto {
     @ManyToMany(mappedBy = "categoriaProductos",fetch=FetchType.LAZY)
     private List<Comercio> comercios;
 
+    @Column(name = "nombre_icono")
+    private String nombreIcono;
 
     public Integer getId() {
         return id;
@@ -59,5 +61,13 @@ public class CategoriaProducto {
 
     public void setComercios(List<Comercio> comercios) {
         this.comercios = comercios;
+    }
+
+    public String getNombreIcono() {
+        return nombreIcono;
+    }
+
+    public void setNombreIcono(String nombreIcono) {
+        this.nombreIcono = nombreIcono;
     }
 }
