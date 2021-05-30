@@ -90,7 +90,7 @@ public class OrderService {
             text = this.parameterRepository.findByCode("API.MESSAGE.TEXT.CURIER").get().getValor()+order.getId();
 
         }else if ("REC".equals(order.getState())){
-            number= this.clientService.getClientById(order.getClient().getId()).get().getPhoneNumber();
+            number= this.clientService.getClientById(order.getCourier().getId()).get().getPhoneNumber();
             text = this.parameterRepository.findByCode("API.MESSAGE.TEXT.CLIENT.REC").get().getValor()+order.getId();
         }else{
             return;
