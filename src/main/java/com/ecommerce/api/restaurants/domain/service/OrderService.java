@@ -28,6 +28,9 @@ public class OrderService {
     @Autowired
     private ClientService clientService;
 
+    @Autowired
+    private CourierService courierService;
+
     public List<Order> getAll() {
 
         return repository.getAll();
@@ -62,19 +65,41 @@ public class OrderService {
 
     public Optional<Order>  save(Order dto) {
         Order order=  this.repository.save(dto).map(orderSaved->{
-            Message message = new Message();
-            String text = this.parameterRepository.findByCode("API.MESSAGE.TEXT.CLIENT").get().getValor();
-            message.setMessage(text+orderSaved.getId());
-            String number = this.clientService.getClientById(orderSaved.getClient().getId()).get().getPhoneNumber();
-            message.setNumber(number);
-            this.messageService.sentMessage(message);
+
             return orderSaved;
         }).get();
         return Optional.of(order);
     }
 
     public Optional<Order>  update(Order dto) {
-        return repository.update(dto);
+        Order order= repository.update(dto).map(orderUpdated->{
+
+            return orderUpdated;
+        }).get();
+        return Optional.of(order);
+    }
+    private void sentMessage(Order order){
+        String number =null;
+        String text=null;
+        if ("ING".equals(order.getState())){
+            number= this.clientService.getClientById(order.getClient().getId()).get().getPhoneNumber();
+            text = this.parameterRepository.findByCode("API.MESSAGE.TEXT.CLIENT.ING").get().getValor()+order.getId();
+
+        }else if ("RUT".equals(order.getState())){
+            number= this.courierService.getCourierById(order.getClient().getId()).get().getPhoneNumber();
+            text = this.parameterRepository.findByCode("API.MESSAGE.TEXT.CURIER").get().getValor()+order.getId();
+
+        }else if ("RUT".equals(order.getState())){
+            number= this.clientService.getClientById(order.getClient().getId()).get().getPhoneNumber();
+            text = this.parameterRepository.findByCode("API.MESSAGE.TEXT.CLIENT.REC").get().getValor()+order.getId();
+        }else{
+            return;
+        }
+
+        Message message = new Message();
+        message.setNumber(number);
+        message.setMessage(text);
+        this.messageService.sentMessage(message);
     }
 
 }
