@@ -65,7 +65,7 @@ public class OrderService {
 
     public Optional<Order>  save(Order dto) {
         Order order=  this.repository.save(dto).map(orderSaved->{
-            this.sentMessage(dto);
+            this.sentMessage(orderSaved);
             return orderSaved;
         }).get();
         return Optional.of(order);
@@ -73,7 +73,7 @@ public class OrderService {
 
     public Optional<Order>  update(Order dto) {
         Order order= repository.update(dto).map(orderUpdated->{
-            this.sentMessage(dto);
+            this.sentMessage(orderUpdated);
             return orderUpdated;
         }).get();
         return Optional.of(order);
