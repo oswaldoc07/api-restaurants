@@ -23,11 +23,15 @@ public class ClientService {
     }
 
     public Optional<Client> getClientByEmailOrPhone(String email,String phone) {
+
         Optional<Client> dto = repository.getClientByEmail(email);
         if(dto.isPresent()){
             return  dto;
         }else {
-         return repository.getClientByPhone(phone);
+            if(phone!=null){
+                return repository.getClientByPhone(phone);
+            }
+            return Optional.empty();
         }
 
 
