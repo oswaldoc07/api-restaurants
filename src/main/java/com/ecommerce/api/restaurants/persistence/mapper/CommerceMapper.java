@@ -24,7 +24,8 @@ public interface CommerceMapper {
             @Mapping(source = "url", target = "url"),
             @Mapping(source = "descripcion", target = "description"),
             @Mapping(source = "tiposPago", target = "paymentMethods"),
-            @Mapping(source = "usuario.activo", target = "active")
+            @Mapping(source = "usuario.activo", target = "active"),
+            @Mapping(source = "idCategoria", target = "categoryId")
 
 
 

@@ -32,6 +32,18 @@ public class CommerceController {
     }
 
     //......................................................................................
+    @ApiOperation("Get all commerces by category")
+    @GetMapping("category/{categoryId}")
+    public ResponseEntity<List<Commerce>> getAllbyCategory(
+            @ApiParam(value = "The id of the category", required = true, example = "2")
+            @PathVariable("categoryId") int categoryId) {
+        return service.getAllByCategory(categoryId)
+                .map(commerces -> new ResponseEntity<>(commerces, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+
+    //......................................................................................
     @GetMapping("/{id}")
     @ApiOperation("Search a commerce with an ID")
     @ApiResponses({

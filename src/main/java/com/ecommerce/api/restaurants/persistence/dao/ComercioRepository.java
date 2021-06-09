@@ -28,6 +28,10 @@ public class ComercioRepository implements CommerceRepository {
         return Optional.of(mapper.toCommerces(entities));
     }
 
+    public Optional<List<Commerce>> getAllByCategory(int category) {
+     List<Comercio> entities =  crudRepository.findByIdCategoria(category);
+        return Optional.of(mapper.toCommerces(entities));
+    }
     @Override
     public Optional<Commerce> getById(int id) {
         return crudRepository.findById(id).map(commerce -> mapper.toCommerce(commerce));

@@ -9,6 +9,7 @@ import com.ecommerce.api.restaurants.domain.dto.Commerce;
 public interface CommerceRepository{
 
     Optional<List<Commerce>> getAll();
+    Optional<List<Commerce>> getAllByCategory(int category);
     Optional<Commerce> getById(int id);
     Optional<Commerce> getByUrl(String url);
     Optional<Commerce> getByEmail(String email);

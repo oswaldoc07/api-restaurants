@@ -41,23 +41,7 @@ public class JwtFilterRequest  extends OncePerRequestFilter {
         response.setHeader("Access-Control-Allow-Origin", "*");
         response.setHeader("Access-Control-Allow-Headers", "Content-Type,Lang,append,delete,entries,foreach,get,has,keys,set,values,Authorization");
         response.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
-        /*response.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Credentials,Authorization,Access-Control-Allow-Origin,Access-Control-Allow-Headers, Origin,Accept," +
-                " X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
 
-        response.setHeader("Access-Control-Allow-Credentials", "true");
-        response.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");*/
-     //   response.addHeader("Access-Control-Expose-Headers", "Content-Length,Content-Language,Content-Type,Authorization");
-/*
-        response.setHeader("Access-Control-Allow-Methods", "POST, PUT, GET, OPTIONS, DELETE");
-       // response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With,observe");
-       // response.setHeader("Access-Control-Max-Age", "3600");
-       response.setHeader("Access-Control-Allow-Credentials", "true");
-       /*
-        response.addHeader("Access-Control-Expose-Headers", "responseType");
-        response.addHeader("Access-Control-Expose-Headers", "observe");
-
-        response.addHeader("Access-Control-Expose-Headers", "");
-        response.addHeader("Access-Control-Expose-Headers", "");*/
         String authorizationHeader = request.getHeader("Authorization");
 
         if(authorizationHeader!=null && authorizationHeader.startsWith("Bearer")){

@@ -40,8 +40,8 @@ public class Comercio{
     )
     private List<CategoriaProducto> categoriaProductos;
 
-
-
+    @Column(name = "id_categoria")
+    private int idCategoria;
 
 
 
@@ -125,5 +125,13 @@ public class Comercio{
 
     public void setCategoriaProductos(List<CategoriaProducto> categoriaProductos) {
         this.categoriaProductos = categoriaProductos;
+    }
+
+    public int getIdCategoria() {
+        return idCategoria;
+    }
+
+    public void setIdCategoria(int idCategoria) {
+        this.idCategoria = idCategoria;
     }
 }

@@ -11,6 +11,7 @@ public class Commerce extends User {
     private String url;
     private String description;
     private List<PaymentMethod> paymentMethods;
+    private int categoryId;
 
 
     public Integer getId() {
@@ -53,5 +54,14 @@ public class Commerce extends User {
 
     public void setPaymentMethods(List<PaymentMethod> paymentMethods) {
         this.paymentMethods = paymentMethods;
+    }
+
+
+    public int getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 }

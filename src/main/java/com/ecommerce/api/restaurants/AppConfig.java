@@ -10,6 +10,7 @@ public class AppConfig {
 
 	@Bean("clienteRest")
 	public RestTemplate registrarRestTemplate() {
+
 		return new RestTemplate();
 	}
 }

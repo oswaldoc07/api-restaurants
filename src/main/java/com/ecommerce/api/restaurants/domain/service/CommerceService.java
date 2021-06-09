@@ -25,7 +25,9 @@ public class CommerceService {
     public Optional<List<Commerce>> getAll() {
         return repository.getAll();
     }
-
+    public Optional<List<Commerce>> getAllByCategory(int category) {
+        return repository.getAllByCategory(category) ;
+    }
     public Optional<Commerce> getById(int id) {
         return repository.getById(id);
     }
