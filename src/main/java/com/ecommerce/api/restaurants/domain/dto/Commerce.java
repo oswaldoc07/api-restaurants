@@ -12,6 +12,7 @@ public class Commerce extends User {
     private String description;
     private List<PaymentMethod> paymentMethods;
     private int categoryId;
+    private String imageBackground;
 
 
     public Integer getId() {
@@ -63,5 +64,13 @@ public class Commerce extends User {
 
     public void setCategoryId(int categoryId) {
         this.categoryId = categoryId;
+    }
+
+    public String getImageBackground() {
+        return imageBackground;
+    }
+
+    public void setImageBackground(String imageBackground) {
+        this.imageBackground = imageBackground;
     }
 }

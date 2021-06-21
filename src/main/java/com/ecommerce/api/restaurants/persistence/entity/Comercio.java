@@ -21,6 +21,8 @@ public class Comercio{
     private String geolocalizacion;
     private String url ;
     private String descripcion;
+    @Column(name = "imagen_fondo")
+    private String imagenFondo;
 
     @OneToMany(mappedBy = "comercio")
     private List<Orden> ordenes;
@@ -133,5 +135,13 @@ public class Comercio{
 
     public void setIdCategoria(int idCategoria) {
         this.idCategoria = idCategoria;
+    }
+
+    public String getImagenFondo() {
+        return imagenFondo;
+    }
+
+    public void setImagenFondo(String imagenFondo) {
+        this.imagenFondo = imagenFondo;
     }
 }
