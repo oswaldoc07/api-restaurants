@@ -1,9 +1,15 @@
 package com.ecommerce.api.restaurants.domain.dto;
 
+import org.springframework.context.ApplicationEvent;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class Order {
+public class Order extends ApplicationEvent {
+    public Order(Object source){
+        super(source);
+
+    }
     private int id;
     private Client Client;
     private Integer commerceId;

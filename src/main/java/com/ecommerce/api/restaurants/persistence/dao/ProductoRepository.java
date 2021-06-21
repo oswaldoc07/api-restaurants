@@ -27,12 +27,13 @@ public class ProductoRepository implements ProductRepository {
     @Override
     public Optional<List<Product>> getAllByCommerce(int commerceId) {
         Optional<List<Producto>> entities = crudRepository.findByIdComercioOrderByNombreAsc(commerceId);
+        //Stream<Producto> entitiesa = entities.get().stream();
         return entities.map(prods -> mapper.toProducts(prods));
     }
 
     @Override
     public Optional<List<Product>> getByCommerceAndCategory(int commerce,int categoryId) {
-        Optional<List<Producto>> entities = crudRepository.findByIdComercioAndIdCategoriaAndPromocionFalseOrderByNombreAsc(commerce,categoryId);
+        Optional<List<Producto>> entities = crudRepository.findByIdComercioAndIdCategoriaOrderByNombreAsc(commerce,categoryId);
         return entities.map(prods -> mapper.toProducts(prods));
         //return Optional.of(mapper.toProducts(productos));
     }
