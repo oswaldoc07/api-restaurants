@@ -1,11 +1,15 @@
 package com.ecommerce.api.restaurants.persistence.dao;
 
 import com.ecommerce.api.restaurants.domain.dto.Commerce;
+import com.ecommerce.api.restaurants.domain.dto.TypeCommerce;
 import com.ecommerce.api.restaurants.domain.repository.CommerceRepository;
 import com.ecommerce.api.restaurants.persistence.crud.ComercioCrudRepository;
+import com.ecommerce.api.restaurants.persistence.crud.TipoComercioCrudRepository;
 import com.ecommerce.api.restaurants.persistence.entity.Comercio;
+import com.ecommerce.api.restaurants.persistence.entity.TipoComercio;
 import com.ecommerce.api.restaurants.persistence.mapper.CommerceMapper;
 
+import com.ecommerce.api.restaurants.persistence.mapper.TypeCommerceMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -19,7 +23,13 @@ public class ComercioRepository implements CommerceRepository {
     private ComercioCrudRepository crudRepository;
 
     @Autowired
+    private TipoComercioCrudRepository tipoCrudRepository;
+
+    @Autowired
     private CommerceMapper mapper;
+
+    @Autowired
+    private TypeCommerceMapper typeCommerceMapper;
 
 
     @Override
@@ -28,9 +38,21 @@ public class ComercioRepository implements CommerceRepository {
         return Optional.of(mapper.toCommerces(entities));
     }
 
+    @Override
+    public Optional<List<TypeCommerce>> getAllTypeCommerce() {
+        List<TipoComercio> entities = (List<TipoComercio>) tipoCrudRepository.findAll();
+        return Optional.of(typeCommerceMapper.toTypesCommerces(entities));
+    }
+
+    @Override
+    public Optional<List<TypeCommerce>> getAllTypeCommerceActive() {
+        List<TipoComercio> entities = (List<TipoComercio>) tipoCrudRepository.findByEstadoTrue();
+        return Optional.of(typeCommerceMapper.toTypesCommerces(entities));
+    }
+
     public Optional<List<Commerce>> getAllByCategory(int category) {
      List<Comercio> entities =  crudRepository.findByIdTipoComercioAndUsuarioActivoTrueOrderByUrl(category);
-        return Optional.of(mapper.toCommerces(entities));
+        return Optional.ofNullable(mapper.toCommerces(entities));
     }
     @Override
     public Optional<Commerce> getById(int id) {

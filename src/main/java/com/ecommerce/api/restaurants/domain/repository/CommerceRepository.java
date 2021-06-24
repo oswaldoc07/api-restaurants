@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.ecommerce.api.restaurants.domain.dto.Commerce;
+import com.ecommerce.api.restaurants.domain.dto.TypeCommerce;
 
 
 public interface CommerceRepository{
@@ -15,6 +16,8 @@ public interface CommerceRepository{
     Optional<Commerce> getByEmail(String email);
     Optional<Commerce>  save(Commerce dto);
     Optional<Commerce>  update(Commerce dto);
+    Optional<List<TypeCommerce>> getAllTypeCommerce();
+    Optional<List<TypeCommerce>> getAllTypeCommerceActive();
     void delete(int id);
 
 

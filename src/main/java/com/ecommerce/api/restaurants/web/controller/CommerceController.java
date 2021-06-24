@@ -2,6 +2,7 @@ package com.ecommerce.api.restaurants.web.controller;
 
 
 import com.ecommerce.api.restaurants.domain.dto.Commerce;
+import com.ecommerce.api.restaurants.domain.dto.TypeCommerce;
 import com.ecommerce.api.restaurants.domain.service.CommerceService;
 
 import io.swagger.annotations.ApiOperation;
@@ -83,5 +84,17 @@ public class CommerceController {
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
+    @GetMapping("/types")
+    public ResponseEntity<List<TypeCommerce>> getTypesCommerces() {
+        return service. getAllTypeCommerce()
+                .map(rate -> new ResponseEntity<>(rate, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+    @GetMapping("/typesActive")
+    public ResponseEntity<List<TypeCommerce>> getTypesCommercesActive() {
+        return service. getAllTypeCommerceActive()
+                .map(rate -> new ResponseEntity<>(rate, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
 
 }
