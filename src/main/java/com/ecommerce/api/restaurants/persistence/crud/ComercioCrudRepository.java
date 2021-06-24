@@ -11,6 +11,6 @@ import java.util.Optional;
 public interface ComercioCrudRepository extends CrudRepository<Comercio,Integer> {
     Optional<Comercio> findByUrl(String url);
     Optional<Comercio> findByUsuarioCorreo(String correo);
-    List<Comercio> findByIdCategoria(int idCategoria);
+    List<Comercio> findByIdTipoComercioAndUsuarioActivoTrueOrderByUrl(int idCategoria);
 
 }

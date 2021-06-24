@@ -42,8 +42,8 @@ public class Comercio{
     )
     private List<CategoriaProducto> categoriaProductos;
 
-    @Column(name = "id_categoria")
-    private int idCategoria;
+    @Column(name = "id_tipo")
+    private int idTipoComercio;
 
 
 
@@ -129,12 +129,12 @@ public class Comercio{
         this.categoriaProductos = categoriaProductos;
     }
 
-    public int getIdCategoria() {
-        return idCategoria;
+    public int getIdTipoComercio() {
+        return idTipoComercio;
     }
 
-    public void setIdCategoria(int idCategoria) {
-        this.idCategoria = idCategoria;
+    public void setIdTipoComercio(int idTipoComercio) {
+        this.idTipoComercio = idTipoComercio;
     }
 
     public String getImagenFondo() {

@@ -29,7 +29,7 @@ public class ComercioRepository implements CommerceRepository {
     }
 
     public Optional<List<Commerce>> getAllByCategory(int category) {
-     List<Comercio> entities =  crudRepository.findByIdCategoria(category);
+     List<Comercio> entities =  crudRepository.findByIdTipoComercioAndUsuarioActivoTrueOrderByUrl(category);
         return Optional.of(mapper.toCommerces(entities));
     }
     @Override
