@@ -45,7 +45,7 @@ public class ComercioRepository implements CommerceRepository {
 
     @Override
     public Optional<List<TypeCommerce>> getAllTypeCommerceActive() {
-        List<TipoComercio> entities = (List<TipoComercio>) tipoCrudRepository.findByEstadoTrue();
+        List<TipoComercio> entities = (List<TipoComercio>) tipoCrudRepository.findByEstadoTrueOrderById();
         return Optional.of(typeCommerceMapper.toTypesCommerces(entities));
     }
 

@@ -9,20 +9,19 @@ public class TipoComercio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_tipo")
-    private Integer idTipo;
+    private Integer id;
 
     private String nombre;
     private String descripcion;
     private Boolean estado;
     private String imagen;
 
-
-    public Integer getIdTipo() {
-        return idTipo;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdTipo(Integer idTipo) {
-        this.idTipo = idTipo;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNombre() {

@@ -14,7 +14,7 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface TypeCommerceMapper {
     @Mappings({
-            @Mapping(source = "idTipo", target = "id"),
+            @Mapping(source = "id", target = "id"),
             @Mapping(source = "nombre", target = "name"),
             @Mapping(source = "descripcion", target = "description"),
             @Mapping(source = "estado", target = "active"),

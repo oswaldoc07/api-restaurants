@@ -8,5 +8,5 @@ import java.util.Optional;
 
 public interface TipoComercioCrudRepository extends CrudRepository<TipoComercio, Integer> {
 
-    List<TipoComercio> findByEstadoTrue();
+    List<TipoComercio> findByEstadoTrueOrderById();
 }
