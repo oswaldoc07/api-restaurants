@@ -14,6 +14,7 @@ public class CategoriaProducto {
 
     private String descripcion;
     private Boolean estado;
+    private Integer orden;
 
     @OneToMany(mappedBy = "categoria")
     private List<Producto> productos;
@@ -69,5 +70,13 @@ public class CategoriaProducto {
 
     public void setNombreIcono(String nombreIcono) {
         this.nombreIcono = nombreIcono;
+    }
+
+    public Integer getOrden() {
+        return orden;
+    }
+
+    public void setOrden(Integer orden) {
+        this.orden = orden;
     }
 }

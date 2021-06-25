@@ -18,7 +18,8 @@ public interface ProductCategoryMapper {
             @Mapping(source = "id", target = "id"),
             @Mapping(source = "descripcion", target = "description"),
             @Mapping(source = "estado", target = "active"),
-            @Mapping(source = "nombreIcono", target = "iconName")
+            @Mapping(source = "nombreIcono", target = "iconName"),
+            @Mapping(source = "orden", target = "order")
     })
     ProductCategory toCategory(CategoriaProducto categoriaProducto);
     List<ProductCategory> toCategories(List<CategoriaProducto> entities);
