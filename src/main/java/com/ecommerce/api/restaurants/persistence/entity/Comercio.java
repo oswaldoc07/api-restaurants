@@ -40,6 +40,7 @@ public class Comercio{
             joinColumns = { @JoinColumn(name = "id_comercio", insertable = false, updatable = false) },
             inverseJoinColumns = { @JoinColumn(name = "id_categoria",insertable = false, updatable = false) }
     )
+    @OrderBy(value="id")
     private List<CategoriaProducto> categoriaProductos;
 
     @Column(name = "id_tipo")
