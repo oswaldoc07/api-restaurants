@@ -45,6 +45,7 @@ public class Comercio{
     @Column(name = "id_tipo")
     private int idTipoComercio;
 
+    private String color;
 
 
     public List<ComercioTipoPago> getTiposPago() {
@@ -143,5 +144,13 @@ public class Comercio{
 
     public void setImagenFondo(String imagenFondo) {
         this.imagenFondo = imagenFondo;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 }
