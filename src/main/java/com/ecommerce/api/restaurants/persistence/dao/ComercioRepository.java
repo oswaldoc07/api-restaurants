@@ -31,7 +31,6 @@ public class ComercioRepository implements CommerceRepository {
     @Autowired
     private TypeCommerceMapper typeCommerceMapper;
 
-
     @Override
     public Optional<List<Commerce>> getAll() {
         List<Comercio> entities = (List<Comercio>) crudRepository.findAll();
