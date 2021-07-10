@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.ecommerce.api.restaurants.domain.dto.Commerce;
+import com.ecommerce.api.restaurants.domain.dto.CommerceCourier;
 import com.ecommerce.api.restaurants.domain.dto.TypeCommerce;
 
 
@@ -19,6 +20,7 @@ public interface CommerceRepository{
     Optional<List<TypeCommerce>> getAllTypeCommerce();
     Optional<List<TypeCommerce>> getAllTypeCommerceActive();
     void delete(int id);
+    boolean addCourier(CommerceCourier dto);
 
 
 }

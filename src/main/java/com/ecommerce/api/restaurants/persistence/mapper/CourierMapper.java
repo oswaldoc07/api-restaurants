@@ -24,7 +24,7 @@ public interface CourierMapper {
             @Mapping(source = "usuario.activo", target = "active"),
             @Mapping(source = "tipoVehiculo", target = "vehicleType"),
             @Mapping(source = "placa", target = "licensePlate"),
-            @Mapping(source = "idComercio",target= "commerceId")
+            @Mapping(source = "abierto", target = "open")
 
     })
     Courier toCourier(Mensajero entity);
@@ -32,6 +32,7 @@ public interface CourierMapper {
 
     @InheritInverseConfiguration
     @Mapping(target = "ordenes", ignore = true)
+    @Mapping(target = "comercios", ignore = true)
 
         //@Mapping(target = "usuario", ignore = true)
     Mensajero toMensajero(Courier dto);

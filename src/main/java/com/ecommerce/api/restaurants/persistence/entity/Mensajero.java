@@ -27,8 +27,10 @@ public class Mensajero{
     @Column(name = "tipo_vehiculo")
     private String tipoVehiculo;
 
-    @Column(name = "id_comercio")
-    private Integer idComercio;
+    @ManyToMany(mappedBy = "mensajeros")
+    private List<Comercio> comercios;
+
+    private Boolean abierto;
 
     public Integer getId() {
         return id;
@@ -72,11 +74,19 @@ public class Mensajero{
         this.placa = placa;
     }
 
-    public Integer getIdComercio() {
-        return idComercio;
+    public List<Comercio> getComercios() {
+        return comercios;
     }
 
-    public void setIdComercio(Integer idComercio) {
-        this.idComercio = idComercio;
+    public void setComercios(List<Comercio> comercios) {
+        this.comercios = comercios;
+    }
+
+    public Boolean getAbierto() {
+        return abierto;
+    }
+
+    public void setAbierto(Boolean abierto) {
+        this.abierto = abierto;
     }
 }

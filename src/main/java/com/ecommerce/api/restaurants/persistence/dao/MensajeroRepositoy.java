@@ -3,12 +3,14 @@ package com.ecommerce.api.restaurants.persistence.dao;
 
 import com.ecommerce.api.restaurants.domain.dto.Courier;
 import com.ecommerce.api.restaurants.domain.repository.CourierRepository;
+import com.ecommerce.api.restaurants.persistence.crud.ComercioCrudRepository;
 import com.ecommerce.api.restaurants.persistence.crud.MensajeroCrudRepository;
+import com.ecommerce.api.restaurants.persistence.entity.Comercio;
 import com.ecommerce.api.restaurants.persistence.entity.Mensajero;
 import com.ecommerce.api.restaurants.persistence.mapper.CourierMapper;
 
 
-
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -24,12 +26,28 @@ public class MensajeroRepositoy  implements CourierRepository {
     private MensajeroCrudRepository crudRepository;
 
     @Autowired
+    private ComercioCrudRepository comercioCrudRepository;
+
+    @Autowired
     private CourierMapper mapper;
 
     @Override
     public  Optional<List<Courier>> getAll() {
         List<Mensajero> entities = (List<Mensajero>) crudRepository.findAll();
         return Optional.of(mapper.toCouriers(entities));
+    }
+
+    @Override
+    public Optional<List<Courier>> getAllByCommerce(int commerceId) {
+    try{
+    Optional<Comercio> comercio = comercioCrudRepository.findById(commerceId);
+    Hibernate.initialize(comercio.get().getMensajeros());
+    List<Mensajero> entities =(comercio.get().getMensajeros());
+    return Optional.ofNullable(mapper.toCouriers(entities));
+    }catch (Exception e){
+        return Optional.empty();
+    }
+
     }
 
     @Override
@@ -43,11 +61,7 @@ public class MensajeroRepositoy  implements CourierRepository {
         return crudRepository.findByUsuarioCorreo(email).map(mensajero -> mapper.toCourier(mensajero));
     }
 
-    @Override
-    public Optional<List<Courier>> getAllByCommerce(int commerceId) {
-        Optional<List<Mensajero>> entities = crudRepository.findByIdComercio(commerceId);
-        return entities.map(mensajeros -> mapper.toCouriers(mensajeros));
-    }
+
 
 
     @Override
