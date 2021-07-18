@@ -50,7 +50,6 @@ public class ClientController {
                 .map(client -> new ResponseEntity<>(client, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
-
     //......................................................................................
     @PostMapping()
     public ResponseEntity<Client> save(@RequestBody Client dto) {
