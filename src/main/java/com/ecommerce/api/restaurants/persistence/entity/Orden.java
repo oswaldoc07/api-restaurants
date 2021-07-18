@@ -81,6 +81,8 @@ public class Orden{
     @Column(name = "tiempo_envio")
     private Double tiempoEnvio;
 
+    @Column(name = "entrega_domicio")
+    private Boolean entregaDomicio;
 
 
     public Integer getId() {
@@ -262,5 +264,13 @@ public class Orden{
 
     public void setComentarioMensajero(String comentarioMensajero) {
         this.comentarioMensajero = comentarioMensajero;
+    }
+
+    public Boolean getEntregaDomicio() {
+        return entregaDomicio;
+    }
+
+    public void setEntregaDomicio(Boolean entregaDomicio) {
+        this.entregaDomicio = entregaDomicio;
     }
 }

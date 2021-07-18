@@ -52,7 +52,7 @@ public class OrderController {
     }
 
 
-    //......................................................................................
+    //CLIENT......................................................................................
     @ApiOperation("Search a order by ID and client")
     @GetMapping("/client/{id}/{clientId}")
     @ApiResponses({
@@ -68,7 +68,31 @@ public class OrderController {
     }
 
 
-    //......................................................................................
+    @GetMapping("/client/state/{clientId}/{state}")
+    @ApiOperation("Get all orders by user")
+    @ApiResponse(code = 200, message = "OK")
+    public ResponseEntity<List<Order>> getAllByClientAndState(@PathVariable("clientId") Integer clientId,
+                                                            @PathVariable("state") String state) {
+        return service.getAllByClientAndState(clientId,state).map(
+                orders -> new ResponseEntity<>(orders, HttpStatus.OK)
+        ).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    //COMMERCE......................................................................................
+    @GetMapping("/commerce/state/{commerceId}/{state}/{startDate}/{endDate}")
+    @ApiOperation("Get all orders by commerce and state")
+    @ApiResponse(code = 200, message = "OK")
+    public ResponseEntity<List<Order>> getAllByCommerceAndState(
+            @PathVariable("commerceId") Integer commerceId, @PathVariable("state") String state
+            , @PathVariable("startDate") @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss") LocalDateTime startDate
+            ,@PathVariable("endDate") @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss") LocalDateTime endDate
+    ) {
+        return service.getAllByCommerceAndState(commerceId, state, startDate,endDate).map(
+                orders -> new ResponseEntity<>(orders, HttpStatus.OK)
+        ).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    //COURIER......................................................................................
     @ApiOperation("Search a order by ID and courier")
     @GetMapping("/courier/{id}/{courierId}")
     @ApiResponses({
@@ -81,30 +105,6 @@ public class OrderController {
         return service.getOrderByIdAndCourier(id,courierId)
                 .map(product ->  new ResponseEntity<>(product, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
-    }
-
-
-    @GetMapping("/user/state/{userId}/{state}")
-    @ApiOperation("Get all orders by user")
-    @ApiResponse(code = 200, message = "OK")
-    public ResponseEntity<List<Order>> getAllByUserAndState(@PathVariable("userId") Integer userId,
-                                                    @PathVariable("state") String state) {
-        return service.getAllByUser(userId).map(
-                orders -> new ResponseEntity<>(orders, HttpStatus.OK)
-        ).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
-    }
-
-    @GetMapping("/commerce/state/{commerceId}/{state}/{startDate}/{endDate}")
-    @ApiOperation("Get all orders by commerce and state")
-    @ApiResponse(code = 200, message = "OK")
-    public ResponseEntity<List<Order>> getAllByCommerceAndState(
-            @PathVariable("commerceId") Integer commerceId, @PathVariable("state") String state
-    , @PathVariable("startDate") @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss") LocalDateTime startDate
-            ,@PathVariable("endDate") @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss") LocalDateTime endDate
-    ) {
-        return service.getAllByCommerceAndState(commerceId, state, startDate,endDate).map(
-                orders -> new ResponseEntity<>(orders, HttpStatus.OK)
-        ).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @GetMapping("/courier/state/{courierId}/{state}/{startDate}/{endDate}")
@@ -128,7 +128,6 @@ public class OrderController {
                 .orElse(new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR));
 
     }
-
 
     //......................................................................................
     @PatchMapping()

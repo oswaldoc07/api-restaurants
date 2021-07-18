@@ -40,28 +40,35 @@ public class OrderService {
         return repository.getOrderById(id);
     }
 
+    //CLIENT......................................................................................
     public Optional<Order> getOrderByIdAndClient(int id,int clientId) {
         return repository.getOrderByIdAndClient(id, clientId);
     }
 
-    public Optional<Order> getOrderByIdAndCourier(int id,int courierId) {
-        return repository.getOrderByIdAndCourier(id, courierId);
+    public Optional<List<Order>> getAllByClientAndState(int clientId, String state) {
+
+        return repository.getAllByClientAndState(clientId,state);
     }
+
+    //COMMERCE......................................................................................
     public Optional<List<Order>> getAllByCommerceAndState(int commerceId, String state, LocalDateTime startDate,
                                                           LocalDateTime endDate) {
 
         return repository.getAllByCommerceAndState(commerceId,state,startDate,endDate);
     }
 
+    //COURIER......................................................................................
+    public Optional<Order> getOrderByIdAndCourier(int id,int courierId) {
+        return repository.getOrderByIdAndCourier(id, courierId);
+    }
+
     public Optional<List<Order>> getAllByCourierAndState(Integer courierId, String state, LocalDateTime startDate,
                                                          LocalDateTime endDate) {
-
         return repository.getAllByCourierAndState(courierId,state,startDate,endDate);
     }
 
-    public Optional<List<Order>> getAllByUser(int userId) {
-        return repository.getAllByUser(userId);
-    }
+
+
 
     public Optional<Order>  save(Order dto) {
         Order order=  this.repository.save(dto).map(orderSaved->{

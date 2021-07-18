@@ -44,16 +44,31 @@ public class OrdenRepository implements OrderRepository {
     }
 
     @Override
-    public Optional<Order> getOrderByIdAndCourier(int id,int courierId) {
-        return crudRepository.findByIdAndMensajeroId(id,courierId).map(orden -> mapper.toOrder(orden));
+    public Optional<List<Order>> getAllByClientAndState(Integer clientId,String state) {
+        if(state.equals("PRO")){
+         return this.getAllByClientAndProcess(clientId);
+        }else{
+            Optional<List<Orden>>  entities = crudRepository.findByIdClienteAndEstado(clientId,state);
+            return entities.map(orders -> mapper.toOrders(orders));
+        }
+
+
     }
 
-
+    public Optional<List<Order>> getAllByClientAndProcess(Integer clientId) {
+        Optional<List<Orden>> entities = crudRepository.findByIdClienteAndProceso(clientId);
+        return entities.map(orders -> mapper.toOrders(orders));
+    }
     @Override
     public Optional<List<Order>> getAllByCommerceAndState(int commerceId, String state, LocalDateTime startDate,
                                                           LocalDateTime endDate) {
         Optional<List<Orden>> entities = crudRepository.getAllByCommerceAndState( commerceId,  state,  startDate,endDate);
         return entities.map(orders -> mapper.toOrders(orders));
+    }
+
+    @Override
+    public Optional<Order> getOrderByIdAndCourier(int id,int courierId) {
+        return crudRepository.findByIdAndMensajeroId(id,courierId).map(orden -> mapper.toOrder(orden));
     }
 
     @Override
@@ -65,11 +80,7 @@ public class OrdenRepository implements OrderRepository {
 
 
 
-    @Override
-    public Optional<List<Order>> getAllByUser(Integer userId) {
-        Optional<List<Orden>> entities = crudRepository.findByIdCliente(userId);
-        return entities.map(orders -> mapper.toOrders(orders));
-    }
+
 
     @Override
     public Optional<Order> save(Order order) {
