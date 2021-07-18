@@ -65,7 +65,6 @@ public class ClientController {
                 .map(client ->  new ResponseEntity<>(client, HttpStatus.CREATED))
                 .orElse(new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR));
     }
-
     //......................................................................................
     @DeleteMapping("/{id}")
     public ResponseEntity<Client> delete(@PathVariable("id") int id) {
