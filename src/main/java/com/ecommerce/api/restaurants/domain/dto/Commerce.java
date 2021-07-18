@@ -15,7 +15,6 @@ public class Commerce extends User {
     private String imageBackground;
     private String color;
 
-
     public Integer getId() {
         return id;
     }
