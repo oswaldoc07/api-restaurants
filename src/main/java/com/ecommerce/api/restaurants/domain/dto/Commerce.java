@@ -32,7 +32,6 @@ public class Commerce extends User {
         this.geolocalization = geolocalization;
     }
 
-
     public String getUrl() {
         return url;
     }
