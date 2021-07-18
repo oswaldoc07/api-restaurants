@@ -49,8 +49,6 @@ public class ClientController {
         return service.getClientByEmailOrPhone(email,phone)
                 .map(client -> new ResponseEntity<>(client, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
-
-
     }
 
     //......................................................................................
