@@ -16,6 +16,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 @Repository
@@ -37,7 +39,7 @@ public class MensajeroRepositoy  implements CourierRepository {
         return Optional.of(mapper.toCouriers(entities));
     }
 
-    @Override
+   @Override
     public Optional<List<Courier>> getAllByCommerce(int commerceId) {
     try{
     Optional<Comercio> comercio = comercioCrudRepository.findById(commerceId);
@@ -47,8 +49,26 @@ public class MensajeroRepositoy  implements CourierRepository {
     }catch (Exception e){
         return Optional.empty();
     }
-
     }
+
+   @Override
+    public Optional<List<Courier>> getAllByCommerceWithPendingDelivery(int commerceId) {
+    try{
+    Optional<Comercio> comercio = comercioCrudRepository.findById(commerceId);
+    Hibernate.initialize(comercio.get().getMensajeros());
+    List<Mensajero> entities =(comercio.get().getMensajeros()).
+        stream().map(m -> {
+            Mensajero pendiente =(this.crudRepository.numberOrdersProcess(m.getId()));
+            m.setEntregasPendientes(pendiente.getEntregasPendientes());
+            m.setTiempoPendiente(pendiente.getTiempoPendiente());
+            return m;
+        } ).sorted().collect(Collectors.toList());
+    return Optional.ofNullable(mapper.toCouriers(entities));
+    }catch (Exception e){
+        return Optional.empty();
+     }
+    }
+
 
     @Override
     public Optional<Courier> getCourierById(int id) {

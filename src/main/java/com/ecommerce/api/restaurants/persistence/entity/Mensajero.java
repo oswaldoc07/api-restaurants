@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "mensajero")
-public class Mensajero{
+public class Mensajero implements Comparable{
 
 
     @Id
@@ -32,9 +32,25 @@ public class Mensajero{
 
     private Boolean abierto;
 
+    @Transient
+    private Long entregasPendientes;
+
+    @Transient
+    private Double tiempoPendiente;
+
+    public Mensajero() {
+    }
+
+    public Mensajero(Long entregasPendientes, Double tiempoPendiente) {
+        this.entregasPendientes = entregasPendientes;
+        this.tiempoPendiente = tiempoPendiente;
+    }
+
     public Integer getId() {
         return id;
     }
+
+
 
     public void setId(Integer id) {
         this.id = id;
@@ -88,5 +104,28 @@ public class Mensajero{
 
     public void setAbierto(Boolean abierto) {
         this.abierto = abierto;
+    }
+
+
+    public Long getEntregasPendientes() {
+        return entregasPendientes;
+    }
+
+    public void setEntregasPendientes(Long entregasPendientes) {
+        this.entregasPendientes = entregasPendientes;
+    }
+
+    public Double getTiempoPendiente() {
+        return tiempoPendiente;
+    }
+
+    public void setTiempoPendiente(Double tiempoPendiente) {
+        this.tiempoPendiente = tiempoPendiente;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        Mensajero otra = (Mensajero) o;
+        return this.getEntregasPendientes().compareTo(otra.getEntregasPendientes());
     }
 }

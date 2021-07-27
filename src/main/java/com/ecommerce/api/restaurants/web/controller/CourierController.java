@@ -47,6 +47,17 @@ public class CourierController {
     }
 
     //......................................................................................
+    @ApiOperation("Get all couriers by commerce")
+    @GetMapping("/commerce-pendient/{commerceId}")
+    public ResponseEntity<List<Courier>> getAllByCommerceWithPendingDelivery(@ApiParam(value = "The id commerce",
+            required = true, example = "7") @PathVariable("commerceId") int commerceId) {
+        return service.getAllByCommerceWithPendingDelivery(commerceId)
+                .map(couriers -> new ResponseEntity<>(couriers, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+
+    //......................................................................................
     @GetMapping("/email/{email}")
     public ResponseEntity<Courier> getByEmail(@PathVariable("email") String email) {
         return service.getByEmail(email)

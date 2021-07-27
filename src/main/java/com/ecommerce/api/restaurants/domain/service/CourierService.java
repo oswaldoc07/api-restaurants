@@ -23,6 +23,10 @@ public class CourierService {
         return repository.getAllByCommerce(commerceId);
     }
 
+    public Optional<List<Courier>> getAllByCommerceWithPendingDelivery(int commerceId) {
+        return repository.getAllByCommerceWithPendingDelivery(commerceId);
+    }
+
     public Optional<Courier> getCourierById(int id) {
         return repository.getCourierById(id);
     }

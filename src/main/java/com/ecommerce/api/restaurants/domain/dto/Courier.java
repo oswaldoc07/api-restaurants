@@ -7,6 +7,8 @@ public class Courier extends User{
     private String vehicleType;
     private String licensePlate;
     private Boolean open;
+    private Long pendingDeliveries;
+    private Double  pendingTime;
 
     public Integer getId() {
         return id;
@@ -38,5 +40,21 @@ public class Courier extends User{
 
     public void setOpen(Boolean open) {
         this.open = open;
+    }
+
+    public Long getPendingDeliveries() {
+        return pendingDeliveries;
+    }
+
+    public void setPendingDeliveries(Long pendingDeliveries) {
+        this.pendingDeliveries = pendingDeliveries;
+    }
+
+    public Double getPendingTime() {
+        return pendingTime;
+    }
+
+    public void setPendingTime(Double pendingTime) {
+        this.pendingTime = pendingTime;
     }
 }

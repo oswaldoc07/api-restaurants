@@ -9,6 +9,7 @@ public interface CourierRepository {
     Optional<List<Courier>> getAll();
     Optional<Courier> getCourierById(int id);
     Optional<List<Courier>> getAllByCommerce(int commerceId);
+    Optional<List<Courier>> getAllByCommerceWithPendingDelivery(int commerceId);
     Optional<Courier> getByEmail(String email);
     Optional<Courier>  save(Courier dto);
     Optional<Courier>  update(Courier dto);
