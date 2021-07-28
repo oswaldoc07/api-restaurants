@@ -27,9 +27,12 @@ public class Comercio{
     @OneToMany(mappedBy = "comercio")
     private List<Orden> ordenes;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "id_usuario", insertable = false, updatable = false)
     private Usuario usuario;
+
+    @OneToOne(mappedBy = "comercio", cascade = {CascadeType.ALL},fetch=FetchType.LAZY)
+    private ConfiguracionComercio configuracionComercio ;
 
     @OneToMany(mappedBy = "comercio", cascade = {CascadeType.ALL})
     private List<ComercioTipoPago> tiposPago;
@@ -48,6 +51,13 @@ public class Comercio{
 
     private String color;
 
+    public ConfiguracionComercio getConfiguracionComercio() {
+        return configuracionComercio;
+    }
+
+    public void setConfiguracionComercio(ConfiguracionComercio configuracionComercio) {
+        this.configuracionComercio = configuracionComercio;
+    }
 
     public List<ComercioTipoPago> getTiposPago() {
         return tiposPago;
