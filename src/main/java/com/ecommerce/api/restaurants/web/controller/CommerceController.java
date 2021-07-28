@@ -2,6 +2,8 @@ package com.ecommerce.api.restaurants.web.controller;
 
 
 import com.ecommerce.api.restaurants.domain.dto.Commerce;
+import com.ecommerce.api.restaurants.domain.dto.CommerceCourier;
+import com.ecommerce.api.restaurants.domain.dto.Product;
 import com.ecommerce.api.restaurants.domain.dto.TypeCommerce;
 import com.ecommerce.api.restaurants.domain.service.CommerceService;
 
@@ -15,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/commerces")
@@ -59,12 +62,24 @@ public class CommerceController {
     }
 
     //......................................................................................
+    @ApiOperation("Search a commerce by email")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "OK"),
+            @ApiResponse(code = 404, message = "Product not found"),
+    })
+
     @GetMapping("/email/{email}")
     public ResponseEntity<Commerce> getByEmail(@PathVariable("email") String email) {
         return service.getByEmail(email)
                 .map(commerce -> new ResponseEntity<>(commerce, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
+
+    @ApiOperation("Search a commerce by url")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "OK"),
+            @ApiResponse(code = 404, message = "Product not found"),
+    })
 
     //......................................................................................
     @GetMapping("/url/{url}")
@@ -76,8 +91,11 @@ public class CommerceController {
 
 
     //......................................................................................
+    @ApiOperation("Returns shipping cost according to the distance")
     @GetMapping("/{id}/rate/{distance}")
-    public ResponseEntity<Integer> getRate(@PathVariable("id") int id,
+    public ResponseEntity<Integer> getRate(@ApiParam(value = "The id of commerce", required = true, example = "1")
+                                           @PathVariable("id") int id,
+                                          @ApiParam(value = "shipping distance in Kilometers", required = true, type = "double", example = "1.8")
                                           @PathVariable("distance") double distance  ) {
         return service.getRate(id, distance)
                 .map(rate -> new ResponseEntity<>(rate, HttpStatus.OK))
@@ -95,6 +113,15 @@ public class CommerceController {
         return service. getAllTypeCommerceActive()
                 .map(rate -> new ResponseEntity<>(rate, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    @PostMapping("/addCourier")
+    public ResponseEntity addCourier(@RequestBody CommerceCourier dto) {
+        if (service.addCourier(dto)){
+            return new ResponseEntity(HttpStatus.OK);
+        } else {
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 }

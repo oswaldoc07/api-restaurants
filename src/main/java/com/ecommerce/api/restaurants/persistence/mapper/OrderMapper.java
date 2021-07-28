@@ -22,6 +22,7 @@ public interface OrderMapper {
             @Mapping(source = "cliente.usuario.nombre", target = "client.displayName"),
             @Mapping(source = "cliente.usuario.correo", target = "client.email"),
             @Mapping(source = "cliente.usuario.celular", target = "client.phoneNumber"),
+            @Mapping(source = "comercio.usuario.nombre", target = "commerce.displayName"),
             @Mapping(source = "idComercio", target = "commerceId"),
             @Mapping(source = "fechaIngreso", target = "includedDate"),
             @Mapping(source = "fechaEstimada", target = "estimatedDate"),
@@ -40,7 +41,8 @@ public interface OrderMapper {
             @Mapping(source = "mensajero", target = "courier"),
             @Mapping(source = "direccion", target = "address"),
             @Mapping(source = "montoEfectivo", target = "cashAmount"),
-            @Mapping(source = "tiempoEnvio", target = "deliveryTime")
+            @Mapping(source = "tiempoEnvio", target = "deliveryTime"),
+            @Mapping(source = "entregaDomicio", target = "deliveryHouse")
 
 
     })

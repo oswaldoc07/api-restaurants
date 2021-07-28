@@ -46,6 +46,16 @@ public class Comercio{
     @OrderBy(value="orden")
     private List<CategoriaProducto> categoriaProductos;
 
+
+    @ManyToMany(cascade = { CascadeType.ALL },fetch=FetchType.LAZY)
+    @JoinTable(
+            name = "COMERCIO_MENSAJERO",
+            joinColumns = { @JoinColumn(name = "id_comercio", insertable = false, updatable = false) },
+            inverseJoinColumns = { @JoinColumn(name = "id_mensajero",insertable = false, updatable = false) }
+    )
+    private List<Mensajero> mensajeros;
+
+
     @Column(name = "id_tipo")
     private int idTipoComercio;
 
@@ -163,5 +173,13 @@ public class Comercio{
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public List<Mensajero> getMensajeros() {
+        return mensajeros;
+    }
+
+    public void setMensajeros(List<Mensajero> mensajeros) {
+        this.mensajeros = mensajeros;
     }
 }

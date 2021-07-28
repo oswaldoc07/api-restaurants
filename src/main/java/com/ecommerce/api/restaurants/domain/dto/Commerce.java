@@ -16,7 +16,6 @@ public class Commerce extends User {
     private String imageBackground;
     private String color;
 
-
     public Integer getId() {
         return id;
     }
@@ -33,7 +32,6 @@ public class Commerce extends User {
     public void setGeolocalization(String geolocalization) {
         this.geolocalization = geolocalization;
     }
-
 
     public String getUrl() {
         return url;

@@ -1,11 +1,15 @@
 package com.ecommerce.api.restaurants.persistence.dao;
 
 import com.ecommerce.api.restaurants.domain.dto.Commerce;
+import com.ecommerce.api.restaurants.domain.dto.CommerceCourier;
 import com.ecommerce.api.restaurants.domain.dto.TypeCommerce;
 import com.ecommerce.api.restaurants.domain.repository.CommerceRepository;
 import com.ecommerce.api.restaurants.persistence.crud.ComercioCrudRepository;
+import com.ecommerce.api.restaurants.persistence.crud.ComercioMensajeroCrudRepository;
 import com.ecommerce.api.restaurants.persistence.crud.TipoComercioCrudRepository;
 import com.ecommerce.api.restaurants.persistence.entity.Comercio;
+import com.ecommerce.api.restaurants.persistence.entity.ComercioMensajero;
+import com.ecommerce.api.restaurants.persistence.entity.ComercioMensajeroPK;
 import com.ecommerce.api.restaurants.persistence.entity.TipoComercio;
 import com.ecommerce.api.restaurants.persistence.mapper.CommerceMapper;
 
@@ -24,6 +28,9 @@ public class ComercioRepository implements CommerceRepository {
 
     @Autowired
     private TipoComercioCrudRepository tipoCrudRepository;
+
+    @Autowired
+    private ComercioMensajeroCrudRepository comercioMensajeroCrudRepository;
 
     @Autowired
     private CommerceMapper mapper;
@@ -79,6 +86,21 @@ public class ComercioRepository implements CommerceRepository {
     public  Optional<Commerce> save(Commerce dto) {
         Comercio entity = mapper.toComercio(dto);
         return Optional.of(mapper.toCommerce(crudRepository.save(entity)));
+    }
+
+    @Override
+    public boolean addCourier(CommerceCourier dto){
+        ComercioMensajeroPK id = new ComercioMensajeroPK(dto.getCommerceId(),dto.getCourierId());
+        if(this.comercioMensajeroCrudRepository.findById(id).isPresent()){
+            return true;
+        }else{
+            ComercioMensajero toInsert= new ComercioMensajero(id);
+           if(Optional.ofNullable(this.comercioMensajeroCrudRepository.save(toInsert)).isPresent()){
+               return true;
+
+            }
+        }
+      return false;
     }
 
 

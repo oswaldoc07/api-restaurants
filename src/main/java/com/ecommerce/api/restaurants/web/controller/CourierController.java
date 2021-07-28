@@ -34,6 +34,8 @@ public class CourierController {
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
+
+
     //......................................................................................
     @ApiOperation("Get all couriers by commerce")
     @GetMapping("/commerce/{commerceId}")
@@ -72,7 +74,7 @@ public class CourierController {
     @PostMapping()
     public ResponseEntity<Courier> save(@RequestBody Courier dto) {
         return service.save(dto)
-                .map(courier ->  new ResponseEntity<>(dto, HttpStatus.CREATED))
+                .map(courier ->  new ResponseEntity<>(courier, HttpStatus.CREATED))
                 .orElse(new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR));
     }
 

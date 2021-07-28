@@ -9,6 +9,8 @@ public class Order {
 
     private int id;
     private Client Client;
+    private Commerce commerce;
+    private Courier courier;
     private Integer commerceId;
     private LocalDateTime includedDate;
     private LocalDateTime estimatedDate;
@@ -22,11 +24,12 @@ public class Order {
     private List<OrderProduct> cartItem;
     private String desRejected;
     private String ubicationGPS;
-    private Courier courier;
+
     private String address;
     private PaymentMethod paymentMethod;
     private Double cashAmount;
     private Double deliveryTime;
+    private Boolean  deliveryHouse;
 
     public int getId() {
         return id;
@@ -189,5 +192,21 @@ public class Order {
 
     public void setCourier(Courier courier) {
         this.courier = courier;
+    }
+
+    public Boolean getDeliveryHouse() {
+        return deliveryHouse;
+    }
+
+    public void setDeliveryHouse(Boolean deliveryHouse) {
+        this.deliveryHouse = deliveryHouse;
+    }
+
+    public Commerce getCommerce() {
+        return commerce;
+    }
+
+    public void setCommerce(Commerce commerce) {
+        this.commerce = commerce;
     }
 }

@@ -41,6 +41,7 @@ public interface CommerceMapper {
     @Mapping(target = "tipo_comercio", ignore = true)
     @Mapping(target = "usuario", ignore = true)
     @Mapping(target = "categoriaProductos", ignore = true)
+    @Mapping(target = "mensajeros", ignore = true)
 
     Comercio toComercio(Commerce commerce);
 }

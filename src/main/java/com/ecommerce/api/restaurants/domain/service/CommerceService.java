@@ -1,6 +1,7 @@
 package com.ecommerce.api.restaurants.domain.service;
 
 import com.ecommerce.api.restaurants.domain.dto.Commerce;
+import com.ecommerce.api.restaurants.domain.dto.CommerceCourier;
 import com.ecommerce.api.restaurants.domain.dto.CommerceRate;
 import com.ecommerce.api.restaurants.domain.dto.TypeCommerce;
 import com.ecommerce.api.restaurants.domain.repository.CommerceRateRepository;
@@ -81,5 +82,7 @@ public class CommerceService {
     public Optional<List<TypeCommerce>> getAllTypeCommerceActive(){
         return  this.repository.getAllTypeCommerceActive();
     }
-
+    public boolean addCourier(CommerceCourier dto){
+        return this.repository.addCourier(dto);
+    }
 }

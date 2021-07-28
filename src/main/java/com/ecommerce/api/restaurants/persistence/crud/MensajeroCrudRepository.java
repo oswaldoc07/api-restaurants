@@ -10,6 +10,5 @@ import java.util.Optional;
 
 @Repository
 public interface MensajeroCrudRepository extends CrudRepository<Mensajero,Integer> {
-    Optional<List<Mensajero>> findByIdComercio(int id_comercio);
     Optional<Mensajero> findByUsuarioCorreo(String correo);
 }

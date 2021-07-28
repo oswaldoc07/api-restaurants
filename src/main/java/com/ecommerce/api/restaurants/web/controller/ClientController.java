@@ -12,14 +12,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.ecommerce.api.restaurants.domain.dto.User;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/clients")
 public class ClientController {
-
 
     @Autowired
     private ClientService service;
@@ -51,10 +49,7 @@ public class ClientController {
         return service.getClientByEmailOrPhone(email,phone)
                 .map(client -> new ResponseEntity<>(client, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
-
-
     }
-
     //......................................................................................
     @PostMapping()
     public ResponseEntity<Client> save(@RequestBody Client dto) {
@@ -70,7 +65,6 @@ public class ClientController {
                 .map(client ->  new ResponseEntity<>(client, HttpStatus.CREATED))
                 .orElse(new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR));
     }
-
     //......................................................................................
     @DeleteMapping("/{id}")
     public ResponseEntity<Client> delete(@PathVariable("id") int id) {
@@ -80,5 +74,4 @@ public class ClientController {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
     }
-
 }

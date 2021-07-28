@@ -44,7 +44,6 @@ public class CategoriaProductoRepository implements ProductCategoryRepository {
         Optional<Comercio> commerce =  comercioCrudRepository.findById(commerceId);
         Hibernate.initialize(commerce.get().getCategoriaProductos());
         List<CategoriaProducto> categoriaProductos = commerce.get().getCategoriaProductos();
-
         return mapper.toCategories(categoriaProductos);
 
     }
