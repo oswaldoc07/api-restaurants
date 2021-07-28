@@ -11,6 +11,7 @@ public class Commerce extends User {
     private String url;
     private String description;
     private List<PaymentMethod> paymentMethods;
+    private SettingCommerce settingCommerce;
     private int categoryId;
     private String imageBackground;
     private String color;
@@ -46,6 +47,15 @@ public class Commerce extends User {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+
+    public SettingCommerce getSettingCommerce() {
+        return settingCommerce;
+    }
+
+    public void setSettingCommerce(SettingCommerce settingCommerce) {
+        this.settingCommerce = settingCommerce;
     }
 
     public List<PaymentMethod> getPaymentMethods() {
