@@ -38,7 +38,7 @@ public class Comercio{
     @OneToMany(mappedBy = "comercio", cascade = {CascadeType.ALL})
     private List<ComercioTipoPago> tiposPago;
 
-    @ManyToMany(cascade = { CascadeType.PERSIST },fetch=FetchType.LAZY)
+    @ManyToMany(cascade = { CascadeType.REMOVE },fetch=FetchType.LAZY)
     //@OrderBy(value="orden")
     @JoinTable(
             name = "COMERCIO_CATEGORIA_PRODUCTO",
