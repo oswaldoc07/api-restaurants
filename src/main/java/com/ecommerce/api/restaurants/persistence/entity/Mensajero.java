@@ -30,7 +30,7 @@ public class Mensajero implements Comparable{
     @ManyToMany(mappedBy = "mensajeros")
     private List<Comercio> comercios;
 
-    private Boolean abierto;
+    private Boolean disponible;
 
     @Transient
     private Long entregasPendientes;
@@ -94,18 +94,17 @@ public class Mensajero implements Comparable{
         return comercios;
     }
 
+    public Boolean getDisponible() {
+        return disponible;
+    }
+
+    public void setDisponible(Boolean disponible) {
+        this.disponible = disponible;
+    }
+
     public void setComercios(List<Comercio> comercios) {
         this.comercios = comercios;
     }
-
-    public Boolean getAbierto() {
-        return abierto;
-    }
-
-    public void setAbierto(Boolean abierto) {
-        this.abierto = abierto;
-    }
-
 
     public Long getEntregasPendientes() {
         return entregasPendientes;

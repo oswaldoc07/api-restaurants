@@ -24,7 +24,7 @@ public interface CourierMapper {
             @Mapping(source = "usuario.activo", target = "active"),
             @Mapping(source = "tipoVehiculo", target = "vehicleType"),
             @Mapping(source = "placa", target = "licensePlate"),
-            @Mapping(source = "abierto", target = "open"),
+            @Mapping(source = "disponible", target = "available"),
             @Mapping(source = "entregasPendientes", target = "pendingDeliveries"),
             @Mapping(source = "tiempoPendiente", target = "pendingTime")
 

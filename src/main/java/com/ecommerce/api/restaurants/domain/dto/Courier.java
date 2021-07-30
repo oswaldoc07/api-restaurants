@@ -6,7 +6,7 @@ public class Courier extends User{
     private Integer id;
     private String vehicleType;
     private String licensePlate;
-    private Boolean open;
+    private Boolean available;
     private Long pendingDeliveries;
     private Double  pendingTime;
 
@@ -16,6 +16,14 @@ public class Courier extends User{
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Boolean getAvailable() {
+        return available;
+    }
+
+    public void setAvailable(Boolean available) {
+        this.available = available;
     }
 
     public String getVehicleType() {
@@ -32,14 +40,6 @@ public class Courier extends User{
 
     public void setLicensePlate(String licensePlate) {
         this.licensePlate = licensePlate;
-    }
-
-    public Boolean getOpen() {
-        return open;
-    }
-
-    public void setOpen(Boolean open) {
-        this.open = open;
     }
 
     public Long getPendingDeliveries() {

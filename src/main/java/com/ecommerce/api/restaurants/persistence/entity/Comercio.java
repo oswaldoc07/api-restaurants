@@ -12,12 +12,13 @@ public class Comercio{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_comercio")
+    @Column(name = "id_comercio", updatable = false, nullable = false)
     private Integer id;
 
     @Column(name = "id_usuario")
     private Integer idUsuario;
-    private String tipo_comercio;
+    @Column(name = "tipo_comercio")
+    private String tipocomercio;
     private String geolocalizacion;
     private String url ;
     private String descripcion;
@@ -37,21 +38,21 @@ public class Comercio{
     @OneToMany(mappedBy = "comercio", cascade = {CascadeType.ALL})
     private List<ComercioTipoPago> tiposPago;
 
-    @ManyToMany(cascade = { CascadeType.ALL },fetch=FetchType.LAZY)
+    @ManyToMany(cascade = { CascadeType.PERSIST },fetch=FetchType.LAZY)
+    //@OrderBy(value="orden")
     @JoinTable(
             name = "COMERCIO_CATEGORIA_PRODUCTO",
-            joinColumns = { @JoinColumn(name = "id_comercio", insertable = false, updatable = false) },
-            inverseJoinColumns = { @JoinColumn(name = "id_categoria",insertable = false, updatable = false) }
+            joinColumns = { @JoinColumn(name = "id_comercio", insertable = false, updatable = false ,nullable = false) },
+            inverseJoinColumns = { @JoinColumn(name = "id_categoria",insertable = false, updatable = false, nullable = false) }
     )
-    @OrderBy(value="orden")
     private List<CategoriaProducto> categoriaProductos;
 
 
     @ManyToMany(cascade = { CascadeType.ALL },fetch=FetchType.LAZY)
     @JoinTable(
             name = "COMERCIO_MENSAJERO",
-            joinColumns = { @JoinColumn(name = "id_comercio", insertable = false, updatable = false) },
-            inverseJoinColumns = { @JoinColumn(name = "id_mensajero",insertable = false, updatable = false) }
+            joinColumns = { @JoinColumn(name = "id_comercio", referencedColumnName = "id_comercio", insertable = false, updatable = false) },
+            inverseJoinColumns = { @JoinColumn(name = "id_mensajero",referencedColumnName="id_mensajero",insertable = false, updatable = false) }
     )
     private List<Mensajero> mensajeros;
 
@@ -60,6 +61,24 @@ public class Comercio{
     private int idTipoComercio;
 
     private String color;
+    private String horario;
+    private Boolean disponible;
+
+    public Boolean getDisponible() {
+        return disponible;
+    }
+
+    public void setDisponible(Boolean disponible) {
+        this.disponible = disponible;
+    }
+
+    public String getHorario() {
+        return horario;
+    }
+
+    public void setHorario(String horario) {
+        this.horario = horario;
+    }
 
     public ConfiguracionComercio getConfiguracionComercio() {
         return configuracionComercio;
@@ -93,12 +112,12 @@ public class Comercio{
         this.id = id;
     }
 
-    public String getTipo_comercio() {
-        return tipo_comercio;
+    public String getTipocomercio() {
+        return tipocomercio;
     }
 
-    public void setTipo_comercio(String tipo_comercio) {
-        this.tipo_comercio = tipo_comercio;
+    public void setTipocomercio(String tipocomercio) {
+        this.tipocomercio = tipocomercio;
     }
 
     public String getGeolocalizacion() {

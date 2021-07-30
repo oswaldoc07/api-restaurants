@@ -7,10 +7,7 @@ import com.ecommerce.api.restaurants.domain.repository.CommerceRepository;
 import com.ecommerce.api.restaurants.persistence.crud.ComercioCrudRepository;
 import com.ecommerce.api.restaurants.persistence.crud.ComercioMensajeroCrudRepository;
 import com.ecommerce.api.restaurants.persistence.crud.TipoComercioCrudRepository;
-import com.ecommerce.api.restaurants.persistence.entity.Comercio;
-import com.ecommerce.api.restaurants.persistence.entity.ComercioMensajero;
-import com.ecommerce.api.restaurants.persistence.entity.ComercioMensajeroPK;
-import com.ecommerce.api.restaurants.persistence.entity.TipoComercio;
+import com.ecommerce.api.restaurants.persistence.entity.*;
 import com.ecommerce.api.restaurants.persistence.mapper.CommerceMapper;
 
 import com.ecommerce.api.restaurants.persistence.mapper.TypeCommerceMapper;
@@ -106,7 +103,14 @@ public class ComercioRepository implements CommerceRepository {
 
     @Override
     public Optional<Commerce> update(Commerce dto) {
-        return Optional.empty();
+
+        Comercio entity=  crudRepository.findById(dto.getId()).map(comercio->{
+            Comercio comercioToSave = mapper.toComercio(dto);
+            return comercioToSave;
+        }).get();
+        return Optional.of(mapper.toCommerce(crudRepository.save(entity)));
+
+        //return Optional.empty();
     }
 
     @Override

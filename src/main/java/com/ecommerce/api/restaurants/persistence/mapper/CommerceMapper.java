@@ -28,7 +28,10 @@ public interface CommerceMapper {
             @Mapping(source = "usuario.activo", target = "active"),
             @Mapping(source = "idTipoComercio", target = "categoryId"),
             @Mapping(source = "imagenFondo", target = "imageBackground"),
-            @Mapping(source = "color", target = "color")
+            @Mapping(source = "color", target = "color"),
+            @Mapping(source = "horario", target = "schedule"),
+            @Mapping(source = "disponible", target = "available"),
+            @Mapping(source = "tipocomercio", target = "typeCommerce")
 
 
 
@@ -38,7 +41,6 @@ public interface CommerceMapper {
 
     @InheritInverseConfiguration
     @Mapping(target = "ordenes", ignore = true)
-    @Mapping(target = "tipo_comercio", ignore = true)
     @Mapping(target = "usuario", ignore = true)
     @Mapping(target = "categoriaProductos", ignore = true)
     @Mapping(target = "mensajeros", ignore = true)

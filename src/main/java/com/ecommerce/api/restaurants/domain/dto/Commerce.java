@@ -13,8 +13,35 @@ public class Commerce extends User {
     private List<PaymentMethod> paymentMethods;
     private SettingCommerce settingCommerce;
     private int categoryId;
+    private String typeCommerce;
     private String imageBackground;
     private String color;
+    private String schedule;
+    private  Boolean available;
+
+    public String getTypeCommerce() {
+        return typeCommerce;
+    }
+
+    public void setTypeCommerce(String typeCommerce) {
+        this.typeCommerce = typeCommerce;
+    }
+
+    public String getSchedule() {
+        return schedule;
+    }
+
+    public void setSchedule(String schedule) {
+        this.schedule = schedule;
+    }
+
+    public Boolean getAvailable() {
+        return available;
+    }
+
+    public void setAvailable(Boolean available) {
+        this.available = available;
+    }
 
     public Integer getId() {
         return id;
