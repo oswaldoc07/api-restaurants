@@ -1,5 +1,8 @@
 package com.ecommerce.api.restaurants.persistence.entity;
 
+import org.hibernate.annotations.LazyToOne;
+import org.hibernate.annotations.LazyToOneOption;
+
 import javax.persistence.*;
 
 
@@ -32,23 +35,22 @@ public class Comercio{
     @JoinColumn(name = "id_usuario", insertable = false, updatable = false)
     private Usuario usuario;
 
-    @OneToOne(mappedBy = "comercio", cascade = {CascadeType.ALL},fetch=FetchType.LAZY)
+    @OneToOne(mappedBy = "comercio",cascade = CascadeType.ALL,fetch=FetchType.LAZY)
     private ConfiguracionComercio configuracionComercio ;
 
     @OneToMany(mappedBy = "comercio", cascade = {CascadeType.ALL})
     private List<ComercioTipoPago> tiposPago;
 
-    @ManyToMany(cascade = { CascadeType.REMOVE },fetch=FetchType.LAZY)
-    //@OrderBy(value="orden")
+    @ManyToMany(cascade = CascadeType.PERSIST,fetch=FetchType.LAZY)
     @JoinTable(
             name = "COMERCIO_CATEGORIA_PRODUCTO",
-            joinColumns = { @JoinColumn(name = "id_comercio", insertable = false, updatable = false ,nullable = false) },
-            inverseJoinColumns = { @JoinColumn(name = "id_categoria",insertable = false, updatable = false, nullable = false) }
+            joinColumns = { @JoinColumn(name = "id_comercio", insertable = false, updatable = false) },
+            inverseJoinColumns = { @JoinColumn(name = "id_categoria",insertable = false, updatable = false) }
     )
     private List<CategoriaProducto> categoriaProductos;
 
 
-    @ManyToMany(cascade = { CascadeType.ALL },fetch=FetchType.LAZY)
+    @ManyToMany(cascade = { CascadeType.PERSIST },fetch=FetchType.LAZY)
     @JoinTable(
             name = "COMERCIO_MENSAJERO",
             joinColumns = { @JoinColumn(name = "id_comercio", referencedColumnName = "id_comercio", insertable = false, updatable = false) },

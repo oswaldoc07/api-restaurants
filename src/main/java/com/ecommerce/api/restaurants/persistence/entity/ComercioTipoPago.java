@@ -17,7 +17,7 @@ public class ComercioTipoPago {
     @JoinColumn(name = "id_comercio", insertable = false, updatable = false)
     private Comercio comercio;
 
-    @ManyToOne(fetch=FetchType.EAGER)
+    @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "id_tipo", insertable = false, updatable = false)
     private TipoPago tipoPago;
 

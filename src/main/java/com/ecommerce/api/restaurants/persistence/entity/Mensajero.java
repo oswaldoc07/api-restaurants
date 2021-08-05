@@ -27,7 +27,7 @@ public class Mensajero implements Comparable{
     @Column(name = "tipo_vehiculo")
     private String tipoVehiculo;
 
-    @ManyToMany(mappedBy = "mensajeros")
+    @ManyToMany(mappedBy = "mensajeros",fetch=FetchType.LAZY)
     private List<Comercio> comercios;
 
     private Boolean disponible;

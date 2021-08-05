@@ -106,8 +106,11 @@ public class ComercioRepository implements CommerceRepository {
 
         Comercio entity=  crudRepository.findById(dto.getId()).map(comercio->{
             Comercio comercioToSave = mapper.toComercio(dto);
+            comercioToSave.setMensajeros(comercio.getMensajeros());
+            comercioToSave.setCategoriaProductos(comercio.getCategoriaProductos());
             return comercioToSave;
         }).get();
+
         return Optional.of(mapper.toCommerce(crudRepository.save(entity)));
 
         //return Optional.empty();

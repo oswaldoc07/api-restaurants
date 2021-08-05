@@ -1,4 +1,7 @@
 package com.ecommerce.api.restaurants.persistence.entity;
+import org.hibernate.annotations.LazyToOne;
+import org.hibernate.annotations.LazyToOneOption;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,10 +12,10 @@ public class ConfiguracionComercio {
     @Column(name = "id_configuracion")
     private Integer id;
 
-    @Column(name = "id_comercio")
+    @Transient
     private Integer idComercio;
 
-    @OneToOne
+    @OneToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "id_comercio", insertable = false, updatable = false)
     private Comercio comercio;
 
