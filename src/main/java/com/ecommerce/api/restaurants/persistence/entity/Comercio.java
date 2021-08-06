@@ -31,14 +31,14 @@ public class Comercio{
     @OneToMany(mappedBy = "comercio")
     private List<Orden> ordenes;
 
-    @OneToOne
+    @OneToOne(fetch=FetchType.EAGER)
     @JoinColumn(name = "id_usuario", insertable = false, updatable = false)
     private Usuario usuario;
 
-    @OneToOne(mappedBy = "comercio",cascade = CascadeType.ALL,fetch=FetchType.LAZY)
+    @OneToOne(mappedBy = "comercio",cascade = CascadeType.ALL,fetch=FetchType.EAGER)
     private ConfiguracionComercio configuracionComercio ;
 
-    @OneToMany(mappedBy = "comercio", cascade = {CascadeType.ALL})
+    @OneToMany(mappedBy = "comercio", cascade = {CascadeType.ALL},fetch=FetchType.EAGER)
     private List<ComercioTipoPago> tiposPago;
 
     @ManyToMany(cascade = CascadeType.PERSIST,fetch=FetchType.LAZY)

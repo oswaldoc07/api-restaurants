@@ -2,6 +2,9 @@ package com.ecommerce.api.restaurants.persistence.entity;
 
 
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -65,7 +68,8 @@ public class Orden{
     @JoinColumn(name = "id_mensajero", insertable = false, updatable = true)
     private Mensajero mensajero;
 
-    @OneToMany(mappedBy = "orden", cascade = {CascadeType.ALL})
+    @OneToMany(mappedBy = "orden", cascade = {CascadeType.ALL},fetch=FetchType.LAZY)
+   // @Fetch(value = FetchMode.SELECT)
     private List<OrdenProducto> ordenProductos;
 
     @Column(name="direccion_entrega")

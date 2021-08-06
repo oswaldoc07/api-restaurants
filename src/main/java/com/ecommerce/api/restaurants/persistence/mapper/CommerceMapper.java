@@ -32,9 +32,6 @@ public interface CommerceMapper {
             @Mapping(source = "horario", target = "schedule"),
             @Mapping(source = "disponible", target = "available"),
             @Mapping(source = "tipocomercio", target = "typeCommerce")
-
-
-
     })
     Commerce toCommerce(Comercio entity);
     List<Commerce> toCommerces(List<Comercio> entities);

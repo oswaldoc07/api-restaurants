@@ -41,9 +41,6 @@ public class Producto {
     @Column(name = "ind_promocion")
     private Boolean promocion;
 
-    @ManyToOne
-    @JoinColumn(name = "id_categoria", insertable = false, updatable = false)
-    private CategoriaProducto categoria;
 
     public Integer getIdProducto() {
         return idProducto;
@@ -149,11 +146,4 @@ public class Producto {
         this.promocion = promocion;
     }
 
-    public CategoriaProducto getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(CategoriaProducto categoria) {
-        this.categoria = categoria;
-    }
 }

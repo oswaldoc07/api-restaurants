@@ -28,7 +28,6 @@ public class OrdenRepository implements OrderRepository {
     public List<Order> getAll() {
         List<Orden> entities = (List<Orden>) crudRepository.findAll();
         return mapper.toOrders(entities);
-
     }
 
     @Override

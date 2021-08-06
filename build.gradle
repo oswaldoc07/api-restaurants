@@ -2,11 +2,16 @@ plugins {
 	id 'org.springframework.boot' version '2.3.4.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
 	id 'java'
+	id 'war'
 }
 
 group = 'com.ecomers.api'
 version = '1.0'
 sourceCompatibility = '11'
+
+configurations {
+	runtime.exclude module: 'spring-boot-starter-tomcat'
+}
 
 repositories {
 	mavenCentral()
@@ -32,6 +37,4 @@ dependencies {
 	}
 }
 
-test {
-	useJUnitPlatform()
-}
+

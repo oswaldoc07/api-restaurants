@@ -16,7 +16,7 @@ public class CategoriaProducto {
     private Boolean estado;
     private Integer orden;
 
-    @OneToMany(mappedBy = "categoria")
+    @OneToMany(mappedBy = "idCategoria")
     private List<Producto> productos;
 
     @ManyToMany(mappedBy = "categoriaProductos",fetch=FetchType.LAZY)
