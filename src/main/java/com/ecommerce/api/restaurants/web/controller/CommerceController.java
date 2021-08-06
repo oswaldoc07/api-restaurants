@@ -125,7 +125,7 @@ public class CommerceController {
     }
 
 
-    @PostMapping("/updateCommerce")
+    @PutMapping()
     public ResponseEntity updateCommerce(@RequestBody Commerce dto) {
         return service.update(dto)
                 .map(commerce ->  new ResponseEntity<>(commerce, HttpStatus.CREATED))
