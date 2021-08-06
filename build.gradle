@@ -10,7 +10,8 @@ version = '1.0'
 sourceCompatibility = '11'
 
 configurations {
-	runtime.exclude module: 'spring-boot-starter-tomcat'
+	compile.exclude module: 'spring-boot-starter-tomcat'
+	compile.exclude group: 'org.apache.tomcat'
 }
 
 repositories {
