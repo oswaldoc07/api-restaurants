@@ -8,10 +8,10 @@ import java.io.Serializable;
 public class ComercioTipoPagoPK implements Serializable {
 
 
-    @Column(name = "id_comercio")
+    @Column(name = "id_comercio",updatable = false)
     private Integer idcomercio;
 
-    @Column(name = "id_tipo")
+    @Column(name = "id_tipo",updatable = false)
     private String idTipo;
 
 

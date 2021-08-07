@@ -12,7 +12,7 @@ public class ConfiguracionComercio {
     @Column(name = "id_configuracion")
     private Integer id;
 
-    @Transient
+    @Column(name = "id_comercio")
     private Integer idComercio;
 
     @OneToOne(fetch=FetchType.LAZY)

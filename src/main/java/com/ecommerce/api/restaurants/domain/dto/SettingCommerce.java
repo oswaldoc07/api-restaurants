@@ -4,7 +4,6 @@ public class SettingCommerce {
 
     private Integer id;
     private Integer idComercio;
-    private Commerce commerce;
     private Boolean enviosms;
     private Integer radiocobertura;
 
@@ -19,14 +18,6 @@ public class SettingCommerce {
 
     public Integer getIdComercio() {
         return idComercio;
-    }
-
-    public Commerce getCommerce() {
-        return commerce;
-    }
-
-    public void setCommerce(Commerce commerce) {
-        this.commerce = commerce;
     }
 
     public void setIdComercio(Integer idComercio) {
