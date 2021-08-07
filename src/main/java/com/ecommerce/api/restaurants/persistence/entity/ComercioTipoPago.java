@@ -12,8 +12,8 @@ public class ComercioTipoPago {
     private ComercioTipoPagoPK id;
 
 
-    @ManyToOne
-    @MapsId("id_comercio")
+    @ManyToOne(fetch=FetchType.EAGER)
+   // @MapsId("id_comercio")
     @JoinColumn(name = "id_comercio", insertable = false, updatable = false)
     private Comercio comercio;
 

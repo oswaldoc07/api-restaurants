@@ -1,7 +1,9 @@
 package com.ecommerce.api.restaurants.persistence.entity;
 
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.LazyToOne;
 import org.hibernate.annotations.LazyToOneOption;
+
 
 import javax.persistence.*;
 
@@ -38,8 +40,13 @@ public class Comercio{
     @OneToOne(mappedBy = "comercio",cascade = CascadeType.ALL,fetch=FetchType.EAGER)
     private ConfiguracionComercio configuracionComercio ;
 
-    @OneToMany(mappedBy = "comercio", cascade = {CascadeType.ALL},fetch=FetchType.EAGER)
-    private List<ComercioTipoPago> tiposPago;
+    @ManyToMany(cascade = CascadeType.PERSIST,fetch=FetchType.EAGER)
+    @JoinTable(
+            name = "tipo_pago_comercio",
+            joinColumns = { @JoinColumn(name = "id_comercio", insertable = false, updatable = false) },
+            inverseJoinColumns = { @JoinColumn(name = "id_tipo",insertable = false, updatable = false) }
+    )
+    private List<TipoPago> tiposPago;
 
     @ManyToMany(cascade = CascadeType.PERSIST,fetch=FetchType.LAZY)
     @JoinTable(
@@ -90,11 +97,11 @@ public class Comercio{
         this.configuracionComercio = configuracionComercio;
     }
 
-    public List<ComercioTipoPago> getTiposPago() {
+    public List<TipoPago> getTiposPago() {
         return tiposPago;
     }
 
-    public void setTiposPago(List<ComercioTipoPago> tiposPago) {
+    public void setTiposPago(List<TipoPago> tiposPago) {
         this.tiposPago = tiposPago;
     }
 

@@ -10,7 +10,7 @@ import org.mapstruct.Mappings;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = {CommercePaymentTypeMapper.class,SettingCommerceMapper.class})
+@Mapper(componentModel = "spring", uses = {PaymentTypeMapper.class,SettingCommerceMapper.class})
 public interface CommerceMapper {
     @Mappings({
             @Mapping(source = "id", target = "id"),

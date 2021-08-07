@@ -9,7 +9,7 @@ public class ComercioTipoPagoPK implements Serializable {
 
 
     @Column(name = "id_comercio",updatable = false)
-    private Integer idcomercio;
+    private Integer idComercio;
 
     @Column(name = "id_tipo",updatable = false)
     private String idTipo;
@@ -23,11 +23,11 @@ public class ComercioTipoPagoPK implements Serializable {
         this.idTipo = idTipo;
     }
 
-    public Integer getIdcomercio() {
-        return idcomercio;
+    public Integer getIdComercio() {
+        return idComercio;
     }
 
-    public void setIdcomercio(Integer idcomercio) {
-        this.idcomercio = idcomercio;
+    public void setIdComercio(Integer idComercio) {
+        this.idComercio = idComercio;
     }
 }
