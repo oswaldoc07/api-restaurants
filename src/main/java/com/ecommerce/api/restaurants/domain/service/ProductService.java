@@ -3,7 +3,7 @@ package com.ecommerce.api.restaurants.domain.service;
 
 
 import com.ecommerce.api.restaurants.domain.dto.Product;
-import com.ecommerce.api.restaurants.domain.repository.ProductRepository;
+import com.ecommerce.api.restaurants.persistence.repository.IProductRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,7 @@ import java.util.Optional;
 @Service
 public class ProductService {
     @Autowired
-    private ProductRepository productRepository;
+    private IProductRepository productRepository;
 
 
 

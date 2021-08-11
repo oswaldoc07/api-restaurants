@@ -1,8 +1,8 @@
-package com.ecommerce.api.restaurants.persistence.dao;
+package com.ecommerce.api.restaurants.persistence.repository.impl;
 
 
 import com.ecommerce.api.restaurants.domain.dto.Order;
-import com.ecommerce.api.restaurants.domain.repository.OrderRepository;
+import com.ecommerce.api.restaurants.persistence.repository.IOrderRepository;
 import com.ecommerce.api.restaurants.persistence.crud.OrdenCrudRepository;
 import com.ecommerce.api.restaurants.persistence.entity.Orden;
 import com.ecommerce.api.restaurants.persistence.entity.OrdenProducto;
@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class OrdenRepository implements OrderRepository {
+public class OrderRepository implements IOrderRepository {
 
     @Autowired
     private OrdenCrudRepository crudRepository;

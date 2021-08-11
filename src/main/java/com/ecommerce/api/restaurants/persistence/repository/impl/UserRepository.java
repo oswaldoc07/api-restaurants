@@ -1,7 +1,7 @@
-package com.ecommerce.api.restaurants.persistence.dao;
+package com.ecommerce.api.restaurants.persistence.repository.impl;
 
 
-import com.ecommerce.api.restaurants.domain.repository.UserRepository;
+import com.ecommerce.api.restaurants.persistence.repository.IUserRepository;
 
 import com.ecommerce.api.restaurants.persistence.crud.UsuarioCrudRepository;
 import com.ecommerce.api.restaurants.persistence.mapper.UserMapper;
@@ -15,7 +15,7 @@ import java.util.Optional;
 import com.ecommerce.api.restaurants.domain.dto.User;
 
 @Repository
-public class UsuarioRepository implements UserRepository {
+public class UserRepository implements IUserRepository {
 
     @Autowired
     private UsuarioCrudRepository crudRepository;

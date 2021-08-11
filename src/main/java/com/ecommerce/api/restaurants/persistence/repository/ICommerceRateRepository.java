@@ -1,11 +1,11 @@
-package com.ecommerce.api.restaurants.domain.repository;
+package com.ecommerce.api.restaurants.persistence.repository;
 
 import java.util.List;
 import java.util.Optional;
 
 import com.ecommerce.api.restaurants.domain.dto.CommerceRate;
 
-public interface CommerceRateRepository {
+public interface ICommerceRateRepository {
 
     Optional<List<CommerceRate>> getAll();
     Optional<List<CommerceRate>> getAllByCommerce(int commerceId);

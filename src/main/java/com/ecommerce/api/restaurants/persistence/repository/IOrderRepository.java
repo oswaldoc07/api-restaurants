@@ -1,4 +1,4 @@
-package com.ecommerce.api.restaurants.domain.repository;
+package com.ecommerce.api.restaurants.persistence.repository;
 
 
 
@@ -8,7 +8,7 @@ import java.util.Optional;
 
 import com.ecommerce.api.restaurants.domain.dto.Order;
 
-public interface OrderRepository {
+public interface IOrderRepository {
 
     List<Order> getAll();
     Optional<Order> getOrderById(int id);

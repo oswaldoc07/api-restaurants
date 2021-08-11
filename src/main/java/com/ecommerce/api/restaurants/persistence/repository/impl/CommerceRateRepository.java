@@ -1,7 +1,7 @@
-package com.ecommerce.api.restaurants.persistence.dao;
+package com.ecommerce.api.restaurants.persistence.repository.impl;
 
 import com.ecommerce.api.restaurants.domain.dto.CommerceRate;
-import com.ecommerce.api.restaurants.domain.repository.CommerceRateRepository;
+import com.ecommerce.api.restaurants.persistence.repository.ICommerceRateRepository;
 import com.ecommerce.api.restaurants.persistence.crud.TarifaComercioCrudRepository;
 import com.ecommerce.api.restaurants.persistence.entity.TarifaComercio;
 import com.ecommerce.api.restaurants.persistence.mapper.CommerceRateMapper;
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class TarifaComercioRepository  implements CommerceRateRepository {
+public class CommerceRateRepository implements ICommerceRateRepository {
 
     @Autowired
     private CommerceRateMapper mapper;

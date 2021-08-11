@@ -1,9 +1,9 @@
-package com.ecommerce.api.restaurants.persistence.dao;
+package com.ecommerce.api.restaurants.persistence.repository.impl;
 
 
 
 import com.ecommerce.api.restaurants.domain.dto.Product;
-import com.ecommerce.api.restaurants.domain.repository.ProductRepository;
+import com.ecommerce.api.restaurants.persistence.repository.IProductRepository;
 import com.ecommerce.api.restaurants.persistence.crud.ProductoCrudRepository;
 import com.ecommerce.api.restaurants.persistence.entity.Producto;
 import com.ecommerce.api.restaurants.persistence.mapper.ProductMapper;
@@ -11,13 +11,11 @@ import com.ecommerce.api.restaurants.persistence.mapper.ProductMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Stream;
 
 @Repository
-public class ProductoRepository implements ProductRepository {
+public class ProductRepository implements IProductRepository {
     @Autowired
     private ProductoCrudRepository crudRepository;
 

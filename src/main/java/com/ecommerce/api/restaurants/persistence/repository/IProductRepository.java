@@ -1,4 +1,4 @@
-package com.ecommerce.api.restaurants.domain.repository;
+package com.ecommerce.api.restaurants.persistence.repository;
 
 
 
@@ -7,7 +7,7 @@ import java.util.Optional;
 
 import com.ecommerce.api.restaurants.domain.dto.Product;
 
-public interface ProductRepository {
+public interface IProductRepository {
     Optional<List<Product>> getByCommercePromotions(int commerce);
     Optional<List<Product>> getByCommerceAndCategory(int commerce,int categoryId);
     Optional<List<Product>>  getAllByCommerce(int commerceId);

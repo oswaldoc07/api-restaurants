@@ -1,11 +1,11 @@
-package com.ecommerce.api.restaurants.domain.repository;
+package com.ecommerce.api.restaurants.persistence.repository;
 
 import java.util.List;
 import java.util.Optional;
 
 import com.ecommerce.api.restaurants.domain.dto.User;
 
-public interface UserRepository {
+public interface IUserRepository {
 
     List<User> getAll();
     Optional<User> getById(int id);

@@ -1,11 +1,11 @@
-package com.ecommerce.api.restaurants.domain.repository;
+package com.ecommerce.api.restaurants.persistence.repository;
 
 import java.util.List;
 import java.util.Optional;
 
 import com.ecommerce.api.restaurants.domain.dto.Courier;
 
-public interface CourierRepository {
+public interface ICourierRepository {
     Optional<List<Courier>> getAll();
     Optional<Courier> getCourierById(int id);
     Optional<List<Courier>> getAllByCommerce(int commerceId);

@@ -1,4 +1,4 @@
-package com.ecommerce.api.restaurants.domain.repository;
+package com.ecommerce.api.restaurants.persistence.repository;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,7 +8,7 @@ import com.ecommerce.api.restaurants.domain.dto.CommerceCourier;
 import com.ecommerce.api.restaurants.domain.dto.TypeCommerce;
 
 
-public interface CommerceRepository{
+public interface ICommerceRepository {
 
     Optional<List<Commerce>> getAll();
     Optional<List<Commerce>> getAllByCategory(int category);

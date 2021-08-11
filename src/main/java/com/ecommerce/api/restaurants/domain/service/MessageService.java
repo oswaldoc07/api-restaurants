@@ -1,7 +1,7 @@
 package com.ecommerce.api.restaurants.domain.service;
 
 import com.ecommerce.api.restaurants.domain.dto.Message;
-import com.ecommerce.api.restaurants.domain.repository.ParameterRepository;
+import com.ecommerce.api.restaurants.persistence.repository.IParameterRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,7 @@ public class MessageService {
     private RestTemplate clienteRest;
 
     @Autowired
-    private ParameterRepository parameterRepository;
+    private IParameterRepository parameterRepository;
 
     public boolean sentMessage(Message message){
         String key = parameterRepository.findByCode("API.MESSAGE.KEY").get().getValor();

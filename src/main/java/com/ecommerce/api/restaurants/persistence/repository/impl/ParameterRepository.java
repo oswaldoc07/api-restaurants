@@ -1,7 +1,7 @@
-package com.ecommerce.api.restaurants.persistence.dao;
+package com.ecommerce.api.restaurants.persistence.repository.impl;
 
 import com.ecommerce.api.restaurants.domain.dto.Parameter;
-import com.ecommerce.api.restaurants.domain.repository.ParameterRepository;
+import com.ecommerce.api.restaurants.persistence.repository.IParameterRepository;
 import com.ecommerce.api.restaurants.persistence.crud.ParametroCrudRepository;
 import com.ecommerce.api.restaurants.persistence.mapper.ParametersMapper;
 
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public class ParametroRepository implements ParameterRepository {
+public class ParameterRepository implements IParameterRepository {
 
     @Autowired
     private ParametroCrudRepository crudRepository;

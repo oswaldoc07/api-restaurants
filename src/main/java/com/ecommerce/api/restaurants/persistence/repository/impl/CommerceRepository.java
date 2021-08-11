@@ -1,9 +1,9 @@
-package com.ecommerce.api.restaurants.persistence.dao;
+package com.ecommerce.api.restaurants.persistence.repository.impl;
 
 import com.ecommerce.api.restaurants.domain.dto.Commerce;
 import com.ecommerce.api.restaurants.domain.dto.CommerceCourier;
 import com.ecommerce.api.restaurants.domain.dto.TypeCommerce;
-import com.ecommerce.api.restaurants.domain.repository.CommerceRepository;
+import com.ecommerce.api.restaurants.persistence.repository.ICommerceRepository;
 import com.ecommerce.api.restaurants.persistence.crud.ComercioCrudRepository;
 import com.ecommerce.api.restaurants.persistence.crud.ComercioMensajeroCrudRepository;
 import com.ecommerce.api.restaurants.persistence.crud.TipoComercioCrudRepository;
@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class ComercioRepository implements CommerceRepository {
+public class CommerceRepository implements ICommerceRepository {
 
     @Autowired
     private ComercioCrudRepository crudRepository;

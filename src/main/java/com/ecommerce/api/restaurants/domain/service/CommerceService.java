@@ -4,8 +4,8 @@ import com.ecommerce.api.restaurants.domain.dto.Commerce;
 import com.ecommerce.api.restaurants.domain.dto.CommerceCourier;
 import com.ecommerce.api.restaurants.domain.dto.CommerceRate;
 import com.ecommerce.api.restaurants.domain.dto.TypeCommerce;
-import com.ecommerce.api.restaurants.domain.repository.CommerceRateRepository;
-import com.ecommerce.api.restaurants.domain.repository.CommerceRepository;
+import com.ecommerce.api.restaurants.persistence.repository.ICommerceRateRepository;
+import com.ecommerce.api.restaurants.persistence.repository.ICommerceRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,10 +18,10 @@ public class CommerceService {
 
 
     @Autowired
-    private CommerceRepository repository;
+    private ICommerceRepository repository;
 
     @Autowired
-    private CommerceRateRepository commerceRateRepository;
+    private ICommerceRateRepository commerceRateRepository;
 
 
     public Optional<List<Commerce>> getAll() {

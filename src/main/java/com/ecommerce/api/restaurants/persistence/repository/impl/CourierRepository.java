@@ -1,8 +1,8 @@
-package com.ecommerce.api.restaurants.persistence.dao;
+package com.ecommerce.api.restaurants.persistence.repository.impl;
 
 
 import com.ecommerce.api.restaurants.domain.dto.Courier;
-import com.ecommerce.api.restaurants.domain.repository.CourierRepository;
+import com.ecommerce.api.restaurants.persistence.repository.ICourierRepository;
 import com.ecommerce.api.restaurants.persistence.crud.ComercioCrudRepository;
 import com.ecommerce.api.restaurants.persistence.crud.MensajeroCrudRepository;
 import com.ecommerce.api.restaurants.persistence.entity.Comercio;
@@ -17,11 +17,10 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 
 @Repository
-public class MensajeroRepositoy  implements CourierRepository {
+public class CourierRepository implements ICourierRepository {
 
 
     @Autowired

@@ -1,7 +1,7 @@
 package com.ecommerce.api.restaurants.domain.service;
 
 import com.ecommerce.api.restaurants.domain.dto.Client;
-import com.ecommerce.api.restaurants.domain.repository.ClientRepository;
+import com.ecommerce.api.restaurants.persistence.repository.IClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +12,7 @@ import java.util.Optional;
 public class ClientService {
 
     @Autowired
-    private ClientRepository repository;
+    private IClientRepository repository;
 
     public Optional<List<Client>> getAll() {
         return repository.getAll();

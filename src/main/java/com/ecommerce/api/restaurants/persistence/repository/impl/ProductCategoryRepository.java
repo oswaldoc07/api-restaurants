@@ -1,13 +1,11 @@
-package com.ecommerce.api.restaurants.persistence.dao;
+package com.ecommerce.api.restaurants.persistence.repository.impl;
 
 import com.ecommerce.api.restaurants.domain.dto.ProductCategory;
-import com.ecommerce.api.restaurants.domain.repository.ProductCategoryRepository;
+import com.ecommerce.api.restaurants.persistence.repository.IProductCategoryRepository;
 import com.ecommerce.api.restaurants.persistence.crud.CategoriaProductoCrudRepository;
-import com.ecommerce.api.restaurants.persistence.crud.ComercioCategoriaProductoCrudRepository;
 import com.ecommerce.api.restaurants.persistence.crud.ComercioCrudRepository;
 import com.ecommerce.api.restaurants.persistence.entity.CategoriaProducto;
 import com.ecommerce.api.restaurants.persistence.entity.Comercio;
-import com.ecommerce.api.restaurants.persistence.entity.ComercioCategoriaProducto;
 import com.ecommerce.api.restaurants.persistence.mapper.ProductCategoryMapper;
 
 import org.hibernate.Hibernate;
@@ -18,7 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class CategoriaProductoRepository implements ProductCategoryRepository {
+public class ProductCategoryRepository implements IProductCategoryRepository {
 
     @Autowired
     private CategoriaProductoCrudRepository crudRepository;

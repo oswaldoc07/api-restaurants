@@ -1,7 +1,7 @@
 package com.ecommerce.api.restaurants.domain.service;
 
 import com.ecommerce.api.restaurants.domain.dto.Courier;
-import com.ecommerce.api.restaurants.domain.repository.CourierRepository;
+import com.ecommerce.api.restaurants.persistence.repository.ICourierRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,7 @@ import java.util.Optional;
 public class CourierService {
 
     @Autowired
-    private CourierRepository repository;
+    private ICourierRepository repository;
 
     public Optional<List<Courier>> getAll() {
         return repository.getAll();

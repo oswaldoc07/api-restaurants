@@ -1,4 +1,4 @@
-package com.ecommerce.api.restaurants.domain.repository;
+package com.ecommerce.api.restaurants.persistence.repository;
 
 
 
@@ -7,7 +7,7 @@ import java.util.Optional;
 
 import com.ecommerce.api.restaurants.domain.dto.Client;
 
-public interface ClientRepository {
+public interface IClientRepository {
     Optional<List<Client>> getAll();
     Optional<Client> getClientById(int id);
     Optional<Client> getClientByEmail(String email);

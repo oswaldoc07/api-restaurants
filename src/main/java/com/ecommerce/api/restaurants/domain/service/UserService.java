@@ -1,6 +1,6 @@
 package com.ecommerce.api.restaurants.domain.service;
 
-import com.ecommerce.api.restaurants.domain.repository.UserRepository;
+import com.ecommerce.api.restaurants.persistence.repository.IUserRepository;
 import com.ecommerce.api.restaurants.domain.dto.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ public class UserService {
 
 
     @Autowired
-    private UserRepository  repository;
+    private IUserRepository repository;
 
     public Optional<User> getById(int id) {
         return repository.getById(id);
