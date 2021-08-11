@@ -2,14 +2,11 @@ plugins {
 	id 'org.springframework.boot' version '2.3.4.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
 	id 'java'
-	id 'jar'
 }
 
 group = 'com.ecomers.api'
 version = '1.0'
 sourceCompatibility = '11'
-
-
 
 repositories {
 	mavenCentral()
@@ -35,4 +32,6 @@ dependencies {
 	}
 }
 
-
+test {
+	useJUnitPlatform()
+}
