@@ -11,6 +11,7 @@ import com.ecommerce.api.restaurants.persistence.mapper.OrderMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -83,9 +84,15 @@ public class OrderRepository implements IOrderRepository {
 
     @Override
     public Optional<Order> save(Order order) {
-        Orden entity = mapper.toOrden(order);
-        entity.getOrdenProductos().forEach(ordenProducto -> ordenProducto.setOrden(entity));
-        return Optional.of(mapper.toOrder(crudRepository.save(entity)));
+        try{
+            Orden entity = mapper.toOrden(order);
+            entity.getOrdenProductos().forEach(ordenProducto -> ordenProducto.setOrden(entity));
+            return Optional.of(mapper.toOrder(crudRepository.save(entity)));
+        }catch (Exception e){
+            System.out.println(e);
+
+        }
+     return null;
     }
 
     @Override

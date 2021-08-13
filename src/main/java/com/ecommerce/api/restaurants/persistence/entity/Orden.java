@@ -68,8 +68,7 @@ public class Orden{
     @JoinColumn(name = "id_mensajero", insertable = false, updatable = true)
     private Mensajero mensajero;
 
-    @OneToMany(mappedBy = "orden", cascade = {CascadeType.ALL},fetch=FetchType.LAZY)
-   // @Fetch(value = FetchMode.SELECT)
+    @OneToMany(mappedBy = "orden", cascade = {CascadeType.ALL})
     private List<OrdenProducto> ordenProductos;
 
     @Column(name="direccion_entrega")
