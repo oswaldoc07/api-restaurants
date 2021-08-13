@@ -13,7 +13,7 @@ public class OrdenProducto {
 
 
     @ManyToOne
-    @MapsId("id_orden")
+    @MapsId("idOrden")
     @JoinColumn(name = "id_orden", insertable = false, updatable = false)
     private Orden orden;
 
