@@ -1,7 +1,7 @@
 package com.ecommerce.api.restaurants;
 
-import org.apache.catalina.Context;
-import org.apache.catalina.webresources.ExtractingRoot;
+/*import org.apache.catalina.Context;
+import org.apache.catalina.webresources.ExtractingRoot;*/
 import org.springframework.boot.web.embedded.tomcat.TomcatContextCustomizer;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.server.WebServerFactoryCustomizer;
@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class EmbeddedTomcatConfiguration {
 
-    @Bean
+   /* @Bean
     TomcatServletWebServerFactory tomcatFactory() {
         return new TomcatServletWebServerFactory() {
 
@@ -38,5 +38,5 @@ public class EmbeddedTomcatConfiguration {
                         });
             }
         };
-    }
+    }*/
 }

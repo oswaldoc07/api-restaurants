@@ -2,43 +2,39 @@ plugins {
 	id 'org.springframework.boot' version '2.3.4.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
 	id 'java'
-	//id 'war' WAR
+	//id 'war'
 }
-
 group = 'com.ecomers.api'
 version = '1.0'
 sourceCompatibility = '11'
-
 repositories {
 	mavenCentral()
 }
 
-/*configurations { WAR
+/*configurations {
 	compile.exclude module: 'spring-boot-starter-tomcat'
 	compile.exclude group: 'org.apache.tomcat'
+	runtime.exclude module: 'spring-boot-starter-tomcat'
+	runtime.exclude group: 'org.apache.tomcat'
 }*/
-
-
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation ('org.springframework.boot:spring-boot-starter-web')
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-
 	implementation 'io.springfox:springfox-swagger2:2.9.2'
 	implementation 'io.springfox:springfox-swagger-ui:2.9.2'
-
 	implementation 'io.jsonwebtoken:jjwt:0.9.1'
-
-	runtimeOnly 'mysql:mysql-connector-java'
-
 	implementation 'org.mapstruct:mapstruct:1.3.1.Final'
+	runtimeOnly 'mysql:mysql-connector-java'
 	annotationProcessor 'org.mapstruct:mapstruct-processor:1.3.1.Final'
+	compileOnly 'javax.servlet:javax.servlet-api:3.0.1'
 
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
+	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
+	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
 }
-
-test {
-	useJUnitPlatform()
-}
+/*test {
+   useJUnitPlatform()
+}*/
